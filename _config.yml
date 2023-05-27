@@ -52,6 +52,9 @@ header_pages:
 include:
   - _pages
 
+feed:
+  disable: true  
+
 # Set to `true` to show excerpts on the homepage.
 #
 # show_excerpts: false
