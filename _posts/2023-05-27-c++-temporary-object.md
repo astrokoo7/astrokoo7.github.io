@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "c++ temporary object"
+title: "C++ Temporary Object"
 categories: language
 ---
 
