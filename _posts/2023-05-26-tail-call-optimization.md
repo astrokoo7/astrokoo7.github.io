@@ -33,6 +33,11 @@ elixir에서 Foo라는 모듈의 bar 함수를 호출하면 스스로 bar를 호
 
 ## release upgrade test with TCO
 
+erlang에는 release upgrade라는 runtime 코드 교체 기능을 제공하고 있다.
+
+
+
+
 
 
 
