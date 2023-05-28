@@ -6,11 +6,13 @@ categories: server
 
 ## tail call optimization 그게 뭔데?
 
+```elixir
 defmodule Foo do
     def bar do
         bar()
     end
 end
+```
 
 elixir code에서 Foo라는 모듈의 bar 함수를 호출하면 스스로 bar를 호출하여 무한히 루프에 빠지는데
 
