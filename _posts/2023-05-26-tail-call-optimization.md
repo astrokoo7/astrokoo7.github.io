@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "tail call optimization"
+title: "Tail Call Optimization"
 categories: server
 ---
 

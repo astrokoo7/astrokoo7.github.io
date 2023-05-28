@@ -1,14 +1,8 @@
 ---
 layout: post
-title: "unity lighting"
-categories: client
+title: "Unity Lighting"
+categories: unity
 ---
-
-
-
-
-
-
 
 
 
