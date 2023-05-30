@@ -5,4 +5,14 @@ categories: language
 ---
 
 
+## background
+
+
+
+
+
+
+
 ## move semantics
+
+
