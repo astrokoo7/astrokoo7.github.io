@@ -4,7 +4,6 @@ title: "Tail Call Optimization"
 categories: server
 ---
 
-## tail call optimization?
 
 ```elixir
 defmodule Foo do
