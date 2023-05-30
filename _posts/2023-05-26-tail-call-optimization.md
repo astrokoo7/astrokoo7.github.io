@@ -4,7 +4,7 @@ title: "Tail Call Optimization"
 categories: server
 ---
 
-## tail call optimization 그게 뭔데?
+## tail call optimization?
 
 ```elixir
 defmodule Foo do
