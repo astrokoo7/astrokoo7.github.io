@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Think Fourier Transform"
-categories: mathmetics
+categories: mathematics
 ---
 
 어려서부터 음악을 많이 좋아했고 우리 세대 유년기에 남들만큼 피아노도 제법 
