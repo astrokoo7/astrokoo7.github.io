@@ -29,17 +29,21 @@ main:
         ret
 ```
 
-int& ref = x;  에 해당하는 코드는 아래와 같고 
+`int& ref = x;`  에 해당하는 코드는 아래와 같고 
 
+```
 lea     rax, [rbp-20]
 mov     QWORD PTR [rbp-8], rax
+```
 
-int* p = &x; 에 해당하는 코드는 아래와 같다
+`int* p = &x;` 에 해당하는 코드는 아래와 같다
 
+```
 lea     rax, [rbp-20]
 mov     QWORD PTR [rbp-16], rax
+```
 
-메모리상 값 복사는 register를 통해 이뤄지는데
+메모리상 값 복사는 register를 통해 이뤄지는데 
 
 첫번째 참조 타입에 x를 할당하는 부분은
 
