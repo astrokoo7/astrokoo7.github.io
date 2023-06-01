@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "C++ Temporary Object"
+title: "C++ ref vs pointer"
 categories: language
 ---
 
@@ -56,7 +56,5 @@ mov 명령어를 통해 rax 주소가 가리키는 값을 rbp로부터 16만큼 
 컴파일러는 참조 타입을 사용하여 포인터의 취약점을 보완하면서도 동일한 동작을   
 수행하는 명령을 생성한다.
 
-
-## move semantics
 
 
