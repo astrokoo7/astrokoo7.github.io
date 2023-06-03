@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "linear-algebra"
+title: "linear algebra"
 categories: mathematics
 ---
 
