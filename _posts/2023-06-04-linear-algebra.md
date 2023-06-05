@@ -4,7 +4,7 @@ title: "linear algebra"
 categories: mathematics
 ---
 
-## 기하학
+## geometry
 
 `모든 것은 수다` 라고 피타고라스는 말했다.
 
@@ -22,7 +22,8 @@ categories: mathematics
 
 기하학적으로 기술하여 증명했다고 말했다.  
   
-  
+
+## linear algebra  
 
 연휴 기간 3Blue1Brown youtube 채널의 Essence of linear algebra를 봤다.
 
