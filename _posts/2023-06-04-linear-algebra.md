@@ -27,9 +27,9 @@ categories: mathematics
 
 연휴 기간 3Blue1Brown youtube 채널의 [Essence of linear algebra](https://www.youtube.com/watch?v=fNk_zzaMoSs&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=2&ab_channel=3Blue1Brown) 를 봤다.
 
-기하보다 수라는 추상적인 체계에 익숙한 현대인에게 기하는 추상적인 수 체계의 근원적인
+기하보다 수라는 추상적인 체계에 익숙한 현대인에게 기하는 추상적인 수 체계의 
 
-본질을 이해는데 도움이 된다고 했다.
+근원적인 본질을 이해는데 도움이 된다고 했다.
 
 기저 벡터가 무었이고 기저 벡터를 통해 생성 할 수 있는 공간과 
 
