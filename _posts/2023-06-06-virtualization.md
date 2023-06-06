@@ -16,11 +16,11 @@ os 기능의 일부분으로 hardware virtualization이 제공 된다.
 
 [하드웨어 가상화](https://en.wikipedia.org/wiki/Hardware-assisted_virtualization)는 cpu에 의해 기능이 제공되며 인텔 계열은 [Intel® VT](https://www.intel.com/content/www/us/en/virtualization/virtualization-technology/intel-virtualization-technology.htmt) 이고
 
-AMD 계열은 AMD-V 라고 했다.  
+AMD 계열은 AMD-V 라고 한다.  
 
 cpu에서 제공되는 하드웨어 가상화를 os에서 소프트웨어로 구현한걸 `하이퍼바이저`라 
 
-부르고 윈도우의 하이퍼바이저를 Hyper-v라고 부른다 했다.
+부르고 윈도우의 하이퍼바이저를 Hyper-v라고 부른다.
 
 
 
