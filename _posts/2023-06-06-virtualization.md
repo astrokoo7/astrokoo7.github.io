@@ -14,7 +14,7 @@ os 기능의 일부분으로 hardware virtualization이 제공 된다.
 
 ## in deepth hardware virtualization
 
-[하드웨어 가상화](https://en.wikipedia.org/wiki/Hardware-assisted_virtualization)는 cpu에 의해 기능이 제공되며 인텔 계열은 [Intel® VT](https://www.intel.com/content/www/us/en/virtualization/virtualization-technology/intel-virtualization-technology.htmt) 이고
+[하드웨어 가상화](https://en.wikipedia.org/wiki/Hardware-assisted_virtualization)는 cpu에 의해 기능이 제공되며 인텔 계열은 [Intel® VT](https://www.intel.com/content/www/us/en/virtualization/virtualization-technology/intel-virtualization-technology.html) 이고
 
 AMD 계열은 AMD-V 라고 한다.  
 
