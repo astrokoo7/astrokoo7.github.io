@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Lambert's cosine Law"
+title: "Lambert's cosine law"
 categories: graphics
 ---
 
@@ -27,7 +27,7 @@ categories: graphics
 일정한 분포로 난반사 된다.
 
 
-## cosine Law
+## cosine law
 
 램버시안 표면에서 입사하는 빛은 왜 굳이 코사인 비율로 광량이 줄어들까?
 
