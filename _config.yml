@@ -16,6 +16,9 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+
+google_analytics: G-90W0R92K64
+
 # Theme-specific settings
 
 minima:
