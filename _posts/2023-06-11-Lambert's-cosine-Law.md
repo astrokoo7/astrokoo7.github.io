@@ -43,7 +43,7 @@ categories: graphics
 
 그 직선의 길이는 각도에 따른 cos 값이다.
 
-빛이 원형으로 난반사 된다면 cos 수치를 따르는 이유가 여기에 있다.
+빛이 원형으로 난반사 될때 cos 수치를 따르는 이유가 여기에 있다.
 
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/cosin.png)
