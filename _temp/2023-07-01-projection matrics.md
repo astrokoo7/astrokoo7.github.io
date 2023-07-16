@@ -4,15 +4,40 @@ title: "projection matrics"
 categories: graphics
 ---
 
-3D 가상 공간을 표현하는 데카르트 좌표계상 한점(x,y,z)은 깊이 값 z를 
+시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 P_{eye}는 
 
-동차좌표계의 차수 w로 지정하여 만들고 데카르트 좌표계로 역변환 
+깊이 값 z를 동차좌표계의 차수 w로 지정하여 만들고 데카르트 좌표계로 역변환 
 
 (perspective divid) 과정을 통해 데카르트 좌표계상 원근감을 생성한다.
 
+$$
+
+P_{clip} = M_{projection} \times P_{eye}
+
+P_{ndc}= \frac {P_{clip}} {W_{clip}}
+
+$$
 
 
 
+$$
+
+\begin{pmatrix}
+X_{clip} \\
+Y_{clip} \\
+Z_{clip} \\
+W_{clip} \\
+\end{pmatrix}
+=
+M_{projection} 
+\begin{pmatrix}
+X_{eye} \\
+Y_{eye} \\
+Z_{eye} \\
+W_{eye} \\
+\end{pmatrix}
+
+$$
 
 
 
@@ -61,7 +86,7 @@ Xₚ / Zₚ = Xₑ / Zₑ 이고 구하고자 하는 Xₚ 로 정리하면
 
 Xₚ = Zₚ / Zₑ * Xₑ 이다.
 
-
+Xₓ
 ## normalized device coordinates
 
 원근 적용된 Xₚ는 
@@ -79,7 +104,7 @@ Xₚ = Zₚ / Zₑ * Xₑ 이다.
 
 
 
-
+Xₓ
 
 
 
