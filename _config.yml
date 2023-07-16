@@ -16,6 +16,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+markdown: kramdown
 
 google_analytics: G-90W0R92K64
 
