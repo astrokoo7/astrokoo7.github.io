@@ -8,8 +8,7 @@ categories: graphics
 
 살리고 정규화 과정을 거쳐 2D의 한점으로 변환 된다. 
 
-
-
+2D 화면상의 한점을 3D상의 한점으로 역변환 할 수 있을까?
 
 ## convert to projection space
 
