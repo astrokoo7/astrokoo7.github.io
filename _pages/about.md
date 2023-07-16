@@ -6,9 +6,13 @@ permalink: /about/
 
 game programmer
 
+<!-- 
 $$
 \begin{pmatrix}
 1 & 2 & 3\\
 a & b & c
 \end{pmatrix}
 $$
+
+https://www.overleaf.com/learn/latex/Matrices
+-->
