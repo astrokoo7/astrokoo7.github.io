@@ -14,6 +14,8 @@ $$
 
 P_{clip} = M_{projection} \times P_{eye}
 
+P_{clip} = (X_{clip}, Y_{clip}, Z_{clip}, W_{clip})
+
 P_{ndc}= \frac {P_{clip}} {W_{clip}}
 
 $$
