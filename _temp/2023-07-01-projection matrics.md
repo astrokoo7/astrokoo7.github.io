@@ -10,6 +10,34 @@ categories: graphics
 
 (perspective divid) 과정을 통해 데카르트 좌표계상 원근감을 생성한다.
 
+이때 동차좌표계 변환시 (x_{eye}, y_{eye}, z_{eye})에 깊이 값 z만 w로 지정하여 
+
+변환 후 데카르트 좌표계로 역변환하면 아래와 같고
+
+$$
+
+(\frac x_{eye} w_{eye}, \frac y_{eye} w_{eye}, \frac z_{eye} w_{eye} , \frac w_{eye} w_{eye}) 
+
+$$
+
+깊이 값 z_{eye}와 w_{eye}은 서로 같아 역변환시 차수 w에 따른 깊이감이 없어지고 
+
+시야각도에 따른 원근감을 표현 할 수 없는 문제가 있다.
+
+이에따라 동차좌표계 변환시 시야각도에 따른 깊이값에 따른 좌우/상하 비율값을
+
+적용하여 x_{clip}, y_{clip}을 계산하고 다른 값에 독립적인 깊이 값 z_{clip}은
+
+선형 변환으로 계산하여 깊이 식별과 시야각에 따른 원근감을 표현 할 수 있다.
+
+
+
+
+
+
+
+
+
 $$
 
 P_{clip} = M_{projection} \times P_{eye}
