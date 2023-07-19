@@ -21,6 +21,10 @@ categories: graphics
 
 $$
 
+$$
+
+$$
+
 (\frac {x_{eye}} {w_{eye}}, \frac {y_{eye}} {w_{eye}}, \frac {z_{eye}} {w_{eye}} , \frac {w_{eye}} {w_{eye}}) 
 
 $$
