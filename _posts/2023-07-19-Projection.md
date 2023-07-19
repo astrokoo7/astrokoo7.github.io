@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Perspective Projection"
+title: "Perspective Projection (draft)"
 categories: graphics
 ---
 
