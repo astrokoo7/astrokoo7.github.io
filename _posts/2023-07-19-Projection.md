@@ -16,6 +16,11 @@ categories: graphics
 
 지정하여 변환 후 데카르트 좌표계로 역변환하면 아래와 같은데
 
+
+$$
+
+$$
+
 $$
 
 (\frac {x_{eye}} {w_{eye}}, \frac {y_{eye}} {w_{eye}}, \frac {z_{eye}} {w_{eye}} , \frac {w_{eye}} {w_{eye}}) 
