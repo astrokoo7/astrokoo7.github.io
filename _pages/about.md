@@ -12,3 +12,8 @@ $$
 0                & \frac {2n} {t-b} & \frac {t+b} {t-b} & 0 \\
 \end{pmatrix}
 $$ -->
+$$
+
+(\frac x_{eye} w_{eye}, \frac y_{eye} w_{eye}, \frac z_{eye} w_{eye} , \frac w_{eye} w_{eye}) 
+
+$$
