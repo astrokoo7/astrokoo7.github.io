@@ -10,7 +10,7 @@ categories: graphics
 
 깊이 값 z를 동차좌표계의 차수 w로 지정하여 만들고 데카르트 좌표계로 역변환 
 
-(perspective divid) 과정을 통해 데카르트 좌표계상 원근감을 생성한다.
+(perspective divide) 과정을 통해 데카르트 좌표계상 원근감을 생성한다.
 
 이때 동차좌표계로 변환시 (x_{eye}, y_{eye}, z_{eye})에 깊이 값 z만 w로 
 
