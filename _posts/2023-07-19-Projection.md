@@ -16,11 +16,15 @@ categories: graphics
 
 이때 동차좌표계로 변환시 (Xₑ, Yₑ, Zₑ)에 깊이 값 Z만 W로 
 
-지정하여 변환 후 데카르트 좌표계로 역변환하면 아래와 같은데
+지정하여 변환 후 데카르트 좌표계로 역변환하면 아래와 같고
 
-$$
+  <p>
+  \(
+(\frac {x_{eye}} {w_{eye}}, \frac {y_{eye}} {w_{eye}}, \frac {z_{eye}} {w_{eye}} , \frac {w_{eye}} {w_{eye}}) 
+  \)
+</p>
 
-$$
+이를 그림으로 표현하면 아래와 같다.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/homogeneous.png)
 
@@ -28,15 +32,6 @@ $$
 
 $$
 
-$$
-
-(\frac {x_{eye}} {w_{eye}}, \frac {y_{eye}} {w_{eye}}, \frac {z_{eye}} {w_{eye}} , \frac {w_{eye}} {w_{eye}}) 
-
-$$
-
-$$
-
-$$
 
 
 이런식의 단순 변환은 깊이 값 Zₑ와 Wₑ가 서로 같아 역변환시 차수 Wₑ에 따른
