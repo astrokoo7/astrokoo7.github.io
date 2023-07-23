@@ -6,13 +6,13 @@ categories: graphics
 
 ## overview
 
-시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (x_{eye}, y_{eye}, z_{eye}) \\)는 
+시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (x_{eye}, y_{eye}, z_{eye}) \\)는
 
-깊이 값 \\( z_{eye} \\)를 차수 \\( w_{clip} \\)로 지정하여 동차좌표계(clip space)상 한점 \\( (x_{clip}, y_{clip}, z_{clip}, w_{clip}) \\)로 
+깊이 값 \\( z_{eye} \\)를 차수 \\( w_{clip} \\)로 지정하여 동차좌표계(clip space)상 한점 
 
-변환 후 다시 데카르트 좌표계로 역변환 (perspective divide) 과정을 거쳐 데카르트 좌표계상 원근감을 
+\\( (x_{clip}, y_{clip}, z_{clip}, w_{clip}) \\)로 변환 후 다시 데카르트 좌표계로 역변환 
 
-생성한다.
+(perspective divide) 과정을 거쳐 데카르트 좌표계상 원근감을 생성한다.
 
 Perspective Divide는 다음과 같고 \\(
 (\frac {x_{clip}} {w_{clip}}, \frac {y_{clip}} {w_{clip}}, \frac {z_{clip}} {w_{clip}} , \frac {w_{clip}} {w_{clip}}) 
@@ -28,11 +28,11 @@ $$
 
 
 
-이런 단순 변환은 깊이 값 \\( z_{clip} \\)와 \\( w_{clip} \\)가 서로 같아 데카르트 좌표계로 
+이런 단순 변환은 깊이 값 \\( z_{clip} \\)와 \\( w_{clip} \\)가 서로 같아 데카르트 
 
-역변환시 차수 \\( w_{clip} \\)에 따른 깊이감이 없어지고 시야각도별 차등 원근감을 
+좌표계로 역변환시 차수 \\( w_{clip} \\)에 따른 깊이감이 없어지고 시야각도별 차등 
 
-표현 할 수 없는 문제가 있다.
+원근감을 표현 할 수 없는 문제가 있다.
 
 이러한 문제를 해결하기 위해 동차좌표계(clip space)로 변환시 좌우/상하 
 
