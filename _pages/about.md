@@ -19,11 +19,18 @@ $$
 
 $$ -->
 
-<!-- $$
+$$  
+  
+\documentclass{article}
+\usepackage{amsmath}
+\begin{document}
+\noindent A \hfill Z
+\begin{flalign}
+a_{ijk} &= \frac {Pr(M_{I} =2  \&  M_J=1 \& M_K =1 | I=i , J=j , K=k)}{Pr (M_I =1 \& M_J =1 \& M_K=1 | I=i , J=j)}&&\\\nonumber
+            &= \frac {\mu_{ijk211}}{\mu_{ijk111}}&&
+\end{flalign}
 
-\begin{align*}
-& a_{ijk} = 2 \\
-&(because ||V_1-V_2|| = \max_{i \in [d]}|V^i_1 - V^i_2|)
-\end{align*}
-
-$$ -->
+\noindent A \hfill Z
+\end{document}
+  
+  $$
