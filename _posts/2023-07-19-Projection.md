@@ -8,7 +8,7 @@ categories: graphics
 
 시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (x_{eye}, y_{eye}, z_{eye}) \\)는 
 
-깊이 값 Z를 차수 W로 지정하여 동차좌표계상 한점 \\( (x_{clip}, y_{clip}, z_{clip}) \\)로 
+깊이 값 \\( z \\)를 차수 \\( w \\)로 지정하여 동차좌표계상 한점 \\( (x_{clip}, y_{clip}, z_{clip}, w_{clip}) \\)로 
 
 변환 후 다시 데카르트 좌표계로 역변환 (perspective divide) 과정을 거쳐 
 
