@@ -19,7 +19,7 @@ $$
 
 $$ -->
 
-$$  
+
   
 \documentclass{article}
 \usepackage{amsmath}
@@ -33,4 +33,3 @@ a_{ijk} &= \frac {Pr(M_{I} =2  \&  M_J=1 \& M_K =1 | I=i , J=j , K=k)}{Pr (M_I =
 \noindent A \hfill Z
 \end{document}
   
-  $$
