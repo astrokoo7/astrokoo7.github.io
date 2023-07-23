@@ -8,16 +8,14 @@ categories: graphics
 
 시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (x_{eye}, y_{eye}, z_{eye}) \\)는 
 
-깊이 값 \\( z_{eye} \\)를 차수 \\( w_{clip} \\)로 지정하여 동차좌표계상 한점 \\( (x_{clip}, y_{clip}, z_{clip}, w_{clip}) \\)로 
+깊이 값 \\( z_{eye} \\)를 차수 \\( w_{clip} \\)로 지정하여 동차좌표계(clip space)상 
 
-변환 후 다시 데카르트 좌표계로 역변환 (perspective divide) 과정을 거쳐 
+한점 \\( (x_{clip}, y_{clip}, z_{clip}, w_{clip}) \\)로 변환 후 다시 데카르트 좌표계로
 
-데카르트 좌표계상 원근감을 생성한다.
+역변환 (perspective divide) 과정을 거쳐 데카르트 좌표계상 원근감을 생성한다.
 
-이때 동차좌표계로 변환시 \\( (x_{eye},y_{eye},z_{eye}) \\)에 깊이 값 Z만 W로 지정하여 변환 후 
-
-데카르트 좌표계로 역변환식은 다음과 같고 \\(
-(\frac {x_{clip}} {w_{eye}}, \frac {y_{clip}} {w_{eye}}, \frac {z_{clip}} {w_{eye}} , \frac {w_{clip}} {w_{eye}}) 
+역변환 (perspective divide) 식은 다음과 같고 \\(
+(\frac {x_{clip}} {w_{clip}}, \frac {y_{clip}} {w_{clip}}, \frac {z_{clip}} {w_{clip}} , \frac {w_{clip}} {w_{clip}}) 
   \\)
 
 이를 그림으로 표현하면 아래와 같은 식이다.
@@ -30,9 +28,9 @@ $$
 
 
 
-이런 단순 변환은 깊이 값 \\( Z_{eye} \\)와 \\( W_{eye} \\)가 서로 같아 데카르트 좌표계로 
+이런 단순 변환은 깊이 값 \\( Z_{clip} \\)와 \\( W_{clip} \\)가 서로 같아 데카르트 좌표계로 
 
-역변환시 차수 \\( W_{eye} \\)에 따른 깊이감이 없어지고 시야각도별 차등 원근감을 
+역변환시 차수 \\( W_{clip} \\)에 따른 깊이감이 없어지고 시야각도별 차등 원근감을 
 
 표현 할 수 없는 문제가 있다.
 
