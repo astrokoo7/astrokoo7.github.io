@@ -18,3 +18,8 @@ $$
 (\frac {x_{eye}} {w_{eye}}) 
 
 $$ -->
+
+\begin{align*}
+& a_{ijk} = 2 \\
+&(because ||V_1-V_2|| = \max_{i \in [d]}|V^i_1 - V^i_2|)
+\end{align*}
