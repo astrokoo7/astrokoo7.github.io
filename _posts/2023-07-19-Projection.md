@@ -16,13 +16,9 @@ categories: graphics
 
 이때 동차좌표계로 변환시 \\( (x_{eye},y_{eye},z_{eye}) \\)에 깊이 값 Z만 W로 지정하여 변환 후 
 
-데카르트 좌표계로 역변환식은 아래와 같고
-
-  <p>
-  \(
+데카르트 좌표계로 역변환식은 다음과 같고 \\(
 (\frac {x_{clip}} {w_{eye}}, \frac {y_{clip}} {w_{eye}}, \frac {z_{clip}} {w_{eye}} , \frac {w_{clip}} {w_{eye}}) 
-  \)
-</p>
+  \\)
 
 이를 그림으로 표현하면 아래와 같은 식이다.
 
