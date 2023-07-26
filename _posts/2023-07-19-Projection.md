@@ -44,6 +44,8 @@ $$
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png)
 
+perspective projection matrix는 원근 투영과 NDC 변환 두개를 고려한 한개의 행렬식이다.
+
 원근 투영을 통해 view space을 clip space로 변환하고 perspective divide를 
 
 통해 clip space를 normalize device space로 변환한다.
