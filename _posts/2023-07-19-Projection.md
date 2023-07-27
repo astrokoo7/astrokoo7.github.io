@@ -42,11 +42,7 @@ $$
 
 ## perspective projection matrix
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png)
-
-perspective projection matrix는 시야 공간을 원근 투영(동차좌표계)과
-
-NDC(데카르트좌표계) 변환 두개를 고려한 한개의 행렬식이다.
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png) perspective projection matrix는 시야 공간을 원근 투영(동차좌표계)과 NDC(데카르트좌표계) 변환 두개를 고려한 한개의 행렬식이다.
 
 원근 투영을 통해 view space을 clip space로 변환하고 perspective divide를 
 
