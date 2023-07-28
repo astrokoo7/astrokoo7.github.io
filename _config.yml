@@ -65,4 +65,4 @@ feed:
 #
 show_excerpts: true
 
-excerpt_separator: "<!-- custom-excerpt -->"
+excerpt_separator: <!--more-->
