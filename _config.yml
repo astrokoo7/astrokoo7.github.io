@@ -64,5 +64,5 @@ feed:
 #
 show_excerpts: true
 
-gems:
+plugins:
   - jekyll-sentence_filter
