@@ -12,7 +12,11 @@ categories: graphics
 
 <!-- end_excerpt -->
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/diffuse.png)
+<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/diffuse.png) -->
+
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/diffuse.png">
+</div>
 
 빛은 반사되는 재질에 따라 거울처럼 입사한 빛이 흐트러지지 않고 그대로 반사되기도 하며 돌이나 나무 같은 불투명 재질에선 입사한 빛이 재질 내부에서 상호작용하여 여러 방향으로 갈라져 난반사 된다.
 
@@ -26,14 +30,20 @@ categories: graphics
 램버시안 표면에서 입사하는 빛은 왜 굳이 코사인 비율로 광량이 줄어들까?
 각도에 따라 선형으로 광량이 줄어들지 않는 이유는 무얼까?
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png)
+<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png) -->
+
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png">
+</div>
 
 한줄기 빛이 수직으로 표면에 비출때 표면 중심으로부터 원형으로 난반사 된다면 자연스러울 것이다.
 
 원의 표면 중심점을 기준으로 반대쪽 원의 한점을 각도에따라 직선을 그어보면 그 직선의 길이는 각도에 따른 cos 값임을 알 수 있어 왜 빛이 원형으로 난반사 될때 cos 수치를 따르는지 설명이 된다.
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/cosin.png)
-
+<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/cosin.png) -->
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/cosin.png">
+</div>
 
 랜더링 할땐 버텍스 노멀과 빛의 방향 하나로 난반사를 모사한다.
 
