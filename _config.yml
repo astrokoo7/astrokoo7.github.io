@@ -63,3 +63,6 @@ feed:
 # Set to `true` to show excerpts on the homepage.
 #
 show_excerpts: true
+
+gems:
+  - jekyll-sentence_filter
