@@ -44,20 +44,8 @@ layout: base
             {{ post.title | escape }}
           </a>
         </h3>
-        <!-- {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%} -->
-        <!-- {%- if site.show_excerpts -%}
-          {% assign words_limit = 20 %} 
-          {% capture post_excerpt %}
-            {{ post.content | strip_html | truncatewords: words_limit }}
-          {% endcapture %}
-          {{ post_excerpt }}
-        {%- endif -%}      -->
         
-        {%- if site.show_excerpts -%}
-        <!-- {{ post.content | extract_first_sentence }} -->
-        <!-- {{ post.excerpt | split: '.' | first | append: '.' }} -->
+       {%- if site.show_excerpts -%}
         {{ post.excerpt }}
        {%- endif -%}   
 
