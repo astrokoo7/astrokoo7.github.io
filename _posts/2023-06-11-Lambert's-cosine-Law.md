@@ -25,9 +25,8 @@ categories: graphics
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png)
 
 한줄기 빛이 수직으로 표면에 비출때 표면 중심으로부터 원형으로 난반사 된다면 자연스러울 것이다.
-원의 표면 중심점을 기준으로 반대쪽 원의 한점을 각도에따라 직선을 그어보자.
-그 직선의 길이는 각도에 따른 cos 값이다.
-빛이 원형으로 난반사 될때 cos 수치를 따르는 이유가 여기에 있다.
+
+원의 표면 중심점을 기준으로 반대쪽 원의 한점을 각도에따라 직선을 그어보면 그 직선의 길이는 각도에 따른 cos 값임을 알 수 있어 왜 빛이 원형으로 난반사 될때 cos 수치를 따르는지 설명이 된다.
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/cosin.png)
 
