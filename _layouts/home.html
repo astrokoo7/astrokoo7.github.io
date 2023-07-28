@@ -35,7 +35,7 @@ layout: base
           {{ post.excerpt }}
         {%- endif -%} -->
         {%- if site.show_excerpts -%}
-          {% assign words_limit = 50 %} <!-- 요약에 보여줄 단어 수 -->
+          {% assign words_limit = 20 %} <!-- 요약에 보여줄 단어 수 -->
           {% capture post_excerpt %}
             {{ post.content | strip_html | truncatewords: words_limit }}
           {% endcapture %}
