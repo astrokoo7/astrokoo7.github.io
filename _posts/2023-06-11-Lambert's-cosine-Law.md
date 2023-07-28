@@ -42,7 +42,7 @@ categories: graphics
 
 <!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/cosin.png) -->
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/cosin.png">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/cosin.png" width="82%">
 </div>
 
 랜더링 할땐 버텍스 노멀과 빛의 방향 하나로 난반사를 모사한다.
