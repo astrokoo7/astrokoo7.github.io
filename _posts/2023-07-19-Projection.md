@@ -35,7 +35,7 @@ $$
 <!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png)
  -->
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" alt="Alt text" width="65%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" width="65%">
 </div>
 
 perspective projection matrix는 시야 공간을 원근 투영(동차좌표계)과 NDC(데카르트좌표계) 변환 두개를 고려한 한개의 행렬식이다.
