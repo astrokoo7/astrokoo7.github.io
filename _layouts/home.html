@@ -34,13 +34,23 @@ layout: base
         <!-- {%- if site.show_excerpts -%}
           {{ post.excerpt }}
         {%- endif -%} -->
-        {%- if site.show_excerpts -%}
-          {% assign words_limit = 20 %} <!-- 요약에 보여줄 단어 수 -->
+        <!-- {%- if site.show_excerpts -%}
+          {% assign words_limit = 20 %} 
           {% capture post_excerpt %}
             {{ post.content | strip_html | truncatewords: words_limit }}
           {% endcapture %}
           {{ post_excerpt }}
-        {%- endif -%}        
+        {%- endif -%}      -->
+        
+        {%- if site.show_excerpts -%}
+        {% assign lines = post.content | newline_to_br | strip_html | split: "<br>" %}
+        {% for line in lines %}
+          {% if forloop.index > 1 %}
+            {% break %}
+          {% endif %}
+          {{ line }}{% if forloop.last == false %}<br>{% endif %}
+        {% endfor %}
+      {%- endif -%}        
       </li>
       {%- endfor -%}
     </ul>
