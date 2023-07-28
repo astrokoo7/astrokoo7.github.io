@@ -33,7 +33,7 @@ categories: graphics
 <!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png) -->
 
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png" width="82%">
 </div>
 
 한줄기 빛이 수직으로 표면에 비출때 표면 중심으로부터 원형으로 난반사 된다면 자연스러울 것이다.
