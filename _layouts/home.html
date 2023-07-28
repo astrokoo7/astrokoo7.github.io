@@ -57,7 +57,8 @@ layout: base
         
         {%- if site.show_excerpts -%}
         <!-- {{ post.content | extract_first_sentence }} -->
-        {{ post.excerpt | split: '.' | first | append: '.' }}
+        <!-- {{ post.excerpt | split: '.' | first | append: '.' }} -->
+        {{ post.excerpt }}
        {%- endif -%}   
 
       </li>
