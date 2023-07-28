@@ -56,8 +56,7 @@ layout: base
         {%- endif -%}      -->
         
         {%- if site.show_excerpts -%}
-        <!-- {{ post.content | extract_first_sentence | strip_html }} -->
-        {{ post.excerpt }}
+        {{ post.content | extract_first_sentence }}
        {%- endif -%}   
 
       </li>
