@@ -16,7 +16,7 @@ Perspective Divide는 다음과 같고 \\((\frac {x_{clip}} {w_{clip}}, \frac {y
 
 이를 그림으로 표현하면 아래와 같은 식이다.
 
-![alt]({{ site.url }}{{ site.baseurl }}/assets/images/homogeneous.png)
+<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/homogeneous.png) -->
 
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/homogeneous.png" alt="Alt text" style="max-width:400px;">
