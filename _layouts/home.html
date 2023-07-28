@@ -49,7 +49,7 @@ layout: base
           {% if post.content contains "<!-- begin_excerpt -->" %}
             {{ post.content | split: "<!-- end_excerpt -->" | first | split: "<!-- begin_excerpt -->" | last }}
           {% else %}
-            {{ post.excerpt }}
+            {{ post.excerpt }}... [read more]({{ post.url }})
           {% endif %}
        {%- endif -%}   
 
