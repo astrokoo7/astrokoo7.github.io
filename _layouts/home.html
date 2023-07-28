@@ -46,7 +46,11 @@ layout: base
         </h3>
         
        {%- if site.show_excerpts -%}
-        {{ post.excerpt }}
+          {% if post.content contains "<!-- begin_excerpt -->" %}
+            {{ post.content | split: "<!-- end_excerpt -->" | first | split: "<!-- begin_excerpt -->" | last }}
+          {% else %}
+            {{ post.excerpt }}
+          {% endif %}
        {%- endif -%}   
 
       </li>
