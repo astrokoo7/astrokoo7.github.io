@@ -7,6 +7,6 @@
   "minima/initialize";
 
 .box {
-    inline-size: 500px;
-    writing-mode: horizontal-tb;
+    inline-size: 1000px;
+    overflow-wrap: break-word;
 }
