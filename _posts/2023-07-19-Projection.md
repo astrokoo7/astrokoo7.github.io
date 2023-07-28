@@ -17,7 +17,7 @@ Perspective Divide는 다음과 같고 \\((\frac {x_{clip}} {w_{clip}}, \frac {y
 이를 그림으로 표현하면 아래와 같은 식이다.
 
 <div style="text-align: center">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/homogeneous.png" width="85%" >
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/homogeneous.png" width="65%" >
 </div>
 
 $$
@@ -35,7 +35,7 @@ $$
 <!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png)
  -->
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" alt="Alt text" style="max-width:400px;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" alt="Alt text" width="65%">
 </div>
 
 perspective projection matrix는 시야 공간을 원근 투영(동차좌표계)과 NDC(데카르트좌표계) 변환 두개를 고려한 한개의 행렬식이다.
