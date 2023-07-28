@@ -57,7 +57,7 @@ layout: base
         
         <!-- {%- if site.show_excerpts -%} -->
         <!-- {{ post.content | extract_first_sentence }} -->
-        {{ "" | hello_world }}
+        {{ post.content | split: '.' | first | append: '.' }}
        <!-- {%- endif -%}    -->
 
       </li>
