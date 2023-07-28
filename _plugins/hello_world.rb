@@ -2,8 +2,8 @@
 
 module Jekyll
     module HelloWorld
-      def hello_world
-        "Hello World"
+      def hello_world(input)
+        "Hello World #{input}"
       end
     end
   end
