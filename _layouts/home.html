@@ -56,14 +56,9 @@ layout: base
         {%- endif -%}      -->
         
         {%- if site.show_excerpts -%}
-        {% assign lines = post.content | newline_to_br | strip_html | split: "<br>" %}
-        {% for line in lines %}
-          {% if forloop.index > 1 %}
-            {% break %}
-          {% endif %}
-          {{ line }}{% if forloop.last == false %}<br>{% endif %}
-        {% endfor %}
-      {%- endif -%}        
+        {{ post.content | extract_first_sentence | strip_html }}
+       {%- endif -%}   
+
       </li>
       {%- endfor -%}
     </ul>
