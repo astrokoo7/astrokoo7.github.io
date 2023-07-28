@@ -55,10 +55,10 @@ layout: base
           {{ post_excerpt }}
         {%- endif -%}      -->
         
-        <!-- {%- if site.show_excerpts -%} -->
+        {%- if site.show_excerpts -%}
         <!-- {{ post.content | extract_first_sentence }} -->
-        {{ post.content | split: '.' | first | append: '.' }}
-       <!-- {%- endif -%}    -->
+        {{ post.excerpt | split: '.' | first | append: '.' }}
+       {%- endif -%}   
 
       </li>
       {%- endfor -%}
