@@ -16,7 +16,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - hello_world
-  # - jekyll-sentence_filter  
+  - sentence_filter
 
 markdown: kramdown
 
