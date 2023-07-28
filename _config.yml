@@ -23,6 +23,7 @@ google_analytics: G-90W0R92K64
 # Theme-specific settings
 
 minima:
+  skin: dark
   # Minima date format.
   # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
   #
