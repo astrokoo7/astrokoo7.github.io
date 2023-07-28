@@ -20,6 +20,9 @@ categories: graphics
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/railline.png" >
 </div>
 
+$$
+
+$$
 한편 데카르트 좌표계에선 2D의 한점은 x, y로 표현하고 평행한 두 직선을 x, y로 수식화하면 x, y가 무한으로 갈때 두 직선이 만나는 수식을 만들 수 없다.
 
 ```
