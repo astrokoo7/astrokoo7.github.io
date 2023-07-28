@@ -4,7 +4,11 @@ title: "Think Fourier Transform"
 categories: mathematics
 ---
 
+<!-- begin_excerpt -->
+
 어려서부터 음악을 많이 좋아했고 우리 세대 유년기에 남들만큼 피아노도 제법 연주 했던걸로 기억한다.
+
+<!-- end_excerpt -->
 
 커서는 주로 듣는걸 좋아 했는데 성인이 되면서 오디오에 관심이 많아 이것저것 공부도 했었다.
 

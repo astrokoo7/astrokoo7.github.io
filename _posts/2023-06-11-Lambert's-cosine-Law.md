@@ -6,7 +6,11 @@ categories: graphics
 
 ## background
 
+<!-- begin_excerpt -->
+
 램버시안 코사인 법칙은 어떤 표면을 관찰자가 볼때 바라보는 위치에 상관 없이 빛이 표면에 입사하는 각도에 따라 반사하는 광량을 설명한다.
+
+<!-- end_excerpt -->
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/diffuse.png)
 

@@ -43,7 +43,11 @@ lea     rax, [rbp-20]
 mov     QWORD PTR [rbp-16], rax
 ```
 
+<!-- begin_excerpt -->
+
 메모리상 값 복사는 register를 통해 이뤄진다.
+
+<!-- end_excerpt -->
 
 참조 타입값 할당시 lea 명령어를 사용해 주소를 register에 로드하고 mov 명령어를 사용해 읽은 resiter의 값를 메모리에 써주는 식이다.
 

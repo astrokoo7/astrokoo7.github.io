@@ -4,7 +4,11 @@ title: "virtualization"
 categories: computer
 ---
 
+<!-- begin_excerpt -->
+
 os 기능의 일부분으로 hardware virtualization이 제공 된다.
+
+<!-- end_excerpt -->
 
 하드웨어와 직접 연결 된 호스트 os 외에 추가로 os를 구동하려면 예전에는 vmware 같은 미들웨어가 프로세스로 실행되고 그 위에서 구동하는 식이였다.
 
