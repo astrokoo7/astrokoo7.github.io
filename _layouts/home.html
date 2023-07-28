@@ -47,9 +47,9 @@ layout: base
         
        {%- if site.show_excerpts -%}
           {% if post.content contains "<!-- begin_excerpt -->" %}
-            {{ post.content | split: "<!-- end_excerpt -->" | first | split: "<!-- begin_excerpt -->" | last | strip_html }}... <a href="{{ post.url }}">read more</a>
+            {{ post.content | split: "<!-- end_excerpt -->" | first | split: "<!-- begin_excerpt -->" | last | strip_html }}<a href="{{ post.url }}">... read more</a>
           {% else %}
-            {{ post.excerpt }}... <a href="{{ post.url }}">read more</a>
+            {{ post.excerpt }}<a href="{{ post.url }}">... read more</a>
           {% endif %}
        {%- endif -%}   
 
