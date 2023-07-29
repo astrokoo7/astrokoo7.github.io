@@ -84,7 +84,7 @@ fixed4 frag (v2f i) : SV_Target
 
 여기서 주목할 점은 clip space에서 clipping이 일어나 카메라 영역밖의 vertex는 비용이 비싼 perspective divide를 피하여 성능 최적화를 했다는 점도 참고하자.
 
-## build perspective projection matrix
+## build the perspective projection matrix
 
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/triangle.png" width="65%">
