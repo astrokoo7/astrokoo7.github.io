@@ -84,6 +84,45 @@ fixed4 frag (v2f i) : SV_Target
 
 여기서 주목할 점은 clip space에서 clipping이 일어나 카메라 영역밖의 vertex는 비용이 비싼 perspective divide를 피하여 성능 최적화를 했다는 점도 참고하자.
 
+## build perspective projection matrix
+
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/triangle.png" width="65%">
+</div>
+
+점 \\(x_{eye})\\는 \\(x_{proj})\\로 투영될때 닮은 삼각형 성질에 따라 \\( \frac x_{proj} z_{proj} = \frac x_{eye} z_{eye} )\\게 쓸수 있고 구하고자하는 \\(x_{proj})\\로 정리하면 다음과 같다.
+
+\\( x_{proj} = \frac {x_{eye} z_{proj}} z_{eye} )\\
+
+이때 \\(x_{proj})\\를 clip space로 보고 \\(z_{eye})\\를 \\(w_{clip})\\으로 지정하면 깊이를 차수로 각도에 따른 원근감을 생성할 수 있고 NDC 변환시 \\(z_{eye} )\\는 \\(w_{clip})\\와 같으니 위 식은 다음과 같이 유도 된다.
+
+\\( x_{proj} = \frac {x_{eye} z_{proj}} w_{clip} )\\
+
+즉, \\( x_{clip} = \frac {x_{eye} z_{proj}} w_{clip} )\\ 가 된다.
+
+또한 \\(w_{clip})\\은 아래의 행렬의 마지막행으로 구할 수 있다.
+
+\begin{pmatrix}
+X_{clip} \\
+Y_{clip} \\
+Z_{clip} \\
+W_{clip} \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+. & . & . & . \\
+. & . & . & . \\
+. & . & . & . \\
+0 & 0 & -1 & {0} \\
+\end{pmatrix}
+\begin{pmatrix}
+X_{eye} \\
+Y_{eye} \\
+Z_{eye} \\
+W_{eye} \\
+\end{pmatrix}
+
+참고로 \\(w_{clip})\\ =  -1 \times \\(z_{eye})\\인 이유는 카메라가 바라보는 방향이 음수여서 그렇다.
 
 
 

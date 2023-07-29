@@ -12,8 +12,6 @@ categories: graphics
 
 <!-- end_excerpt -->
 
-<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/diffuse.png) -->
-
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/diffuse.png">
 </div>
@@ -30,8 +28,6 @@ categories: graphics
 램버시안 표면에서 입사하는 빛은 왜 굳이 코사인 비율로 광량이 줄어들까?
 각도에 따라 선형으로 광량이 줄어들지 않는 이유는 무얼까?
 
-<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png) -->
-
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/lambertian_intensity.png" width="82%">
 </div>
@@ -40,7 +36,6 @@ categories: graphics
 
 원의 표면 중심점을 기준으로 반대쪽 원의 한점을 각도에따라 직선을 그어보면 그 직선의 길이는 각도에 따른 cos 값임을 알 수 있어 왜 빛이 원형으로 난반사 될때 cos 수치를 따르는지 설명이 된다.
 
-<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/cosin.png) -->
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/cosin.png" width="82%">
 </div>
