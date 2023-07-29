@@ -12,7 +12,7 @@ categories: graphics
 
 <!-- end_excerpt -->
 
-Perspective Divide는 다음과 같고 \\((\frac {x_{clip}} {w_{clip}}, \frac {y_{clip}} {w_{clip}}, \frac {z_{clip}} {w_{clip}} , \frac {w_{clip}} {w_{clip}})\\)
+Perspective Divide는 다음과 같고 \\((\frac {X_{clip}} {W_{clip}}, \frac {Y_{clip}} {W_{clip}}, \frac {Z_{clip}} {W_{clip}} , \frac {W_{clip}} {W_{clip}})\\)
 
 이를 그림으로 표현하면 아래와 같은 식이다.
 
