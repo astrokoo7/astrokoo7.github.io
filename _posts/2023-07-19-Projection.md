@@ -86,6 +86,10 @@ fixed4 frag (v2f i) : SV_Target
 
 ## build the perspective projection matrix
 
+$$
+
+$$
+
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/triangle.png" width="65%">
 </div>
