@@ -62,9 +62,9 @@ vertex shader의 출력 `o`의 `o.vertex`는 clip space로 변환 된 점 \\((x_
 
 vertex shader 이후 GPU는 자동으로 perspective divide를 실행하여 vertex shader의 `o.vertex`를 ndc space로 변환 해주어 각각 `[-1, 1], [-1, 1], [0, 1], [near, far]`의 범위를 가지게 된다.
 
-ndc space로 변환된 vertex는 GPU에 의해 window space(실제 창 크기를 가지는 좌표계)로 한번더 변환 되어 각각 `[0, screenPixelWidth], [0, sceenPixelHeight], [0, 1], [near, far]`의 범위값을 가지게 된다.
+ndc space로 변환된 vertex는 GPU에 의해 window space(실제 창 크기를 가지는 좌표계)로 한번더 변환 되고 각각 `[0, screenPixelWidth], [0, sceenPixelHeight], [0, 1], [near, far]`의 범위값을 가지게 된다.
 
-window space로 변환된 vertex는 fragment shader `frag`의 입력 `i.vertex`로 전달된다.
+마지막으로 window space로 변환된 vertex는 fragment shader `frag`의 입력 `i.vertex`로 전달된다.
 
 ```
 fixed4 frag (v2f i) : SV_Target
