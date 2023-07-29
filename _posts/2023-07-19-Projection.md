@@ -92,11 +92,11 @@ fixed4 frag (v2f i) : SV_Target
 
 점 \\(x_{eye}\\)는 \\(x_{proj}\\)로 투영될때 닮은 삼각형 성질에 따라 \\( \frac {x_{proj}} {z_{proj}} = \frac {x_{eye}} {z_{eye}} \\)게 쓸수 있고 구하고자하는 \\(x_{proj}\\)로 정리하면 다음과 같다.
 
-\\( x_{proj} = \frac {{x_{eye}} {z_{proj}}} {z_{eye}} \\)
+\\( x_{proj} = \frac {x_{eye} z_{proj}} {z_{eye}} \\)
 
 이때 \\(x_{proj}\\)를 clip space로 보고 \\(z_{eye}\\)를 \\(w_{clip}\\)으로 지정하면 깊이를 차수로 각도에 따른 원근감을 생성할 수 있고 NDC 변환시 \\(z_{eye} \\)는 \\(w_{clip}\\)와 같으니 위 식은 다음과 같이 유도 된다.
 
-\\( x_{proj} = \frac {x_{eye} z_{proj}} w_{clip} \\)
+\\( x_{proj} = \frac {x_{eye} z_{proj}} {w_{clip}} \\)
 
 즉, \\( x_{clip} = \frac {x_{eye} z_{proj}} w_{clip} \\) 가 된다.
 
