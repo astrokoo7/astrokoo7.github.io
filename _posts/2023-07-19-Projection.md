@@ -107,25 +107,25 @@ $$
 
 또한 \\(w_{clip}\\)은 아래의 행렬의 마지막행으로 구할 수 있다.
 
-\begin{pmatrix}
-X_{clip} \\\\
-Y_{clip} \\\\
-Z_{clip} \\\\
-W_{clip} \\\\
-\end{pmatrix}
+\\begin{pmatrix}
+X_{clip} \\
+Y_{clip} \\
+Z_{clip} \\
+W_{clip} \\
+\\end{pmatrix}
 =
-\begin{pmatrix}
-. & . & . & . \\\\
-. & . & . & . \\\\
-. & . & . & . \\\\
-0 & 0 & -1 & {0} \\\\
-\end{pmatrix}
-\begin{pmatrix}
-X_{eye} \\\\
-Y_{eye} \\\\
-Z_{eye} \\\\
-W_{eye} \\\\
-\end{pmatrix}
+\\begin{pmatrix}
+. & . & . & . \\
+. & . & . & . \\
+. & . & . & . \\
+0 & 0 & -1 & {0} \\
+\\end{pmatrix}
+\\begin{pmatrix}
+X_{eye} \\
+Y_{eye} \\
+Z_{eye} \\
+W_{eye} \\
+\\end{pmatrix}
 
 참고로 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)인 이유는 카메라가 바라보는 방향이 음수여서 그렇다.
 
