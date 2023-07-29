@@ -32,8 +32,6 @@ $$
 
 ## perspective projection matrix
 
-<!-- ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png)
- -->
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" width="65%">
 </div>
@@ -45,6 +43,45 @@ perspective projection matrix는 시야 공간을 원근 투영(동차좌표계)
 clip space는 동차좌표계 공간으로 데카르트 좌표계로의 변환을 염두하여 동차좌표계로의 변환식을 정리하는데 view space상 절두체 공간 안의 점 \\((x_{eye}, y_{eye})\\)는 절두체 앞면(near plan)으로 각도에 따른 직각 삼각형 비율에 맞춰 변환식을 작성하고 깊이 값 \\(z_{eye}\\)는 선형 방정식을 통해 변환식을 작성하는데 2개의 미지의 계수를 알려진 상수 값 near와 far로 유도하여 작성한다.
 
 이러한 과정을 통해 3차원 시야 공간의 점들은 깊이 값을 가진 2차원상의 점으로 변환되어 2D 공간에 그려질 준비가 된다.
+
+
+## each space in shader
+
+vertex shader `vert`의 입력 `v.vertex`는 object/module space로 \\((x_{model}, y_{model}, z_{model}, 1)\\) 모델의 특정 vertex 값을 입력으로 받는다.
+
+``` 
+v2f vert (appdata v)
+{
+  v2f o;
+  o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+  return o;
+}
+```
+
+vertex shader의 출력 `o`의 `o.vertex`는 clip space로 변환 된 점 \\((x_{clip}, y_{clip}, z_1{clip}, w_{clip})\\)로 각각 [-w, w], [-w, w], [0, far], [near, far]의 범위를 가진다.
+
+vertex shader 이후 GPU는 자동으로 perspective divide를 실행하여 vertex shader의 `o.vertex`를 ndc space로 변환 해주어 각각 [-1, 1], [-1, 1], [0, 1], [near, far]의 범위를 가지게 된다.
+
+ndc space로 변환된 vertex는 GPU에 의해 window space(실제 창 크기를 가지는 좌표계)로 한번더 변환 되어 각각 [0, screenPixelWidth], [0, sceenPixelHeight], [0, 1], [near, far]의 범위값을 가지게 된다.
+
+window space로 변환된 vertex는 fragment shader `frag`의 입력 `i.vertex`로 전달된다.
+
+```
+fixed4 frag (v2f i) : SV_Target
+{
+  return fixed4(1, 1, 1, 1);
+}
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
