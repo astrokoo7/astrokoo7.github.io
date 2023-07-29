@@ -95,30 +95,30 @@ $$
 $$
 
 
-점 \\(x_{eye}\\)는 \\(x_{proj}\\)로 투영될때 닮은 삼각형 성질에 따라 \\( \frac {x_{proj}} {z_{proj}} = \frac {x_{eye}} {z_{eye}} \\)게 쓸수 있고 구하고자하는 \\(x_{proj}\\)로 정리하면 다음과 같다.
+점 \\(x_{eye}\\)는 \\(x_{proj}\\)로 투영될때 닮은 삼각형 성질에 따라 \\( \frac {X_{proj}} {Z_{proj}} = \frac {X_{eye}} {Z_{eye}} \\)게 쓸수 있고 구하고자하는 \\(x_{proj}\\)로 정리하면 다음과 같다.
 
-\\( x_{proj} = \frac {x_{eye} z_{proj}} {z_{eye}} \\)
+\\( X_{proj} = \frac {X_{eye} Z_{proj}} {Z_{eye}} \\)
 
 이때 \\(x_{proj}\\)를 clip space로 보고 \\(z_{eye}\\)를 \\(w_{clip}\\)으로 지정하면 깊이를 차수로 각도에 따른 원근감을 생성할 수 있고 NDC 변환시 \\(z_{eye} \\)는 \\(w_{clip}\\)와 같으니 위 식은 다음과 같이 유도 된다.
 
-\\( x_{proj} = \frac {x_{eye} z_{proj}} {w_{clip}} \\)
+\\( X_{proj} = \frac {X_{eye} Z_{proj}} {W_{clip}} \\)
 
-즉, \\( x_{clip} = \frac {x_{eye} z_{proj}} {w_{clip}} \\) 가 된다.
+즉, \\( X_{clip} = \frac {X_{eye} Z_{proj}} {W_{clip}} \\) 가 된다.
 
-또한 \\(w_{clip}\\)은 아래의 행렬의 마지막행으로 구할 수 있다.
+또한 \\(w_{clip}\\)은 아래 행렬의 마지막행으로 구할 수 있다.
 
 \\begin{pmatrix}
-X_{clip} \\
-Y_{clip} \\
-Z_{clip} \\
-W_{clip} \\
+X_{clip} \\\\
+Y_{clip} \\\\
+Z_{clip} \\\\
+W_{clip} \\\\
 \\end{pmatrix}
 =
 \\begin{pmatrix}
-. & . & . & . \\
-. & . & . & . \\
-. & . & . & . \\
-0 & 0 & -1 & {0} \\
+. & . & . & . \\\
+. & . & . & . \\\
+. & . & . & . \\\
+0 & 0 & -1 & {0} \\\
 \\end{pmatrix}
 \\begin{pmatrix}
 X_{eye} \\
@@ -127,7 +127,7 @@ Z_{eye} \\
 W_{eye} \\
 \\end{pmatrix}
 
-참고로 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)인 이유는 카메라가 바라보는 방향이 음수여서 그렇다.
+참고로 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)인 이유는 카메라가 바라보는 방향이 음수이기 때문이다.
 
 
 
