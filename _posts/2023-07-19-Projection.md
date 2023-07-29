@@ -58,7 +58,7 @@ v2f vert (appdata v)
 }
 ```
 
-vertex shader의 출력 `o`의 `o.vertex`는 clip space로 변환 된 점 \\((x_{clip}, y_{clip}, z_1{clip}, w_{clip})\\)로 각각 `[-w, w], [-w, w], [0, far], [near, far]`의 범위를 가진다.
+vertex shader의 출력 `o`의 `o.vertex`는 clip space로 변환 된 점 \\((x_{clip}, y_{clip}, z_{clip}, w_{clip})\\)로 각각 `[-w, w], [-w, w], [0, far], [near, far]`의 범위를 가진다.
 
 vertex shader 이후 GPU는 자동으로 perspective divide를 실행하여 vertex shader의 `o.vertex`를 ndc space로 변환 해주어 각각 `[-1, 1], [-1, 1], [0, 1], [near, far]`의 범위를 가지게 된다.
 
