@@ -34,3 +34,4 @@ categories: reading
 - [math-test](https://jsbin.com/pirufohuma/edit?html,output)
 - [web](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text/Wrapping_breaking_text)
 - [web-ref](https://blog.slowb.ro/about-me/)
+- [web-ref](https://lazyren.github.io/devlog/hydejack-post-writing-tips-tricks.html#adding-large-quotes)
