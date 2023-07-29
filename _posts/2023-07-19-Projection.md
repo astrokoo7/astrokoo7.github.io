@@ -68,7 +68,7 @@ vertex shader 이후 GPU는 자동으로 perspective divide를 실행하여 vert
 `[-1, 1], [-1, 1], [0, 1], [near, far]`
 {:.lead}
 
-ndc space로 변환된 vertex는 GPU에 의해 한번더 window space(실제 창 크기를 가지는 좌표계)로 변환 되며 각각 아래의 범위를 가지게 된다.
+또한 ndc space로 변환된 vertex는 GPU에 의해 한번더 window space(실제 창 크기를 가지는 좌표계)로 변환 되며 각각 아래의 범위를 가지게 된다.
 
 `[0, screenPixelWidth], [0, sceenPixelHeight], [0, 1], [near, far]`
 {:.lead}
