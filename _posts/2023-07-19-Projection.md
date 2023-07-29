@@ -109,7 +109,7 @@ $$
 
 $$
 \begin{pmatrix}
-x_{clip} \\
+X_{clip} \\
 Y_{clip} \\
 Z_{clip} \\
 W_{clip} \\
