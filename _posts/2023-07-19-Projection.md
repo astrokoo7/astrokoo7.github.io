@@ -47,7 +47,7 @@ clip space는 동차좌표계 공간으로 데카르트 좌표계로의 변환�
 
 ## each space in shader
 
-vertex shader `vert`의 입력 `v.vertex`는 object/module space로 모델의 vertex 값\\((x_{model}, y_{model}, z_{model}, 1)\\)을 입력으로 받는다.
+vertex shader `vert`의 입력 `v.vertex`는 object/module space로 모델의 vertex 값\\((x_{model}, y_{model}, z_{model}, 1)\\)을 입력으로 받게된다.
 
 ``` 
 v2f vert (appdata v)
