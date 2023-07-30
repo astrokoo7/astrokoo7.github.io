@@ -94,9 +94,6 @@ $$
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/triangle.png" width="65%">
 </div>
 
-A caption for an image.
-{:.figcaption}
-
 
 점 \\(X_{eye}\\)는 \\(X_{proj}\\)로 투영될때 닮은 삼각형 성질에 따라 \\( \frac {X_{proj}} {Z_{proj}} = \frac {X_{eye}} {Z_{eye}} \\)로 쓸수 있고 구하고자하는 \\(X_{proj}\\)로 정리하면 다음과 같다.
 
