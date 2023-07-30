@@ -30,18 +30,17 @@ $$
 
 이러한 문제를 해결하기 위해 동차좌표계(Clip Space)로 변환시 좌우/상하 값은 시야각에 따라 원근감의 정도가 달라져야하고 깊이 값은 데카르트 좌표계로 역변환시 near와 far 기준으로 거리 값이 식별되도록 고려해야 한다.
 
-## perspective projection matrix
+## perspective projection
 
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" width="65%">
 </div>
 
-perspective projection matrix는 시야 공간을 원근 투영(동차좌표계)과 NDC(데카르트좌표계) 변환 두개를 고려한 한개의 행렬식이다.
+원근 투영을 통해 시야 좌표계상 절두체 공간을 clip space로 변환하고 perspective divide를 통해 clip space를 normalize device space로 변환한다.
 
-원근 투영을 통해 view space을 clip space로 변환하고 perspective divide를 통해 clip space를 normalize device space로 변환한다.
-
-clip space는 동차좌표계 공간으로 데카르트 좌표계로의 변환을 염두하여 동차좌표계로의 변환식을 정리하는데 view space상 절두체 공간 안의 점 \\((X_{eye}, Y_{eye})\\)는 절두체 앞면(near plan)으로 각도에 따른 직각 삼각형 비율에 맞춰 변환식을 작성하고 깊이 값 \\(Z_{eye}\\)는 선형 방정식을 통해 변환식을 작성하는데 2개의 미지의 계수를 알려진 상수 값 near와 far로 유도하여 작성한다.
-
+view space상 절두체 공간 안의 점 \\((X_{eye}, Y_{eye})\\)는 절두체 앞면(near plan)으로 
+ 거리에 따른 직각 삼각형 비율에 따라 투영시키고 다른 값에 영향을 받지 않는 투영 깊이 값 \\(Z_{proj}\\)는 \\(Z_{eye}\\)에 대한 선형 방정식 \\(Z_{proj}\\) = A \\(Z_{eye}\\) + B를 알려진 상수 값 near와 far로 유도하여 구한다.
+ 
 이러한 과정을 통해 3차원 시야 공간의 점들은 깊이 값을 가진 2차원상의 점으로 변환되어 2D 공간에 그려질 준비가 된다.
 
 
@@ -81,7 +80,7 @@ fixed4 frag (v2f i) : SV_Target
 
 여기서 주목할 점은 clip space에서 clipping이 일어나 카메라 영역밖의 vertex는 비용이 비싼 perspective divide를 피하여 성능 최적화를 했다는 점도 참고하자.
 
-## build the perspective projection matrix
+## perspective projection matrix
 
 $$
 
