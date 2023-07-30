@@ -159,16 +159,4 @@ $$
 
 
 
-You can add a note.
-{:.note}
-
-
-
-
-
-
-
-
-
-
 
