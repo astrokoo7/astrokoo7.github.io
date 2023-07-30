@@ -50,7 +50,7 @@ view space상 절두체 공간 안의 점 \\((X_{eye}, Y_{eye})\\)는 절두체 
 
 ## each space in shader
 
-vertex shader `vert`의 입력 `v.vertex`는 object/module space로 모델의 vertex 값\\((X_{model}, Y_{model}, Z_{model}, 1)\\)을 입력으로 받게된다.
+vertex shader `vert`의 입력 `v.vertex`는 object/module space상 모델의 vertex 값\\((X_{model}, Y_{model}, Z_{model}, 1)\\)을 입력으로 받게된다.
 
 ``` 
 v2f vert (appdata v)
