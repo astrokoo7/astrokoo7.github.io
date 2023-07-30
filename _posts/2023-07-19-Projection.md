@@ -124,7 +124,7 @@ W_{proj} \\
 
 $$
 
-perspective divide는 GPU에 의해 자동으로 실행되니 `perspective projection matrix`는 \\(P_{eye}\\)를 \\(P_{clip}\\)로 변환해주는 행렬식이면 된다.
+perspective divide는 GPU에 의해 자동으로 실행되어 `perspective projection matrix`는 \\(P_{eye}\\)를 \\(P_{clip}\\)로 변환해주는 행렬식이면 된다.
 
 우선 기반이 되는 \\(w_{clip}\\)는 아래와 같다.
 
