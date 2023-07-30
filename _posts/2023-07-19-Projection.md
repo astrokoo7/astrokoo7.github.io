@@ -32,13 +32,14 @@ $$
 
 ## perspective projection
 
+<figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gl_projectionmatrix01.png" width="65%">
+  <figcaption>Perspective Frustum and Normalized Device Coordinates (NDC)
+</figcaption>
 </div>
+</figure>
 
-$$
-
-$$
 
 원근 투영을 통해 시야 좌표계상 절두체 공간을 clip space로 변환하고 perspective divide를 통해 clip space를 normalize device space로 변환한다.
 
@@ -86,13 +87,12 @@ fixed4 frag (v2f i) : SV_Target
 
 ## perspective projection matrix
 
-$$
-
-$$
-
+<figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/triangle.png" width="65%">
+  <figcaption></figcaption>
 </div>
+</figure>
 
 
 점 \\(X_{eye}\\)는 \\(X_{proj}\\)로 투영될때 닮은 삼각형 성질에 따라 \\( \frac {X_{proj}} {Z_{proj}} = \frac {X_{eye}} {Z_{eye}} \\)로 쓸수 있고 구하고자하는 \\(X_{proj}\\)로 정리하면 다음과 같다.
