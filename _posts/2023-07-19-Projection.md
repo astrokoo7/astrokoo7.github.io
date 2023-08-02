@@ -156,7 +156,14 @@ $$
 
 그 다음 \\(X_{eye}\\)와 \\(Y_{eye}\\)는 앞의 식으로 설정 각도에 따라 near plan으로 투영했지만 절두체 공간안의 점만 투영 되어야 한다.
 
-\\( l ≤ X_{proj} ≤ r \\)
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/projectionOpenGL2.png" width="65%">
+  <figcaption>녹색의 near plane으로 절두체 공간의 점이 투영된다.</figcaption>
+</div>
+</figure>
+
+\\( left ≤ X_{proj} ≤ right \\)
 
 
 
