@@ -154,14 +154,14 @@ $$
 
 > 카메라가 바라보는 방향은 음수이기에 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)이 되야한다.
 
-그 다음 \\(X_{eye}\\)와 \\(Y_{eye}\\)는 앞의 식으로 설정 각도에 따라 near plan으로 투영했지만 절두체 공간안의 점만 투영 되어야 한다.
-
 <figure>
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/projectionOpenGL2.png" width="65%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/projectionOpenGL2.png" width="50%">
   <figcaption>녹색의 near plane으로 절두체 공간의 점이 투영된다.</figcaption>
 </div>
 </figure>
+
+그 다음 \\(X_{eye}\\)와 \\(Y_{eye}\\)는 앞의 식으로 설정 각도에 따라 near plan으로 투영했지만 절두체 공간안의 점만 투영 되어야 한다.
 
 \\( left ≤ X_{proj} ≤ right \\)
 
