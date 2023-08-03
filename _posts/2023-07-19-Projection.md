@@ -8,7 +8,7 @@ categories: graphics
 
 <!-- begin_excerpt -->
 
-시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (X_{eye}, Y_{eye}, Z_{eye}) \\)는 깊이 값 \\( Z_{eye} \\)를 차수 \\( W_{clip} \\)로 지정하여 동차좌표계(Clip Space)상 한점 \\( (X_{clip}, Y_{clip}, Z_{clip}, W_{clip}) \\)로 변환 후 다시 데카르트 좌표계로 역변환(Perspective Divide)하여 데카르트 좌표계상 원근감을 생성한다.
+시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (X_{eye}, Y_{eye}, Z_{eye}) \\)은 깊이 값 \\( Z_{eye} \\)를 차수 \\( W_{clip} \\)로 지정하여 동차좌표계(Clip Space)상 한점 \\( (X_{clip}, Y_{clip}, Z_{clip}, W_{clip}) \\)로 변환 후 다시 데카르트 좌표계로 역변환(Perspective Divide)하여 데카르트 좌표계상 원근감을 생성한다.
 
 <!-- end_excerpt -->
 
@@ -48,44 +48,7 @@ view space상 절두체 공간 안의 점 \\((X_{eye}, Y_{eye})\\)는 절두체 
 
 이러한 과정을 통해 3차원 시야 공간의 점들은 깊이 값을 가진 2차원상의 점으로 변환되어 2D 공간에 그려질 준비가 된다.
 
-
-## each space in shader
-
-vertex shader `vert`의 입력 `v.vertex`는 object/module space상 모델의 vertex 값\\((X_{model}, Y_{model}, Z_{model}, 1)\\)을 입력으로 받게된다.
-
-``` 
-v2f vert (appdata v)
-{
-  v2f o;
-  o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
-  return o;
-}
-```
-
-vertex shader의 출력 `o`의 `o.vertex`는 clip space로 변환 된 점 \\((X_{clip}, Y_{clip}, Z_{clip}, W_{clip})\\)로 각각 아래의 범위를 가진다.
-
-> [-w, w], [-w, w], [0, far], [near, far]
-
-vertex shader 이후 GPU는 자동으로 perspective divide를 실행하여 vertex shader의 `o.vertex`를 ndc space로 변환 해주어 각각 아래의 범위를 가지게 된다.
-
-> [-1, 1], [-1, 1], [0, 1], [near, far]
-
-또한 ndc space로 변환된 vertex는 GPU에 의해 한번더 window space(실제 창 크기를 가지는 좌표계)로 변환 되며 각각 아래의 범위를 가지게 된다.
-
-> [0, screenPixelWidth], [0, sceenPixelHeight], [0, 1], [near, far]
-
-마지막으로 window space로 변환된 vertex는 fragment shader `frag`의 입력 `i.vertex`로 전달된다.
-
-```
-fixed4 frag (v2f i) : SV_Target
-{
-  return fixed4(1, 1, 1, 1);
-}
-```
-
-여기서 주목할 점은 clip space에서 clipping이 일어나 카메라 영역밖의 vertex는 비용이 비싼 perspective divide를 피하여 성능 최적화를 했다는 점도 참고하자.
-
-## perspective projection matrix
+## derivation perspective projection matrix
 
 <figure>
 <div style="text-align:center;">
@@ -126,7 +89,7 @@ $$
 
 perspective divide는 GPU에 의해 자동으로 실행되어 `perspective projection matrix`는 \\(P_{eye}\\)를 \\(P_{clip}\\)로 변환해주는 행렬식이면 된다.
 
-우선 기반이 되는 \\(w_{clip}\\)는 아래와 같다.
+우선 기반이 되는 \\(w_{clip}\\)는 `perspective projection matrix`의 아래 부분으로 구할 수 있다.
 
 $$
 \begin{pmatrix}
@@ -161,13 +124,47 @@ $$
 </div>
 </figure>
 
-그 다음 \\(X_{eye}\\)와 \\(Y_{eye}\\)는 앞의 식으로 설정 각도에 따라 near plan으로 투영했지만 절두체 공간안의 점만 투영 되어야 한다.
+그 다음 \\(X_{eye}\\)와 \\(Y_{eye}\\)는 앞의 식으로 설정 각도에 따라 near plan으로 투영했지만 절두체 공간안의 점만 투영 되어야해 추가로 다음 조건도 만족해야 한다.
 
 \\( left ≤ X_{proj} ≤ right \\)
 
 
 
+## each space in shader
 
+vertex shader `vert`의 입력 `v.vertex`는 object/module space상 모델의 vertex 값\\((X_{model}, Y_{model}, Z_{model}, 1)\\)을 입력으로 받게된다.
+
+``` 
+v2f vert (appdata v)
+{
+  v2f o;
+  o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+  return o;
+}
+```
+
+vertex shader의 출력 `o`의 `o.vertex`는 clip space로 변환 된 점 \\((X_{clip}, Y_{clip}, Z_{clip}, W_{clip})\\)로 각각 아래의 범위를 가진다.
+
+> [-w, w], [-w, w], [0, far], [near, far]
+
+vertex shader 이후 GPU는 자동으로 perspective divide를 실행하여 vertex shader의 `o.vertex`를 ndc space로 변환 해주어 각각 아래의 범위를 가지게 된다.
+
+> [-1, 1], [-1, 1], [0, 1], [near, far]
+
+또한 ndc space로 변환된 vertex는 GPU에 의해 한번더 window space(실제 창 크기를 가지는 좌표계)로 변환 되며 각각 아래의 범위를 가지게 된다.
+
+> [0, screenPixelWidth], [0, sceenPixelHeight], [0, 1], [near, far]
+
+마지막으로 window space로 변환된 vertex는 fragment shader `frag`의 입력 `i.vertex`로 전달된다.
+
+```
+fixed4 frag (v2f i) : SV_Target
+{
+  return fixed4(1, 1, 1, 1);
+}
+```
+
+여기서 주목할 점은 clip space에서 clipping이 일어나 카메라 영역밖의 vertex는 비용이 비싼 perspective divide를 피하여 성능 최적화를 했다는 점도 참고하자.
 
 
 
