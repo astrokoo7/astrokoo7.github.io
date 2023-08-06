@@ -24,11 +24,18 @@ $$
 
 $$
 
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/projectionOpenGL2.png" width="50%">
+  <figcaption>녹색의 near plane으로 절두체 공간의 점이 투영된다.</figcaption>
+</div>
+</figure>
 
+여기에 추가로 절두체 공간안의 점만을 절두체 앞면(near plane 또는 projection plane) 투영
+시키고 나머지는 버리도록(frustum culling) 고려해야 한다.
 
-하지만 이런 단순 변환은 깊이 값 \\( Z_{clip} \\)와 \\( W_{clip} \\)가 서로 같아 데카르트 좌표계로 역변환시 차수 \\( W_{clip} \\)에 따른 깊이감이 없어지고 시야각도별 차등 원근감을 표현 할 수 없는 문제가 있다.
+즉 Perspective Divide를 통해 원근감을 생성하지만 절두체 공간으로 한정하기 위해 near, far, left, right, bottom, top 상수 값을 이용하여 변환 행렬을 작성하여 계산 한뒤 값이 경계를 넘는다면 버리는 작업이 필요하다.
 
-이러한 문제를 해결하기 위해 동차좌표계(Clip Space)로 변환시 좌우/상하 값은 시야각에 따라 원근감의 정도가 달라져야하고 깊이 값은 데카르트 좌표계로 역변환시 near와 far 기준으로 거리 값이 식별되도록 고려해야 한다.
 
 ## perspective projection
 
@@ -117,16 +124,28 @@ $$
 
 > 카메라가 바라보는 방향은 음수이기에 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)이 되야한다.
 
-<figure>
-<div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/projectionOpenGL2.png" width="50%">
-  <figcaption>녹색의 near plane으로 절두체 공간의 점이 투영된다.</figcaption>
-</div>
-</figure>
+<!-- 
 
 그 다음 \\(X_{eye}\\)와 \\(Y_{eye}\\)는 앞의 식으로 설정 각도에 따라 near plan으로 투영했지만 절두체 공간안의 점만 투영 되어야해 추가로 다음 조건도 만족해야 한다.
 
 \\( left ≤ X_{proj} ≤ right \\)
+
+left와 right는 \\( \frac {X_{eye}} {Z_{eye}} \cdot Z_{near} \\)와 \\( \frac {X_{eye}} {Z_{eye}} \cdot Z_{far} \\)이고 \\(  \tan(\frac {\text{fov}} 2) \cdot Z_{near}\\) 와 \\(  \tan(\frac {\text{fov}} 2) \cdot Z_{far}\\)로 바꿔 쓸 수 있으며 
+
+
+
+위 삼각형도 절두체 공간안에 점의 위치에 따라 여러개가 생성 된다.
+
+
+
+
+
+
+
+
+
+perspective divide를 통해 [-1, 1]의 범위를 가져 위 식을 이에 맞춰 정리해 보자.
+ -->
 
 
 
