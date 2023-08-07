@@ -33,7 +33,7 @@ $$
 
 추가로 원근감을 생성할때 절두체 공간안의 점만이 절두체 앞면(near plane 또는 projection plane) 투영되도록 고려해야 한다.
 
-따라서 Perspective Divide를 통해 원근감을 생성하지만 절두체 공간으로 한정하기 위해 near, far, left, right, bottom, top 상수 값을 이용하여 변환 행렬을 작성하여 계산 한뒤 값이 경계를 넘는다면 버리는 작업이 필요하다.
+따라서 Perspective Divide를 통해 원근감을 생성하지만 절두체 공간으로 한정하기 위해 near, far, left, right, bottom, top 상수 값을 이용하여 변환 행렬을 작성한 후 계산 한 값이 경계를 넘는다면 버리는 작업이 필요하다.
 
 
 ## perspective projection
