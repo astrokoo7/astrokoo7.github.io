@@ -93,7 +93,7 @@ $$
 
 perspective divide는 GPU에 의해 자동으로 실행되어 `perspective projection matrix`는 \\(P_{eye}\\)를 \\(P_{clip}\\)로 변환해주는 행렬식이면 된다.
 
-우선 기반이 되는 \\(w_{clip}\\)는 `perspective projection matrix`의 아래 부분으로 구할 수 있다.
+우선 기반이 되는 \\(w_{clip}\\)는 perspective divide를 위한 깊이 값으로 `perspective projection matrix`의 아래 부분으로 구할 수 있다.
 
 $$
 \begin{pmatrix}
@@ -120,6 +120,8 @@ W_{eye} \\
 $$
 
 > 카메라가 바라보는 방향은 음수이기에 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)이 되야한다.
+
+<!-- 다음으로 \\(X_{eye}\\)와 \\(Y_{eye}\\)는  -->
 
 <!-- 
 
