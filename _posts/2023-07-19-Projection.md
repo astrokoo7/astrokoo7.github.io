@@ -31,12 +31,10 @@ $$
 </div>
 </figure>
 
-추가로 원근감을 생성할때 절두체 공간안의 점만이 절두체 앞면(near plane 또는 projection plane) 투영되도록 고려해야 한다.
-
-따라서 Perspective Divide를 통해 원근감을 생성하지만 절두체 공간으로 한정하기 위해 near, far, left, right, bottom, top 상수 값을 이용하여 변환 행렬을 작성한 후 계산 한 값이 경계를 넘는다면 버리는 작업이 필요하다.
+또한 원근감을 생성할때 투영 된 점은 절두체 공간안의 점들로 제한하고 이에 따라 절두체 공간 밖의 점은 버려지게 된다.
 
 
-## perspective projection
+<!-- ## perspective projection
 
 <figure>
 <div style="text-align:center;">
@@ -52,7 +50,7 @@ $$
 view space상 절두체 공간 안의 점 \\((X_{eye}, Y_{eye})\\)는 절두체 앞면(near plan)으로 
  거리 기준 직각 삼각형 비율에 따라 투영시키고 다른 값에 영향을 받지 않는 투영 깊이 값 \\(Z_{proj}\\)는 \\(Z_{eye}\\)에 대한 선형 방정식 \\(Z_{proj}\\) = A \\(Z_{eye}\\) + B를 알려진 상수 값 near와 far로 유도하여 구한다.
 
-이러한 과정을 통해 3차원 시야 공간의 점들은 깊이 값을 가진 2차원상의 점으로 변환되어 2D 공간에 그려질 준비가 된다.
+이러한 과정을 통해 3차원 시야 공간의 점들은 깊이 값을 가진 2차원상의 점으로 변환되어 2D 공간에 그려질 준비가 된다. -->
 
 ## derivation perspective projection matrix
 
