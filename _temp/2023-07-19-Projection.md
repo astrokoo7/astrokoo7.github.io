@@ -31,7 +31,7 @@ $$
 </div>
 </figure>
 
-또한 원근감을 생성할때 투영 된 점은 절두체 공간안의 점들로 제한하여 절두체 공간 밖의 점은 버려야 한다.
+또한 원근감을 생성할때 투영 된 점은 절두체 공간안의 점들로 제한하여 절두체 공간 밖의 점은 버려져야 한다.
 
 
 <!-- ## perspective projection
@@ -66,11 +66,23 @@ view space상 절두체 공간 안의 점 \\((X_{eye}, Y_{eye})\\)는 절두체 
 
 \\( X_{proj} = \frac {X_{eye} Z_{proj}} {Z_{eye}} \\)
 
+
+
+
 <!-- 이때 \\(X_{proj}\\)는 깊이(\\({Z_{eye}}\\))가 차수(\\({W_{clip}}\\))인 clip space를 perpective divide된 NDC로 볼 수 있고 직각 삼각형 성질에 따라 정리함으로서 각도에 따른 원근감이 적용 되었음을 알 수 있다. -->
 
+<!-- 
 또한 \\(Z_{proj}\\)은 \\(Z_{near}\\)로 알려진 상수이고 \\(Z_{eye}\\)는 \\(W_{clip}\\)이니 위 식은 아래와 같이 정리 된다.
 
 \\( X_{proj} = \frac {X_{eye} Z_{near}} {W_{clip}} \\)
+
+여기서 논리적 오류가 있음
+
+w_clip으로 나눈다고 x_proj 인건 아니다.
+
+왜냐면 w_clip 으로 나누면 [-1,1]의 범위를 가져야 하기 때문이다.
+
+또 Xproj * Xeye = Xclip인건 왜인건지 설명이 되야한다.
 
 이를 간단하게 표현하면 다음과 같다.
 
@@ -93,7 +105,7 @@ $$
 
 perspective divide는 GPU에 의해 자동으로 실행되어 `perspective projection matrix`는 \\(P_{eye}\\)를 \\(P_{clip}\\)로 변환해주는 행렬식이면 된다.
 
-우선 기반이 되는 \\(w_{clip}\\)는 perspective divide를 위한 깊이 값으로 `perspective projection matrix`의 아래 부분으로 구할 수 있다.
+우선 기반이 되는 \\(w_{clip}\\)는 perspective divide를 위한 깊이 값으로 `perspective projection matrix`의 아래 부분으로 구할 수 있다. -->
 
 $$
 \begin{pmatrix}
@@ -121,7 +133,39 @@ $$
 
 > 카메라가 바라보는 방향은 음수이기에 \\(w_{clip}\\) =  -1 x \\(z_{eye}\\)이 되야한다.
 
-<!-- 다음으로 \\(X_{eye}\\)와 \\(Y_{eye}\\)는  -->
+다음으로 \\(X_{clip}\\)는 \\( X_{proj} \\)를 통해 구할 수 있는데 투영 된 \\( X_{proj} \\)는 다음의 제약을 가지며
+
+\\( l \leq X_{proj} \leq r \\)
+
+\\( X_{proj} \\)
+
+\\( l \leq \frac {X_{eye} Z_{near}} {W_{clip}} \leq r \\)
+
+이로인해 \\( X_{proj} \\)가 [l, r]의 범위를 넘으면 GPU가 frustum culling을 한다.
+
+\\( 0 \leq X_{proj} - l \leq r - l \\)
+
+
+
+
+
+\\( 0 \leq \frac {X_{eye} Z_{near} - l} {(r - l)} \leq 1 \\)
+
+\\( 0 \leq 2 \frac {X_{eye} Z_{near} - l} {(r - l)} \leq 2 \\)
+
+\\( -1 \leq 2 \frac {X_{eye} Z_{near} - l} {(r - l)} - 1 \leq 1 \\)
+
+\\( -1 \leq 2 \frac {X_{eye} Z_{near} - l} {(r - l)} - \frac {(r - l)} {(r - l)} \leq 1 \\)
+
+\\( -1 \leq \frac {2 X_{eye} Z_{near} -r - l} {(r - l)} \leq 1 \\)
+
+\\( -1 \leq \frac {2 X_{eye} Z_{near}} {(r - l)} - \frac {(r + l)} {(r - l)} \leq 1 \\)
+
+
+
+
+
+
 
 <!-- 
 
@@ -190,12 +234,7 @@ fixed4 frag (v2f i) : SV_Target
 
 
 
-
-
-
-
 <!-- 
+fov 사용처도 정리 필요 -->
 
-fov 사용처도 정리 필요
-
- -->
+ 
