@@ -73,7 +73,7 @@ void main()
 
 동차 좌표계(Homogeneous Coordinate)를 사용한 원근감은 \\( Z_{eye} \\)를 \\( W_{clip} \\)로 지정하여 생성 후  Perspective Divide를 통해 반영하여 \\( W_{clip} \\) = \\( - Z_{eye} \\) 가 된다.
 
-이를 행렬식으로 변환하면 다음과 같다.
+이를 행렬식으로 표현하면 다음과 같다.
 
 $$
 \begin{pmatrix}
