@@ -250,7 +250,7 @@ W_{eye} \\
 
 $$
 
-\\( Z_{ndc} = \frac {Z_{ndc}} {W_{clip}} =  \frac { A \cdot {Z_{eye}}+ B \cdot {W_{eye}}} {-Z_{eye}} \\) 
+\\( Z_{ndc} = \frac {Z_{clip}} {W_{clip}} =  \frac { A \cdot {Z_{eye}}+ B \cdot {W_{eye}}} {-Z_{eye}} \\) 
 
 여기서 Eye Coordinates 상 \\(W_{eye}\\)는 1 이니 
 
