@@ -126,7 +126,7 @@ $$
 > 아직 view cooridinates 이다.
 > </font>
 
-위 범위를 만족하는 \\( X_{proj} \\)가 Normalize Device Coordinates로 최종 변환된다고 생각해보자.
+위 범위를 만족하는 \\( X_{proj} \\)가 Normalize Device Coordinates로 최종 변환한다고 생각해보자.
 
 NDC는 [-1, 1]의 범위를 가지니 위 식을 [-1, 1]의 범위로 변환하면 \\( W_{clip} \\)를 유추할 수 있다.
 
