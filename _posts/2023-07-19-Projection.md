@@ -206,7 +206,7 @@ W_{clip} \\
 =
 \begin{pmatrix}
 . & . & . & . \\
-\frac {2 n} {(t - b)} & 0 & \frac {t + b} {t - b} & 0 \\
+0 & \frac {2 n} {(t - b)} & \frac {t + b} {t - b} & 0 \\
 . & . & . & . \\
 . & . & . & . \\
 \end{pmatrix}
@@ -316,7 +316,7 @@ W_{clip} \\
 =
 \begin{pmatrix}
 \frac {2 n} {(r - l)} & 0 & \frac {r + l} {r - l} & 0 \\
-\frac {2 n} {(t - b)} & 0 & \frac {t + b} {t - b} & 0 \\
+0 & \frac {2 n} {(t - b)} & \frac {t + b} {t - b} & 0 \\
 . & . &  - \frac {f + n} {f - n} & - \frac {2fn} {f - n}  \\
 0 & 0 & -1 & {0} \\
 \end{pmatrix}
