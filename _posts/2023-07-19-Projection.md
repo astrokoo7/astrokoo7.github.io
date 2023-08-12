@@ -278,7 +278,7 @@ W_{clip} \\
 . & . & . & . \\
 . & . & . & . \\
 . & . &  - \frac {f + n} {f - n} & - \frac {2fn} {f - n}  \\
-0 & 0 & -1 & {0} \\
+. & . & . & . \\
 \end{pmatrix}
 
 \begin{pmatrix}
