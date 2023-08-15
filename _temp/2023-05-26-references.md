@@ -21,7 +21,6 @@ categories: reading
 - [git](https://stackoverflow.com/questions/10054318/how-do-i-provide-a-username-and-password-when-running-git-clone-gitremote-git)
 - [projection](https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/building-basic-perspective-projection-matrix.html)
 - [projection](http://www.songho.ca/opengl/gl_projectionmatrix.html)
-- [projection](https://www.learnopengles.com/tag/perspective-divide/)
 - [projection](https://carmencincotti.com/2022-05-02/homogeneous-coordinates-clip-space-ndc/)
 - [security](https://babbab2.tistory.com/5)
 - [modular](https://seastar105.tistory.com/65)
