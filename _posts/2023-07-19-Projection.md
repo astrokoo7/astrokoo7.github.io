@@ -156,12 +156,18 @@ NDC는 [-1, 1]의 범위를 가지니 위 식을 [-1, 1]의 범위로 변환하�
 
 이제 \\( W_{clip} \\)를 곱하여 Clip Cooridates를 구해보자.
 
-\\( -W_{clip} \leq \frac {2 X_{eye} Near} {(r - l)} - \frac {W_{clip} (r + l)} {r - l} \leq W_{clip} \\)
+\\( -W_{clip} \leq \frac {2 X_{eye} Near} {r - l} - \frac {W_{clip} (r + l)} {r - l} \leq W_{clip} \\)
+
 
 정리하면 아래와 같고 
 
-\\( X_{clip} = \frac {2 X_{eye} Near} {(r - l)} - \frac {W_{clip} (r + l)} {r - l} \\)
+\\( X_{clip} = \frac {2 X_{eye} Near} {r - l} - \frac {W_{clip} (r + l)} {r - l} \\)
 
+\\( -W_{clip} \leq X_{clip} \leq W_{clip} \\) 를 만족하지 않는  \\( X_{clip}\\)는 GPU에 의해 버려진다.
+
+또한 절두체 공간은 대칭이라 \\(r=-l\\) 과 \\(t = -b \\)은 같고 이를 적용하면 
+
+\\( X_{clip} = \frac { X_{eye} Near} r \\) 이 된다.
 
 Perspective Projection Matrix는 Clip Coordinates로 변환이니 위 식을 행렬식으로 변환하면 다음과 같다.
 
@@ -174,7 +180,7 @@ W_{clip} \\
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac {2 n} {(r - l)} & 0 & \frac {r + l} {r - l} & 0 \\
+\frac {n} {r} & 0 & 0 & 0 \\
 . & . & . & . \\
 . & . & . & . \\
 . & . & . & . \\
@@ -188,12 +194,7 @@ W_{eye} \\
 \end{pmatrix}
 $$
 
-> <font size="2"> 
-> \( W_{clip} \)과 \( Z_{eye} \)는 같다.
-> </font>
-
-
-\\( Y_{clip} \\)은 left, right를 bottom, top로 바꿔주면 된다.
+\\( Y_{clip} \\)은 left, right를 bottom, top로 바꿔 계산하면 된다.
 
 
 $$
@@ -206,7 +207,7 @@ W_{clip} \\
 =
 \begin{pmatrix}
 . & . & . & . \\
-0 & \frac {2 n} {(t - b)} & \frac {t + b} {t - b} & 0 \\
+0 & \frac {n} {t} & 0 & 0 \\
 . & . & . & . \\
 . & . & . & . \\
 \end{pmatrix}
@@ -315,8 +316,8 @@ W_{clip} \\
 \end{pmatrix}
 =
 \begin{pmatrix}
-\frac {2 n} {(r - l)} & 0 & \frac {r + l} {r - l} & 0 \\
-0 & \frac {2 n} {(t - b)} & \frac {t + b} {t - b} & 0 \\
+\frac {n} {r} & 0 & 0 & 0 \\
+0 & \frac {n} {t} & 0 & 0 \\
 0 & 0 &  - \frac {f + n} {f - n} & - \frac {2fn} {f - n}  \\
 0 & 0 & -1 & {0} \\
 \end{pmatrix}
