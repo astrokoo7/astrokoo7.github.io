@@ -37,3 +37,6 @@ categories: reading
 - [projection](https://carmencincotti.com/2022-11-28/from-clip-space-to-ndc-space/)
 - [c++](https://docs.popekim.com/ko/coding-standards/cpp)
 - [c#-network](https://devblogs.microsoft.com/dotnet/system-io-pipelines-high-performance-io-in-net/)
+- [vectored-id](https://www.cipht.net/2017/01/15/when-is-an-iolist-an-iovec.html)
+- [vectored-id](Fast Scatter-Gather I/O)
+- [c#-vectored](https://stackoverflow.com/questions/114847/scatter-gather-async-socket-i-o-in-net)
