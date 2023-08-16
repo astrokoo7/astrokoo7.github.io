@@ -294,7 +294,7 @@ $$
 
 \\( Z_{ndc} = \frac { A \cdot {Z_{eye}}+ B \cdot {W_{eye}}} {-Z_{eye}} \\) 
 
-따라서 \\( Z_{ndc} \\) 는 아래의 그래프 형태를 가지며 이는 Near Plane에서 매우 높은 해상도를 가지지만 far Plane에 가까워 질수록 낮은 해상도를 가지게 됨을 알 수 있다. 이는 먼거리에서 z-fighting이 발생할 여지가 크며 먼거리의 가까운 \\(Z_{eye}\\) 간 식별이 잘 안되는 문제를 가지고 있다.
+따라서 \\( Z_{ndc} \\) 는 아래의 그래프 형태를 가지며 이는 Near Plane에서 매우 높은 해상도를 가지지만 far Plane에 가까워 질수록 낮은 해상도를 가지게 됨을 알 수 있다. 이는 먼거리에서 z-fighting이 발생할 여지가 크며 먼거리의 근접한 \\(Z_{eye}\\) 간 식별이 잘 안되는 문제를 가지고 있다.
 
 <figure>
 <div style="text-align:center;">
