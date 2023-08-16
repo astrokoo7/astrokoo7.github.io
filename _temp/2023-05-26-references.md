@@ -35,3 +35,5 @@ categories: reading
 - [web-ref](https://blog.slowb.ro/about-me/)
 - [web-ref](https://lazyren.github.io/devlog/hydejack-post-writing-tips-tricks.html#adding-large-quotes)
 - [projection](https://carmencincotti.com/2022-11-28/from-clip-space-to-ndc-space/)
+- [c++](https://docs.popekim.com/ko/coding-standards/cpp)
+- [c#-network](https://devblogs.microsoft.com/dotnet/system-io-pipelines-high-performance-io-in-net/)
