@@ -338,7 +338,7 @@ OpenGL은 glFrustum 함수를 통해 Left, Right, Bottom, Top, Near, Far 인자�
 
 반면 DirectX는 Left, Right, Bottom, Top 대신 Fov (field of view)를 인자로 받고 추가로 Aspect Ratio 값과 나머지 Near, Far를 인자로 받는다.
 
-Fov는 \\(cot(θ)\\)로 OpenGL \\( \frac {n} {r} \\) 의 다른 표현이고 Aspect Ratio는 Width/Height 비율로 OpenGL에선 Bottom, Top 인자에 Aspect Ratio를 적용해서 glFrustum를 호출한다면 DirectX는 인자로 받는 차이가 있다.
+Fov는 \\(cot(\frac θ 2)\\)로 OpenGL \\( \frac {n} {r} \\) 의 다른 표현이고 Aspect Ratio는 Width/Height 비율로 OpenGL에선 Bottom, Top 인자에 Aspect Ratio를 적용해서 glFrustum를 호출한다면 DirectX는 인자로 받는 차이가 있다.
 
 > <font size="2"> 
 > Note  <br>
