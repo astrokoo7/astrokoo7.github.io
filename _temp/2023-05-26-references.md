@@ -41,4 +41,6 @@ categories: reading
 - [vectored-id](Fast Scatter-Gather I/O)
 - [c#-vectored](https://stackoverflow.com/questions/- 
 - [projection](114847/scatter-gather-async-socket-i-o-in-net)
-https://vec3.ca/code/math/projection-direct3d)
+- [unprojection]https://vec3.ca/code/math/projection-direct3d)
+- [c#-server](https://blog.danggun.net/3596)
+
