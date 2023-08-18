@@ -39,5 +39,8 @@ categories: reading
 - [c#-network](https://devblogs.microsoft.com/dotnet/system-io-pipelines-high-performance-io-in-net/)
 - [vectored-id](https://www.cipht.net/2017/01/15/when-is-an-iolist-an-iovec.html)
 - [vectored-id](Fast Scatter-Gather I/O)
-- [c#-vectored](https://stackoverflow.com/questions/- - [projection](114847/scatter-gather-async-socket-i-o-in-net)
-https://vec3.ca/code/math/projection-direct3d)
+- [c#-vectored](https://stackoverflow.com/questions/- 
+- [projection](114847/scatter-gather-async-socket-i-o-in-net)
+- [unprojection]https://vec3.ca/code/math/projection-direct3d)
+- [c#-server](https://blog.danggun.net/3596)
+
