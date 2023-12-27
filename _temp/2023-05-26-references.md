@@ -44,3 +44,4 @@ categories: reading
 - [unprojection]https://vec3.ca/code/math/projection-direct3d)
 - [c#-server](https://blog.danggun.net/3596)
 
+https://angeloyeo.github.io/2022/01/05/complex_number_basic.html
