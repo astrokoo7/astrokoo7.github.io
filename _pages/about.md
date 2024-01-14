@@ -4,7 +4,7 @@ title: About Me
 # permalink: /about/
 ---
 
-game programmer
+앎의 시작은 그 배경을 이해하는데서 나온다
 
 <!-- $$
 \begin{pmatrix}
