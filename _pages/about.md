@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 앎의 시작은 그 배경을 이해하는데서 나온다
+title: 지식의 시작은 그 배경을 이해하는데서 나온다
 # permalink: /about/
 ---
 
