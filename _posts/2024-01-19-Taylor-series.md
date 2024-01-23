@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Taylor series"
+title: "Taylor's series"
 categories: math
 ---
 
@@ -72,10 +72,15 @@ categories: math
 대해서도 다항식으로 표현 할 수 있게 되었다.
 
 
+## Maclaurin's series
 
+테일러 급수 중 \\(a = 0\\)에서 미분 가능한 경우만을 따로 테일러 급수로 나타낼때를
 
+매클로린 급수라 한다.
 
+즉 상수 a가 0에서 미분 가능한 함수일 경우 그 함수를 매클로린 급수로 나타낼 수 있다.
 
+\\(f(x) = f(0) + f'(0)(x) + \frac {f'' (0)} {2!}(x)^2 + \frac {f''' (0)} {3!}(x)^3...\\)
 
 
 
