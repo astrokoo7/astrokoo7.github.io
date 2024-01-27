@@ -46,7 +46,7 @@ categories: math
 
 \\(e^x = 1 + x + \frac {x^2} {2!} + \frac {x^3} {3!} + \frac {x^4} {4!} + \frac {x^5} {5!}\\)
 
-## Euler's formula
+## Discovery of Euler's formula
 
 
 
