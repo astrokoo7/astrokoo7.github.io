@@ -49,7 +49,7 @@ categories: math
 ## Discovery of Euler's formula
 
 
-## 2D Rotation Using Euler's Equation
+## 2D Rotation Using Euler's formula
 
 
 
