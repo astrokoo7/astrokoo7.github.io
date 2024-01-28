@@ -44,9 +44,31 @@ categories: math
 
 한번더 미분한 \\(f'' (0)\\) 도 \\(e^0\\) 으로 1이 되고 이를 정리하면 아래와 같다.
 
-\\(e^x = 1 + x + \frac {x^2} {2!} + \frac {x^3} {3!} + \frac {x^4} {4!} + \frac {x^5} {5!}\\)
+\\(e^x = 1 + x + \frac {x^2} {2!} + \frac {x^3} {3!} + \frac {x^4} {4!} + \frac {x^5} {5!}...\\)
 
 ## Discovery of Euler's formula
+
+\\(e^x = 1 + x + \frac {x^2} {2!} + \frac {x^3} {3!} + \frac {x^4} {4!} + \frac {x^5} {5!}...\\)
+
+앞서 다항식으로 전개한 지수함수 x에 허수 i를 곱한 ix를 대입하고
+
+\\(e^{ix} = 1 + {ix} + \frac {(ix)^2} {2!} + \frac {(ix)^3} {3!} + \frac {(ix)^4} {4!} + \frac {(ix)^5} {5!}...\\) 
+
+\\(i^2=-1\\) 이니 
+
+\\(e^{ix} = 1 + {ix} - \frac {x^2} {2!}- \frac {ix^3} {3!} + \frac {ix^4} {4!} - \frac {ix^5} {5!}...\\) 
+
+이를 허수 i로 묶으면 
+
+\\(e^{ix} = (1 - \frac {x^2} {2!} + \frac {ix^4} {4!}  + \frac {x^6} {6!} + ...) + i( x - \frac {ix^3} {3!} + \frac {ix^5} {5!} + \frac {x^7} {7!} + ...)\\) 
+
+이는 다시 
+
+\\(e^{ix} = cos x + isin x \\) 가 된다.
+
+이로서 그간 서로 연관성이 전혀 없어 보이던 지수 함수과 삼각 함수간 연결성이
+
+생긴걸 볼 수 있다.
 
 
 ## 2D Rotation Using Euler's formula
