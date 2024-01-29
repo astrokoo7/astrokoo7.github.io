@@ -60,7 +60,7 @@ categories: math
 
 이를 허수 i로 묶으면 
 
-\\(e^{ix} = (1 - \frac {x^2} {2!} + \frac {ix^4} {4!}  + \frac {x^6} {6!} + ...) + i( x - \frac {ix^3} {3!} + \frac {ix^5} {5!} + \frac {x^7} {7!} + ...)\\) 
+\\(e^{ix} = (1 - \frac {x^2} {2!} + \frac {ix^4} {4!}  + \frac {x^6} {6!} + ...) + i( x - \frac {x^3} {3!} + \frac {x^5} {5!} + \frac {x^7} {7!} + ...)\\) 
 
 이는 다시 앞에서 구한 \\(cos x\\)와 \\(sin x\\)의 다항식으로
 
@@ -72,7 +72,6 @@ categories: math
 
 
 ## 2D Rotation Using Euler's formula
-
 
 
 
