@@ -56,7 +56,7 @@ categories: math
 
 \\(i^2=-1\\) 이니 
 
-\\(e^{ix} = 1 + {ix} - \frac {x^2} {2!}- \frac {ix^3} {3!} + \frac {ix^4} {4!} - \frac {ix^5} {5!}...\\) 
+\\(e^{ix} = 1 + {ix} - \frac {x^2} {2!}- \frac {ix^3} {3!} + \frac {x^4} {4!} - \frac {ix^5} {5!}...\\) 
 
 이를 허수 i로 묶으면 
 
