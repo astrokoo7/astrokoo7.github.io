@@ -73,8 +73,11 @@ categories: math
 
 ## 2D Rotation Using Euler's formula
 
+오일러 공식 \\(e^{ix}\\) 에서 지수 \\(ix\\)는 허수이다.
 
+또한 \\(cos x + isin x \\) 에서 \\(x\\)는 각도를 나타내는 라이안으로 볼 수 있다.
 
+즉 허수 \\(ix\\)의 실수부분 \\(x\\)는 허수이지만 특정 각도를 나타낼 수 있는 놀라운 특징이 있다.
 
 
 
