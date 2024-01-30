@@ -73,13 +73,6 @@ categories: math
 
 ## 2D Rotation Using Euler's formula
 
-<figure>
-<div style="text-align:left;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/euler.jpg" width="38%">
-  <figcaption></figcaption>
-</div>
-</figure>
-
 오일러 공식 \\(e^{ix}\\) 에서 지수 \\(ix\\)는 허수이다.
 
 또한 \\(cos x + isin x \\) 에서 \\(x\\)는 각도를 나타내는 라디안 값으로 볼 수 있다.
@@ -99,8 +92,14 @@ categories: math
 
 회전하는 것임을 알 수 있다.
 
+<figure>
+<div style="text-align:left;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/euler.jpg" width="38%">
+  <figcaption></figcaption>
+</div>
+</figure>
 
-
+그림은 복소평면상 각도 θ에 따른 한점을 보여주고 있다.
 
 
 
