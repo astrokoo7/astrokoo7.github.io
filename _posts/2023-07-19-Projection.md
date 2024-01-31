@@ -8,7 +8,7 @@ categories: graphics
 
 <!-- begin_excerpt -->
 
-시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (X_{eye}, Y_{eye}, Z_{eye}) \\)은 깊이 값 \\( Z_{eye} \\)를 차수 \\( W_{clip} \\)로 지정하여 동차좌표계(Clip Space)상 한점 \\( (X_{clip}, Y_{clip}, Z_{clip}, W_{clip}) \\)로 변환 후 다시 데카르트 좌표계로 역변환(Perspective Divide)하여 데카르트 좌표계상 원근감을 생성한다.
+시야 기준 3D 가상 공간을 표현하는 데카르트 좌표계상 한점 \\( (X_{eye}, Y_{eye}, Z_{eye}) \\)은 깊이 값 \\( Z_{eye} \\)를 \\( W_{clip} \\)로 지정하여 동차좌표계(Clip Space)상 한점 \\( (X_{clip}, Y_{clip}, Z_{clip}, W_{clip}) \\)로 변환 후 다시 데카르트 좌표계로 역변환(Perspective Divide)하여 데카르트 좌표계상 원근감을 생성한다.
 
 <!-- end_excerpt -->
 
