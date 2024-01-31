@@ -37,9 +37,9 @@ View Coordinate는 Normalize Device Coordinate로 변환전 Clip Coordinate로 �
 > <font size="2"> 
 > Note  <br>
 > 1. Clip Space는 원근 투영일 경우 Homogeneous Coordinate로 표현된다. <br>
-> 2. 직교투영도 Clip Coordinate 변환 과정을 거치며 같은 룰이 적용되어 범위를 벗어나면 버려진다.   <br>
+> 2. 직교투영도 Clip Coordinate 변환 과정을 거치며 (-Wz, Wz) 범위를 벗어나면 버려진다.   <br>
 > 3. 직교투영도 Perspective Divide를 하지만  \(W_{\text{clip}}\)가 1로 설정되어 사실상 무시 된다.  <br>
-> 4. Clip Coordinate 변환 후 범위 밖의 Vertex는 버려져 Perspective Divide 비용을 줄였다.  <br>
+> 4. GPU는 Clip Coordinate 범위 밖의 Vertex를 먼저 버려(clip) Rasterizer 과정에서 Perspective Divide 비용을 줄였다.  <br>
 > 5. Perspective Divide는 GPU에 의해 자동 수행된다.
 > </font> 
 
