@@ -120,6 +120,11 @@ $$
 
 닮은 삼각형 성질에 따라 \\(X_{proj}\\)는 다음식으로 구할 수 있다.
 
+> <font size="2"> 
+> 원근 투영 행렬을 구하는 과정이다. 즉 \(X_{proj}\)는 \(X_{clip}\)를 말하고 Homogeneous Coordinate로의 변환 과정이다.
+> </font>
+
+
 \\( \frac {X_{proj}} {Z_{proj}} = \frac {X_{eye}} {Z_{eye}} \\)
 
 \\( X_{proj} = \frac {X_{eye} Z_{proj}} {Z_{eye}} \\)
