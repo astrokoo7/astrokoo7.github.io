@@ -26,7 +26,7 @@ clip space는 Normalize Device Coordinate로 변환되기전 단계로 버텍스
 
 이는 GPU가 입력으로 받은 clip space 상 좌표 `gl_Position`에 대해 두가지 처리를 하는데  <br>
 첫째는 \\( [-W_{clip}, W_{clip}] \\) 범위를 벗어나는 vertex에 대한 버림 처리이고 <br>
-두번째는 perspective divide로 원근 투영의 경우 이때 Homogeneous Coordinate좌표로 표현 된 `gl_Position`가 Normalize Device Coordinate로 바뀐다.
+두번째는 perspective divide로 원근 투영의 경우 이때 Homogeneous Coordinate좌표로 표현 된 `gl_Position`을 Normalize Device Coordinate로 바꿔주는 처리를 해준다.
 
 > <font size="2"> 
 > 직교투영도 Perspective Divide를 하지만  \(W_{\text{clip}}\)가 1로 설정되어 사실상 무시 된다.  <br>
