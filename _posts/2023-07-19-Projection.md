@@ -29,7 +29,7 @@ clip space는 Normalize Device Coordinate로 변환되기전 단계로 버텍스
 두번째는 perspective divide로 원근 투영의 경우 이때 Homogeneous Coordinate좌표로 표현 된 `gl_Position`을 Normalize Device Coordinate로 바꿔주는 처리를 해준다.
 
 > <font size="2"> 
-> 직교투영도 Perspective Divide를 하지만  \(W_{\text{clip}}\)가 1로 설정되어 사실상 무시 된다.  <br>
+> 직교투영도 Perspective Divide를 하지만  \(W_{\text{clip}}\)이 1로 설정되어 사실상 무시 된다.  <br>
 > </font> 
 
 <figure>
