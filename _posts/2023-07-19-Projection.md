@@ -27,7 +27,7 @@ clip space는 Normalize Device Coordinate로 변환되기전 좌표계로 프로
 
 GPU는 입력으로 받은 clip space 상 좌표 `gl_Position`에 대해 두가지 처리를 하는데  <br>
 첫째는 \\( [-W_{clip}, W_{clip}] \\) 범위를 벗어나는 vertex에 대한 버림 처리이고 <br>
-두번째는 perspective divide로 원근 투영일 경우 Homogeneous Coordinate좌표로 표현 된 `gl_Position`을 Normalize Device Coordinate로 바꿔주는 처리를 해준다.
+두번째는 perspective divide를 실행하여 원근 투영의 Homogeneous Coordinate좌표인 `gl_Position`을 Normalize Device Coordinate로 바꿔주는 처리를 해준다.
 
 > <font size="2"> 
 > 직교투영은 이미 NDC 좌표계이지만 \(W_{\text{clip}}\)가 1로 설정되있어 입력으로 받은 NDC가 그대로 사용된다. <br>
