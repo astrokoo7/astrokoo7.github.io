@@ -24,8 +24,8 @@ categories: graphics
 
 clip space는 Normalize Device Coordinate로 변환되기전 단계로 버텍스 쉐이터 `gl_Position` 의 좌표계로 프로그래머에 의해 계산된다. 또한 원근 투영의 경우 Homogeneous Coordinate로 표현된 좌표이며 직교 투영은 Normalize Device Coordinate상 좌표이다. 
 
-이는 GPU가 입력으로 받은 clip space 상 좌표 `gl_Position`에 대해 두가지 처리를 하는데 
-첫째는 \\( [-W_{clip}, W_{clip}] \\) 범위를 벗어나는 vertex에 대한 버림 처리이고
+이는 GPU가 입력으로 받은 clip space 상 좌표 `gl_Position`에 대해 두가지 처리를 하는데  <br>
+첫째는 \\( [-W_{clip}, W_{clip}] \\) 범위를 벗어나는 vertex에 대한 버림 처리이고 <br>
 두번째는 perspective divide로 원근 투영의 경우 이때 Homogeneous Coordinate좌표로 표현 된 `gl_Position`가 Normalize Device Coordinate로 바뀐다.
 
 > <font size="2"> 
