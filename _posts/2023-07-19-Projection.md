@@ -22,7 +22,7 @@ categories: graphics
 
 ## clip space
 
-clip space는 Normalize Device Coordinate로 변환되기전 좌표계로 프로그래머에 의해 계산된 버텍스 쉐이터 gl_Position의 좌표계이다. <br>
+clip space는 Normalize Device Coordinate로 변환되기전 좌표계로 프로그래머에 의해 계산된 버텍스 쉐이터 gl_Position의 좌표계이기도 하다. <br>
 또한 clip space는 원근 투영의 경우 Homogeneous Coordinate 좌표계이며 직교 투영은 Normalize Device Coordinate 좌표계이다.<br>
 
 GPU는 입력으로 받은 clip space 상 좌표 `gl_Position`에 대해 두가지 처리를 하는데  <br>
