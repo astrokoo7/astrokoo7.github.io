@@ -152,24 +152,24 @@ Normalize Device Coordinates상 범위 [-1, 1]로 식을 정리 후 \\(W_{clip}\
 
 \\( -1 \leq \frac {2 X_{eye} Z_{proj}} {Z_{eye} ({r - l})} - \frac {r + l} {r - l} \leq 1 \\)
 
-\\(Z_{eye}\\)는 \\(W_{clip}\\)이고 \\( Z_{proj} \\)는 Near로 상수이다.
+\\(Z_{eye}\\)는 \\(W_{clip}\\)이고 \\( Z_{proj} \\)는 near plane 깊이 값 상수로 간단히 n이라 쓰자.
 
-\\( -1 \leq \frac {2 X_{eye} Near} {W_{clip} ({r - l})} - \frac {r + l} {r - l} \leq 1 \\)
+\\( -1 \leq \frac {2 X_{eye} n} {W_{clip} ({r - l})} - \frac {r + l} {r - l} \leq 1 \\)
 
 이제 \\( W_{clip} \\)를 곱하여 Clip Cooridates(\\(X_{clip}\\)) 를 구해보자.
 
-\\( -W_{clip} \leq \frac {2 X_{eye} Near} {r - l} - \frac {W_{clip} (r + l)} {r - l} \leq W_{clip} \\)
+\\( -W_{clip} \leq \frac {2 X_{eye} n} {r - l} - \frac {W_{clip} (r + l)} {r - l} \leq W_{clip} \\)
 
 
 위 식에 범위 \\( [-W_{clip},  W_{clip}]\\)를 만족하는 \\( W_{clip} \\)는 아래와 같고 
 
-\\( X_{clip} = \frac {2 X_{eye} Near} {r - l} - \frac {W_{clip} (r + l)} {r - l} \\)
+\\( X_{clip} = \frac {2 X_{eye} n} {r - l} - \frac {W_{clip} (r + l)} {r - l} \\)
 
 \\( -W_{clip} \leq X_{clip} \leq W_{clip} \\) 를 만족하지 않는  \\( X_{clip}\\)는 GPU에 의해 버려진다.
 
 또한 절두체 공간은 대칭이라 \\(r=-l\\) 과 \\(t = -b \\)은 같으므로 이를 적용하면 
 
-간단히 \\( X_{clip} = \frac { X_{eye} Near} r \\) 이 된다.
+간단히 \\( X_{clip} = \frac { X_{eye} n} r \\) 이 된다.
 
 Perspective Projection Matrix는 Clip Coordinates로 변환이니 위 식을 행렬식으로 변환하면 다음과 같다.
 
