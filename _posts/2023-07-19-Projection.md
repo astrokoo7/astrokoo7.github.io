@@ -257,6 +257,10 @@ $$
 
 여기서 Eye Coordinates 상 \\(W_{eye}\\)는 1 이니 
 
+> <font size="2"> 
+> \(W_{eye}\)를 \( W_{clip} \)로 착각하지 말자. 
+> </font>
+
 \\( Z_{ndc} = \frac { A \cdot {Z_{eye}}+ B} {-Z_{eye}} \\) 이고
 
 \\(Z_{eye}와 Z_{ndc}\\)는 -Near일때 -1를 가지고 -far일때 1이니 각각에 대해 방정식을 만들면 A와 B를 구할 수 있다.
