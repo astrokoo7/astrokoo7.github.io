@@ -120,25 +120,20 @@ $$
 
 닮은 삼각형 성질에 따라 \\(X_{proj}\\)는 다음식으로 구할 수 있다.
 
-> <font size="2"> 
-> 원근 투영 행렬을 구하는 과정이다. 즉 \(X_{proj}\)는 \(X_{clip}\)를 말하고 Homogeneous Coordinate로의 변환 과정이다.
-> </font>
-
-
 \\( \frac {X_{proj}} {Z_{proj}} = \frac {X_{eye}} {Z_{eye}} \\)
 
 \\( X_{proj} = \frac {X_{eye} Z_{proj}} {Z_{eye}} \\)
 
-또한 \\( X_{proj} \\)는 범위 \\( [X_{left}, X_{right}] \\)를 만족해야 한다.
+하지만 여기서 모든 입력 값 \\(X_{eye}\\)에 대한 \\(X_{proj}\\)를 그대로 \\( X_{clip} \\)으로 본다면 GPU 입장에선 투영된 \\(X_{proj}\\)가 화면 안쪽인지 바깥쪽인지 판단 할 수 없다.
+
+그래서 \\( X_{proj} \\)에 대해 화면 범위값 \\( [X_{left}, X_{right}] \\)를 추가한 아래 식을 하나 더 세운뒤
 
  \\( l \leq X_{proj} \leq r \\)
 
-위 범위를 만족하는 \\( X_{proj} \\)가 Normalize Device Coordinates로 최종 변환한다고 생각해보자.
-
-NDC는 [-1, 1]의 범위를 가지니 위 식을 [-1, 1]의 범위로 변환하면 \\( W_{clip} \\)를 유추할 수 있다.
+Normalize Device Coordinates상 범위 [-1, 1]로 식을 정리 후 \\(W_{clip}\\)(=입력값 \\(Z_{eye}\\))으로 다시 곱하여 clip space로 역변환하면 화면 범위값 \\( [X_{left}, X_{right}] \\)도 포함 된 \\(X_{proj}\\) 즉 \\(X_{clip}\\)에 대한 식을 구할 수 있다.
 
 > <font size="2"> 
-> clip coordinates는 \( -w \leq X_{clip} \leq w \)로 w로 나누면 ndc가 된다. 반대로 ndc를 구한 후 w를 곱하면 \( X_{clip} \)를 구할 수 있다.
+> clip coordinates는 \( -w \leq X_{clip} \leq w \)로 w로 나누면 ndc가 된다. 반대로 ndc를 구한 뒤 w를 곱하면 \( X_{clip} \)를 구할 수 있다.
 > </font>
 
 \\( l \leq X_{proj} \leq r \\)
@@ -161,20 +156,20 @@ NDC는 [-1, 1]의 범위를 가지니 위 식을 [-1, 1]의 범위로 변환하�
 
 \\( -1 \leq \frac {2 X_{eye} Near} {W_{clip} ({r - l})} - \frac {r + l} {r - l} \leq 1 \\)
 
-이제 \\( W_{clip} \\)를 곱하여 Clip Cooridates를 구해보자.
+이제 \\( W_{clip} \\)를 곱하여 Clip Cooridates(\\(X_{clip}\\)) 를 구해보자.
 
 \\( -W_{clip} \leq \frac {2 X_{eye} Near} {r - l} - \frac {W_{clip} (r + l)} {r - l} \leq W_{clip} \\)
 
 
-정리하면 아래와 같고 
+위 식에 범위 \\( [-W_{clip},  W_{clip}]\\)를 만족하는 \\( W_{clip} \\)는 아래와 같고 
 
 \\( X_{clip} = \frac {2 X_{eye} Near} {r - l} - \frac {W_{clip} (r + l)} {r - l} \\)
 
 \\( -W_{clip} \leq X_{clip} \leq W_{clip} \\) 를 만족하지 않는  \\( X_{clip}\\)는 GPU에 의해 버려진다.
 
-또한 절두체 공간은 대칭이라 \\(r=-l\\) 과 \\(t = -b \\)은 같고 이를 적용하면 
+또한 절두체 공간은 대칭이라 \\(r=-l\\) 과 \\(t = -b \\)은 같으므로 이를 적용하면 
 
-\\( X_{clip} = \frac { X_{eye} Near} r \\) 이 된다.
+간단히 \\( X_{clip} = \frac { X_{eye} Near} r \\) 이 된다.
 
 Perspective Projection Matrix는 Clip Coordinates로 변환이니 위 식을 행렬식으로 변환하면 다음과 같다.
 
@@ -229,7 +224,7 @@ $$
 
 * \\( Z_{clip}\\) 구하기
 
-원근감을 생성하기 위해 닮은 삼각형 비율을 이용했던 \\( X_{clip}과 Y_{clip} \\)와는 달리 \\( Z_{clip}\\)은 다른 값에 영향을 받지 않는다. 따라서 영향 받지 않는 \\( X_{eye}와 Y_{eye} \\)를 제외한 모르는 미지수 두개의 A, B를 계수로 식을 세운 뒤 \\( Z_{eye}\\)에 대한 \\( Z_{clip}\\)의 방적식을 만들고 알려진 상수로 방정식의 A, B 구하여 해를 찾는 식이다. 
+원근감을 생성하기 위해 닮은 삼각형 비율을 이용했던 \\( X_{clip}과 Y_{clip} \\)와는 달리 \\( Z_{clip}\\)은 다른 값에 영향을 받지 않는다. 따라서 영향 받지 않는 \\( X_{eye}와 Y_{eye} \\)를 제외한 모르는 미지수 두개의 A, B를 계수로 식을 세운 뒤 \\( Z_{eye}\\)에 대한 \\( Z_{clip}\\)의 방적식을 만들어 알려진 상수를 이용해 방정식의 미지수 A, B 구하여 해를 찾는 식이다. 
 
 이를 수식으로 표현하면 아래와 같다.
 
