@@ -161,13 +161,13 @@ Normalize Device Coordinates상 범위 [-1, 1]로 식을 정리 후 \\(W_{clip}\
 \\( -W_{clip} \leq \frac {2 X_{eye} n} {r - l} - \frac {W_{clip} (r + l)} {r - l} \leq W_{clip} \\)
 
 
-위 식에 범위 \\( [-W_{clip},  W_{clip}]\\)를 만족하는 \\( W_{clip} \\)는 아래와 같고 
+위 식에 범위 \\( [-W_{clip},  W_{clip}]\\)를 만족하는 \\( X_{clip} \\)는 아래와 같고 
 
 \\( X_{clip} = \frac {2 X_{eye} n} {r - l} - \frac {W_{clip} (r + l)} {r - l} \\)
 
-\\( -W_{clip} \leq X_{clip} \leq W_{clip} \\) 를 만족하지 않는  \\( X_{clip}\\)는 GPU에 의해 버려진다.
+이제 \\( -W_{clip} \leq X_{clip} \leq W_{clip} \\) 를 만족하지 않는  \\( X_{clip}\\)를 GPU는 버릴 수 있게 됬다.
 
-또한 절두체 공간은 대칭이라 \\(r=-l\\) 과 \\(t = -b \\)은 같으므로 이를 적용하면 
+또한 화면은 절두체 공간이고 좌/우 상/하 대칭이라 \\(r=-l\\) 과 \\(t = -b \\)은 같고 이를 적용하면 
 
 간단히 \\( X_{clip} = \frac { X_{eye} n} r \\) 이 된다.
 
