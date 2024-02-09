@@ -45,7 +45,7 @@ mov     QWORD PTR [rbp-16], rax
 
 <!-- begin_excerpt -->
 
-메모리상 값 복사는 register를 통해 이뤄진다.
+메모리의 값 변경은 cpu register로 읽은 뒤 cpu에 의해 변경된뒤 변경 된 값을 메모리로 저장한다.
 
 <!-- end_excerpt -->
 
