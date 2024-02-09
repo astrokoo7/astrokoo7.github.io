@@ -5,8 +5,8 @@ categories: c#
 ---
 
 이 다음이 socketasynceventargs 로 마무리하면 되겠네
-그건 
-
+그건 http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture_series&no=61 로 마무리
+ 
 <!-- begin_excerpt -->
 
 lock free?? 가 더 좋지 않을까? => 한번엔 못 갈듯
