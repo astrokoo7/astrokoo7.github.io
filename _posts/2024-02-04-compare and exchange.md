@@ -45,9 +45,9 @@ c. A, B가 결과값 1을 bar에 메모리에 저장
 멀티 쓰레드 환경에선 위와 같이 공유 자원에 대한 경쟁 조건(race condition)이 발생하는데 이를 방지하기 여러가지 상호 배제(mutual exclusion) 기술이 있다. 
 
 
-
-
-
+<!-- 스케줄러 
+할당 된 time slice 
+context switching -->
 
 
 
