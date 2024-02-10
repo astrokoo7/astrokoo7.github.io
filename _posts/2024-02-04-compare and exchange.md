@@ -37,12 +37,12 @@ public static void AddOne() {
 ```
 a. A, B가 1을 실행하여 각자 bar 값 0을 읽어옴
 b. A, B가 각자 읽은 값에 +1을 더함
-c. A, B가 결과값 1을 bar에 메모리에 저장
+c. A, B가 결과값 1을 bar의 메모리에 저장
 ```
 
 결과적으로 A,B 쓰레드가 각각 AddOne을 호출하여 bar를 두번 +1 했음에도 값은 2가 아니라 1이 됬다.
 
-멀티 쓰레드 환경에선 위와 같이 공유 자원에 대한 경쟁 조건(race condition)이 발생하는데 이를 방지하기 여러가지 상호 배제(mutual exclusion) 기술이 있다. 
+멀티 쓰레드 환경에선 위와 같이 공유 자원에 대한 경쟁 조건(race condition)이 발생하는데 이를 방지하기 위해 여러가지 상호 배제(mutual exclusion) 기술이 있다. 
 
 
 <!-- 스케줄러 
