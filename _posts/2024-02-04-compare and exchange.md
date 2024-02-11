@@ -52,9 +52,41 @@ c. A, B가 결과값 1을 bar의 메모리에 저장
 
 하지만 만약 공유 자원 사용 시간이 매우 짧다면 그 작은 시간을 기다리기 위해 남은 시간 할당량(time slice)을 즉시 포기해야하고 그로인해 비용이 큰 context swithcing도 발생하게 된다. 이는 다수의 쓰레드가 빈번하게 이러한 경쟁 상태에 놓일시 병목 현상(bottle neck)의 주원인이 될 수 있다.
 
+## Busy Wait
 
+매우 짧은 시간만 필요한 공유 자원의 경우 쓰레드가 대기 상태(sleep)로 빠져 시간 할당량을 포기하기 보단 활성화 상태를 유지하여 공유 자원을 쓸수 있는지 계속 확인하는 편이 낮다.
 
+```c#
+public class ThreadSafe
+{
+    private float totalValue = 0.0F;
+    public float Total { get { return totalValue; }}
 
+     public float AddToTotal(float addend)
+    {
+        float initialValue, computedValue;
+        do {
+            initialValue = totalValue;
+            computedValue = initialValue + addend;
+        } while (initialValue != 
+                Interlocked.CompareExchange(ref totalValue, computedValue, initialValue));
+        return computedValue;
+    }
+}
+```
 
+위 코드는 Compare And Exchange 기법을 통해 Busy Wait을 구현하였는데 간략하게 풀어쓰면 이렇다.
+
+```
+1. 공유 자원 totalValue를 메모리에서 읽어와 임시 변수에 저장 후
+2. 임시 변수 값에 인자를 더한뒤
+3. 공유 자원 totalValue의 메모리에 임시 변수 값으로 저장한다.
+```
+
+이는 처음 보았던 `bar += 1;`과 같은 단계를 거치는걸 알 수 있다. 
+
+하지만 다른점은 CompareExchange 함수를 사용한 부분으로 lock과는 다르게 다른 쓰레드가 공유 자원을 마음대로 변경할 수 있지만 만약 내가 읽고 변경한 값을 쓰려는데 애초에 읽은 값이 다른 쓰레드에 의해 변경 된 경우라면 이를 감지할 수 있어 처음부터 다시 읽고 쓰기를 다시 시도할 수 있게 되었다.
+
+즉 내가 읽은 시점의 snap shot인 initialValue는 CompareExchange 함수를 통해 totalValue에 쓸때 그 반환값이 initialValue와 다르면 다른 쓰레드에 의해 변경된 것으로 간주하여 예외처리가 가능해졌다.
 
 
