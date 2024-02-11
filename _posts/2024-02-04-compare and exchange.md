@@ -89,4 +89,6 @@ public class ThreadSafe
 
 즉 CompareExchange 함수는 공유자원을 메모리에서 읽은 시점의 snap shot인 initialValue와 공유자원 totalValue를 메모리에 쓰고 난뒤의 리턴값과의 비교를 통해 공유 자원 totalValue가 computedValue로 다른 쓰레드의 간섭없이 메모리에 쓰기까지 잘 마무리 되었는지 안되었는지를 판단할 수 있게 해준다.
 
-## Spin Wait
+## Spin Wait  
+
+
