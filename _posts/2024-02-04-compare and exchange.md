@@ -87,6 +87,5 @@ public class ThreadSafe
 
 하지만 다른점은 CompareExchange 함수를 사용한 부분으로 lock과는 다르게 다른 쓰레드가 공유 자원을 마음대로 변경할 수 있지만 만약 내가 읽고 변경한 값을 쓰려는데 애초에 읽은 값이 다른 쓰레드에 의해 변경 된 경우라면 이를 감지할 수 있어 처음부터 다시 읽고 쓰기를 다시 시도할 수 있게 되었다.
 
-즉 내가 읽은 시점의 snap shot인 initialValue는 CompareExchange 함수를 통해 totalValue에 쓸때 그 반환값이 initialValue와 다르면 다른 쓰레드에 의해 변경된 것으로 간주하여 예외처리가 가능해졌다.
-
+즉 CompareExchange 함수는 공유자원을 메모리에서 읽은 시점의 snap shot인 initialValue과 공유자원 totalValue를 메모리에 쓰고 난뒤의 리턴값과의 비교를 통해 공유 자원 totalValue가 computedValue로 다른 쓰레드의 간섭없이 메모리에 쓰기까지 마무리 되었는지 안되었는지를 판단할 수 있게 되었다.
 
