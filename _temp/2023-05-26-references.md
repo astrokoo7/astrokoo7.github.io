@@ -50,3 +50,6 @@ https://angeloyeo.github.io/2022/01/05/complex_number_basic.html
 https://www.korecmblog.com/blog/jvm-stack-and-register
 
 http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture_series&no=61
+
+
+bundle exec jekyll serve
