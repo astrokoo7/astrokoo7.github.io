@@ -91,9 +91,9 @@ public class ThreadSafe
 
 ## Spin Wait  
 
-앞서 보았던 busy lock은 매우 짧은 시간 동안 공유 자원을 사용하기에 적합하다.
+앞서 보았던 busy wait은 매우 짧은 시간 동안 공유 자원을 사용하기에 적합하다.
 
-하지만 busy lock에서 사용한 빈 루프(empty loop)를 좀 더 여러 상황에 따라 사용할 수 있도록 일반화가 필요하다.
+하지만 busy wait에서 사용한 빈 루프(empty loop)를 좀 더 여러 상황에 따라 사용할 수 있도록 일반화가 필요하다.
 
 예를들어 만약 core가 단하나인 cpu의 경우 empty loop를 사용하면 다른 모든 쓰래드가 무한 대기에 빠질 수 있다. 
 
