@@ -53,3 +53,8 @@ http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture_series&no=61
 
 
 bundle exec jekyll serve
+
+1.물리 
+2.애니메이션
+3.async
+4.convolution
