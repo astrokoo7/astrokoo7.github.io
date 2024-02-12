@@ -65,11 +65,12 @@ public class ThreadSafe
      public float AddToTotal(float addend)
     {
         float initialValue, computedValue;
-        do {
+        do 
+        {
             initialValue = totalValue;
             computedValue = initialValue + addend;
         } while (initialValue != 
-                Interlocked.CompareExchange(ref totalValue, computedValue, initialValue));
+               Interlocked.CompareExchange(ref totalValue, computedValue, initialValue));
         return computedValue;
     }
 }
