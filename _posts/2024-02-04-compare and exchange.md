@@ -95,7 +95,57 @@ public class ThreadSafe
 
 하지만 busy wait에서 사용한 빈 루프(empty loop)를 좀 더 여러 상황에 따라 사용할 수 있도록 일반화가 필요하다.
 
-예를들어 만약 core가 단하나인 cpu의 경우 empty loop를 사용하면 다른 모든 쓰래드가 무한 대기에 빠질 수 있다. 
+예를들어 만약 core가 단하나인 cpu의 경우 empty loop만 사용한다면 다른 모든 쓰레드가 무한 대기에 빠질 수 있다. 또한 멀티 core 머신에서도 우선 순위가 더 높은 쓰레드가 blocking 되는걸 방지한다거나 garbage collector에게 양보하기 위한 고려가 되있어야 한다. 이렇듯 상황에 따라 충분히 busy wait 하였다면 스스로 제어권을 포기하기 위한 방법도 제공되어야 한다.
+
+c#에선 `System.Threading.SpinWait`을 사용하여 busy wait을 좀 더 안전하고 범용적으로 구현 할 수 있다.
+
+```c# 
+public class LockFreeStack<T>
+{
+    private volatile Node m_head;
+
+    private class Node { public Node Next; public T Value; }
+
+    public void Push(T item)
+    {
+        var spin = new SpinWait();
+        Node node = new Node { Value = item }, head;
+        while (true)
+        {
+            head = m_head;
+            node.Next = head;
+            if (Interlocked.CompareExchange(ref m_head, node, head) == head) break;
+            spin.SpinOnce();
+        }
+    }
+
+    public bool TryPop(out T result)
+    {
+        result = default(T);
+        var spin = new SpinWait();
+
+        Node head;
+        while (true)
+        {
+            head = m_head;
+            if (head == null) return false;
+            if (Interlocked.CompareExchange(ref m_head, head.Next, head) == head)
+            {
+                result = head.Value;
+                return true;
+            }
+            spin.SpinOnce();
+        }
+    }
+}
+```
+
+참고로 c++ 의 경우 `std::atomic_flag`가 유사한 기능을 제공하며 위 예제에서 보았듯 linked list를 쓰레드간 공유하고 싶은 경우 head위치 갱신만 동기화 함으로서 자료구조를 ?멀티 쓰레드 환경에서 공유하는 부분을 엿볼 수 있다. 
+
+하지만 단순 index 뿐 아니라 좀더 복잡한 구조의 자료구조의 경우 mutex lock을 사용하는게 좀더 안전한 구현도 될수 있으니 lock free 기법을 사용할때는 여러가지 주의 사항을 고려해 사용해야 한다.
+
+
+
 
 
 
