@@ -51,6 +51,8 @@ https://www.korecmblog.com/blog/jvm-stack-and-register
 
 http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture_series&no=61
 
+https://research.ncl.ac.uk/game/mastersdegree/graphicsforgames/skeletalanimation/Tutorial%209%20-%20Skeletal%20Animation.pdf
+
 
 bundle exec jekyll serve
 
