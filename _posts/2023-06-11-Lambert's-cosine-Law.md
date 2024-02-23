@@ -40,7 +40,7 @@ categories: graphics
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/cosin.png" width="82%">
 </div>
 
-랜더링 할땐 버텍스 노멀과 빛의 방향 하나로 난반사를 모사한다.
+랜더링할 때 버텍스 노멀과 빛의 방향 하나로 난반사를 모사한다.
 
 표면이 평평하지 않다면 빛의 방향에 따른 노멀과의 각도에 따라 마찬가지로 cos 비율로 광량이 표현 될 것이다.
 
