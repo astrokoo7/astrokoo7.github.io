@@ -45,11 +45,11 @@ mov     QWORD PTR [rbp-16], rax
 
 <!-- begin_excerpt -->
 
-메모리의 값 변경은 cpu register로 읽어와 cpu에 의해 변경되어 메모리로 저장한다.
+메모리의 값 변경은 cpu register로 읽어와 cpu에 의해 변경된뒤 메모리로 다시 저장한다.
 
 <!-- end_excerpt -->
 
-참조 타입값 할당시 lea 명령어를 사용해 주소를 register에 로드하고 mov 명령어를 사용해 읽은 resiter의 값를 메모리에 써주는 식이다.
+참조 타입에 값을 할당시 lea 명령어를 사용해 주소의 값을 register에 로드하고 mov 명령어를 사용해 읽은 resiter의 값을 메모리에 써주는 식이다.
 
 참조와 동일하게 포인터 x의 값 할당도 lea로 주소값을 읽어와 rax 레지스터 로드 한뒤 rax 레지스터의 값을 지정 된 메모리에 써준다.  
   
