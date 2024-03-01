@@ -54,6 +54,8 @@ http://lab.gamecodi.com/board/zboard.php?id=GAMECODILAB_Lecture_series&no=61
 https://research.ncl.ac.uk/game/mastersdegree/graphicsforgames/skeletalanimation/Tutorial%209%20-%20Skeletal%20Animation.pdf
 
 
+https://blog.popekim.com/ko/2012/10/12/screen-space-decal-presentation-at-kgc-2012.html
+
 bundle exec jekyll serve
 
 1.물리 
