@@ -15,7 +15,7 @@ Decal은 Mesh의 표면을 따라 특정 문양을 그려주는 기술로 Screen
 > 이는 GPU에서 clip space밖의 vertex를 clipping하는 방법과 동일하다.
 > </font>
 
-또한 표면 Mesh의 vectex를 투영 공간으로 변환하여 계산하는데 이때의 투영 공간상 vertex 좌표는 그대로 표면 Mesh의 uv texture 좌표계로 변환하여 사용하면 된다.
+또한 표면 Mesh의 vertex를 투영 공간으로 변환하여 계산하는데 이때의 투영 공간상 vertex 좌표는 그대로 표면 Mesh의 uv texture 좌표계로 변환하여 사용하면 된다.
 
 [여기에 더 자세한 설명이 있으니 참고 바란다.](http://blog.wolfire.com/2009/06/how-to-project-decals/)
 
