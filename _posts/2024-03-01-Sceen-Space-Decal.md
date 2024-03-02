@@ -25,3 +25,5 @@ Decal은 Mesh의 표면을 따라 특정 문양을 그려주는 기술로 Screen
 ## Screen Space Decal
 
 Screen Space Decal은 문양을 위한 공간을 그릴 때 스크린상에서 처리하는 기술로 추가적인 Mesh 생성이 필요하지 않고 깊이 텍스트를 활용하여 그린다.
+
+... in progress
