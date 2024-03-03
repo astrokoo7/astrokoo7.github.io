@@ -71,12 +71,102 @@ Decal 박스 pixel의 공간상 점을 Decal 박스 로컬 좌표계로 역변�
 </div>
 </figure>
 
+``` hlsl
+Shader "Decals/ScreenSpaceOriginal"
+{
+    Properties
+    {
+        [NoScaleOffset]
+        _MainTex("Texture", 2D) = "white" {}
+    }
+    SubShader
+    {
+        Tags { "RenderType" = "Opaque" }
 
-... in progress
+        Pass
+        {
+            HLSLPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma multi_compile_fog
 
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareNormalsTexture.hlsl"
 
+            struct appdata
+            {
+                float4 vertex : POSITION;
+            };
 
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float4 fogFactor : TEXCOORD2;
+            };
 
+            TEXTURE2D(_MainTex);
+            SAMPLER(sampler_MainTex);
+
+            v2f vert(appdata v)
+            {
+                v2f o;
+                o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
+                o.fogFactor = ComputeFogFactor(o.vertex.z);
+                return o;
+            }
+
+            float3 ComputeWorldPosition(float2 screenUv)
+            {
+                float depth = SampleSceneDepth(screenUv);
+                float4 positionCS = float4(screenUv * 2.0 - 1.0, depth, 1.0);
+                positionCS.y = -positionCS.y;
+                float4 hpositionWS = mul(UNITY_MATRIX_I_VP, positionCS);
+                return hpositionWS.xyz / hpositionWS.w;
+            }
+
+            float4 frag(v2f i) : SV_Target
+            {
+                float2 screenUv = i.vertex.xy / _ScaledScreenParams.xy;
+                float3 worldPosition = ComputeWorldPosition(screenUv);
+                float3 localPosition = mul(UNITY_MATRIX_I_M, float4(worldPosition, 1.0)).xyz;
+                float3 worldNormal = SampleSceneNormals(screenUv);
+                float3 decalDirection = TransformObjectToWorldDir(float3(0,1,0));
+
+                float d = dot(decalDirection, worldNormal);
+                clip(d);
+                clip(0.5f - abs(localPosition.xyz));
+
+                float2 decalUv = localPosition.xz + 0.5;
+                float4 color = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, decalUv);
+
+                float normalFading = smoothstep(0, 1, saturate(d));
+                color.rgb = MixFog(color.rgb, i.fogFactor) * normalFading;
+                return color;
+            }
+            ENDHLSL
+        }
+    }
+}
+```
+
+위 코드는 간단한 SSD 코드로 유니티 shader 코드를 사용해 작성되었다.
+
+좌표 변환 관련을 코드를 살펴보면 우선 `_ScaledScreenParams.xy` 값은 unity의 내장 변수로 view port 정보를 가지고 있다.
+
+이 값을 사용해 입력으로 들어온 화면 좌표계상 xy 좌표를 스크린 UV 좌표로 변환하여 해당 좌표의 Scene 깊이 값을 가져온 뒤 화면 좌표계의 xy와 scene의 깊이로 clip space로의 좌표 변환을 해주는 부분을 볼 수 있다.
+
+그 다음 clip space 좌표를 역행렬 UNITY_MATRIX_I_VP를 곱하여 월드 좌표계로 변환 후 역수 값인 w를 역으로 나눠줌으로서 실제 월드 좌표계 값으로 변환을 했다.
+
+이후 월드 좌표계상 pixel 좌표를 Decal 박스의 로컬 좌표계로 다시 변경하여 로컬 좌표계상 버텍스의 범위인 -0.5, 0.5를 넘지 않는지 확인하여 넘는다면 버림 처리를 하였다.
+
+> <font size="2"> 
+>애초에 Decal 박스는 -0.5, 0.5의 범위를 가지는 박스이고 실제 월드에 배치하여 사용할땐 크기를 늘리거나 회전 시키는 등 필요에 맞춰 사용한다.
+> </font>
+
+또한 화면상의 점이 박스안의 pixel이라면 그대로 Decal 박스의 로컬 좌표계에 맞춰 uv 좌표 지정하여 texture의 색상을 읽으면 된다.
+
+마지막으로 눈에 보이는 texture 문양은 Decal 박스의 로컬 좌표계 xz 축만 사용하여 높이 값이 없다. 즉 로컬 좌표계로 변환 된 값이 xz는 같지만 y인 높이 값만 다르다면 같은 texutre unit을 셈플링하여 길게 늘어지는 현상이 발생하게 된다. 이런 경우 데칼의 투영 방향과 Mesh 표면의 Normal 방향이 같다면 버림처리를 해준다.
 
 
 
