@@ -35,7 +35,7 @@ Decal은 Mesh의 표면을 따라 특정 문양을 그려주는 기술로 Screen
 
 화면 좌표계상 문양이 그려질 Decal 박스의 각 pixel의 좌표와 그 좌표에 해당하는 깊이 값을 NDC 좌표계로 변환할 수 있다. 
 
-NDC 좌표계로 변환 된 Decal 박스 각 pixel의 점들은 Mesh 표면의 공간상 좌표를 포함하고 있다.
+NDC 좌표계로 변환 된 Decal 박스의 각 pixel들은 Mesh 표면의 공간상 좌표를 포함하고 있다.
 
 Mesh 표면의 공간상 좌표는 정의되었지만 Decal 박스 중 Mesh 표면이 아닌 좌표는 버려 Mesh 표면에 해당하는 Decal 박스 영역만 그려지는 처리가 필요하다.
 
