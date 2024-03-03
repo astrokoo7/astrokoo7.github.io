@@ -44,7 +44,7 @@ Decal 박스 pixel의 공간상 점을 Decal 박스 로컬 좌표계로 역변�
 <figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303.png" width="70%">
-  <figcaption>Decal 박스의 마름모 점은 씬의 깊이맵만큼 투영되어 X로 이동된다.</figcaption>
+  <figcaption>Decal 박스의 마름모 점은 scene의 깊이맵만큼 투영되어 X로 이동된다.</figcaption>
 </div>
 </figure>
 
