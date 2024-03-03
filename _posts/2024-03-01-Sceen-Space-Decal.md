@@ -60,7 +60,7 @@ Decal 박스 pixel의 공간상 점을 Decal 박스 로컬 좌표계로 역변�
 <figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-3.png" width="30%">
-  <figcaption>그릴 영역만 남은 Decal 박스의 pixel은 Decal 박스 로컬 좌표계 x,z축 값을<br> 그대로 uv 좌표계로 변환하여 문양을 그리면 된다. </figcaption>
+  <figcaption>그릴 영역만 남은 Decal 박스의 pixel은 Decal 박스 로컬 좌표계 x,z축 값을<br> 그대로 uv 좌표계로 변환(+0.5)하여 문양을 그리면 된다. </figcaption>
 </div>
 </figure>
 
