@@ -52,6 +52,13 @@ rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어
 > lvalue reference를 이해해야 rvalue reference를 왜 만들었는지 이해할 수 있다.
 > </font>
 
+앞선 [글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 rvalue reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
+
+그렇다면 lvalue reference는 포인터처럼 값을 가리키는 변수라서 함수인자로 넘길 때 값을 복사하지 않는다. 
+
+그렇다면 lvalue reference만 있으면 될거 같은데 왜 굳이 rvalue reference를 만들었는지에 대한 생각이 든다.
+
+
 
 ## Copy Constructor
 
