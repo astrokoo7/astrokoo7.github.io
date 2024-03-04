@@ -58,6 +58,7 @@ lvalue reference는 포인터처럼 값을 가리키는 변수라서 함수인�
 
 그렇다면 lvalue reference만 있으면 될거 같은데 왜 굳이 rvalue reference를 만들었는지에 대한 생각이 든다.
 
+...
 
 
 ## Copy Constructor
