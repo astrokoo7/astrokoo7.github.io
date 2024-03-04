@@ -46,7 +46,12 @@ hint는 = 인 할당 연산자에서 찾을 수 있다.
 
 ## L-Value Reference
 
-in progress ..
+rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어가자.
+
+> <font size="2"> 
+> lvalue reference를 이해해야 rvalue reference를 왜 만들었는지 이해할 수 있다.
+> </font>
+
 
 ## Copy Constructor
 
