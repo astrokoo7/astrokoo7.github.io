@@ -45,7 +45,7 @@ mov     QWORD PTR [rbp-16], rax
 
 <!-- begin_excerpt -->
 
-메모리의 값 변경은 cpu register로 읽어와 cpu에 의해 변경된뒤 메모리로 다시 저장한다.
+보통 메모리의 값 변경은 cpu register로 읽어와 cpu에 의해 변경된뒤 메모리로 다시 저장한다.
 
 <!-- end_excerpt -->
 
