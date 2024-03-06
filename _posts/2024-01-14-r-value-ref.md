@@ -4,6 +4,8 @@ title: "R-Value Reference"
 categories: c++
 ---
 
+## Overview
+
 <!-- begin_excerpt -->
 
 l value 는 프로그래머가 이름을 지을 수 있는 반면 <br>
@@ -23,7 +25,7 @@ int main() {
     int x = 5;
     int y = 10;
 
-     int additionResult = add(x, y);
+    int additionResult = add(x, y);
 }
 ```
 
