@@ -53,7 +53,7 @@ fire and forget 상황에서 적절하겠어
 rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어가자.
 
 > <font size="2"> 
-> lvalue reference를 이해해야 rvalue reference를 왜 만들었는지 이해하기 쉽다.
+> lvalue reference를 이해하고 rvalue reference를 알게되면 둘간의 차이와 목적성을 명확히 알 수 있다.
 > </font>
 
 [앞선 글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 lvalue  reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
