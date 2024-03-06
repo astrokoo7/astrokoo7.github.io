@@ -43,7 +43,7 @@ hint는 = 인 할당 연산자에서 찾을 수 있다. <br>
 rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어가자.
 
 > <font size="2"> 
-> lvalue reference를 이해해야 rvalue reference를 왜 만들었는지 이해할 수 있다.
+> lvalue reference를 이해해야 rvalue reference를 왜 만들었는지 이해하기 쉽다.
 > </font>
 
 [앞선 글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 lvalue  reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
