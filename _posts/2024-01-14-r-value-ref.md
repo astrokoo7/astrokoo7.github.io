@@ -38,7 +38,15 @@ hint는 = 인 할당 연산자에서 찾을 수 있다. <br>
 
 이런식으로 값에 이름이 없는 변수를 r value라 부르고 이름이 없기 때문에 <br> 프로그래머가 재사용을 할 수 없는 특징이 있었다.
 
-<!-- heap vs stack frame -->
+<!-- 
+
+heap vs stack frame 
+그래서 논조가 임시 변수의 활용
+lvalue reference도 임시 변수를 활용하는건 아니지만 자원의 활용
+바운더리를 넘어선 (stack frame) 값을 읽을 수 있다.
+하지만 lvalue ref도 자신의 소유권을 넘겨주진 못한다.
+
+-->
 
 ## L-Value Reference
 
