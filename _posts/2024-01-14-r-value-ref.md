@@ -45,7 +45,7 @@ heap vs stack frame
 lvalue reference도 임시 변수를 활용하는건 아니지만 자원의 활용
 바운더리를 넘어선 (stack frame) 값을 읽을 수 있다.
 하지만 lvalue ref도 자신의 소유권을 넘겨주진 못한다.
-
+fire and forget 상황에서 적절하겠어
 -->
 
 ## L-Value Reference
