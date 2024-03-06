@@ -38,6 +38,8 @@ hint는 = 인 할당 연산자에서 찾을 수 있다. <br>
 
 이런식으로 값에 이름이 없는 변수를 r value라 부르고 이름이 없기 때문에 <br> 프로그래머가 재사용을 할 수 없는 특징이 있었다.
 
+<!-- heap vs stack frame -->
+
 ## L-Value Reference
 
 rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어가자.
