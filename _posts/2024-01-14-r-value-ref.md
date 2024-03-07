@@ -54,7 +54,7 @@ rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어
 
 [앞선 글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 lvalue  reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
 
-lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 pointer의 장점인 stack frame을 벗어난, 즉 scope에 구애받지 않는 값 참조가 가능한다.
+lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 장점인 stack frame을 벗어나 scope에 구애받지 않는 값 참조가 가능한다.
 
 컴파일러는 함수 호출 전 함수 인자를 stack frame에 저장한 뒤 함수를 호출하는데 이때 인자 타입이 lvalue reference이면 stack frame에 값을 가리키는 메모리 주소만 할당한다. 반면 인자 타입이 lvalue reference가 아니면 stack frame에 값을 복사한다.
 
