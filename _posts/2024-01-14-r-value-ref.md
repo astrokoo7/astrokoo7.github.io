@@ -54,6 +54,9 @@ rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어
 
 [앞선 글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 lvalue  reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
 
+reference는 pointer의 주소 연산 같은 취약점을 개선하고 pointer의 장점인 stack frame을 벗어난 즉 scope에 구애받지 않는 값 참조가 가능한다.
+
+
 
 
 
