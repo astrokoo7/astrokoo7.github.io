@@ -6,6 +6,8 @@ categories: graphics
 
 ## overview
 
+forward rendering의 경우 랜더링시 광원 개수 * 오브젝트 개수 만큼 비용이 비싼 pixel shader에서 
+
 Deferred Shading은 기존 forward rendering에서 geometry 연산과 light 연산의 분리
 
 geometry 연산 시 depth test를 통과한 최종 픽셀만 gbuffer에 남아서 light 연산을 통한 shading 시 blending을 할 수 없음
