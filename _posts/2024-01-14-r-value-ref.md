@@ -44,7 +44,7 @@ heap vs stack frame
 그래서 논조가 임시 변수의 활용
 lvalue reference도 임시 변수를 활용하는건 아니지만 자원의 활용
 바운더리를 넘어선 (stack frame) 값을 읽을 수 있다.
-하지만 lvalue ref도 자신의 소유권을 넘겨주진 못한다.
+하지만 lvalue ref도 자신의 소유권을 넘겨주진 못한다. ???
 fire and forget 상황에서 적절하겠어
 -->
 
@@ -58,9 +58,11 @@ lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 �
 
 컴파일러는 함수 호출 전 함수 인자를 stack frame에 저장한 뒤 함수를 호출하는데 이때 인자 타입이 lvalue reference이면 stack frame에 값을 가리키는 메모리 주소만 할당한다. 반면 인자 타입이 lvalue reference가 아니면 stack frame에 값을 복사한다.
 
-
-
-
+<!--
+하지만 lvalue ref도 자신의 소유권을 넘겨주진 못한다. ???
+임시 변수는 scope를 벗어나면 메모리에서 해제된다.
+해제하지 말고 lvalue에 소유권을 넘겨주면 어떨까?
+-->
 
 ...
 
