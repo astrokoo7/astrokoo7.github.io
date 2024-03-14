@@ -15,7 +15,7 @@ categories: graphics
 <br>
 빛이 통과하는 공간에 따라 감쇠하는 양이 다르지만 보통 공기중에선 [이동한 거리의 제곱에 반비례](https://en.wikipedia.org/wiki/Attenuation)한다고 알려져 있다. <br>
 
-이는 식 \\(attenuation = \frac 1 d^2\\)로 쓸 수 있는데 거리 d 값이 증가함에 따라 급격한 감쇠를 보인다.<br>
+이는 식 \\(attenuation = \frac 1 {d^2}\\)로 쓸 수 있는데 거리 d 값이 증가함에 따라 급격한 감쇠를 보인다.<br>
 
 또한 위 식은 1을 기점으로 거리 d가 1보다 작다면 빛은 감쇠하지 않고 크다면 감쇠하여 0.0에서 1.0의 범위를 가진다.<br>
 
