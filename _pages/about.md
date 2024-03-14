@@ -4,6 +4,8 @@ title: About Me
 # permalink: /about/
 ---
 
+<!-- 
+
 처음엔 무엇이라 정의 할 수 없는 이상함을 느끼고
 
 이상함을 간과하지 않으며
@@ -12,7 +14,7 @@ title: About Me
 
 관찰하고 이해하려 노력하는 것
 
-
+-->
 
 game programmer
 
