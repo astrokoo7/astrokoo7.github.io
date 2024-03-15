@@ -26,7 +26,7 @@ categories: graphics
 
 ## Attenuation Equation Of OpenGL
 
-빛의 감쇠는 아래처럼 단순히 어떤 물체의 원본 색상을 얼마의 비율로 픽셀에 적용할지 계산하는데 사용 한다.<br>
+빛의 감쇠는 아래처럼 단순히 어떤 물체의 원본 색상을 얼마의 비율로 픽셀에 적용할지 계산 하는데 사용 한다.<br>
 
 ```
 to_light = u_Light_position - v_Vertex;
@@ -38,7 +38,7 @@ color = attenuation * (ambient_color + diffuse_color + specular_color);
 
 물리적인 감쇠식을 그대로 사용하기에는 거리에 따른 매우 빠른 감쇠로 설정이 어렵다. <br>
 
-OpenGL Light 모델은 거리를 변수로 한 2차 방정식의 해로 나눈 값으로 빛의  감쇠를 계산한다.<br>
+OpenGL Light 모델은 거리를 변수로 한 2차 방정식의 해로 나눈 값으로 빛의  감쇠를 계산 한다.<br>
 
 <span style="font-size: x-large;">
 \\( attenuation = \frac {1.0} {a * d^2 + b * d + c} \\)
