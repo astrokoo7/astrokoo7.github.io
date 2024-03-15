@@ -162,9 +162,9 @@ OpenGL Light 모델에서는 거리를 변수로 한 2차 방정식의 해로 �
 
 Deferred Shading 기법에서는 빛이 비추는 유효 거리를 계산하여, 비용이 큰 빛 계산을 빛의 영향을 받는 픽셀에만 수행할 수 있다.
 
-<!-- 
-
--->
+> <font size="2"> 
+> Deferred Shading은 geometry 연산과 light 연산이 나뉘어 있어 가능하지만 forward rendering은 오브젝트를 그릴 때 light 연산도 같이해서 불가능하다.
+> </font>
 
 
 
