@@ -167,4 +167,8 @@ Deferred Shading 기법에서는 빛이 비추는 유효 거리를 계산하여,
 > Deferred Shading은 geometry 연산과 light 연산이 나뉘어 있어 가능하고 forward rendering은 오브젝트를 그릴 때 light 연산도 같이해야 해서 불가능하다.
 > </font>
 
+
+
+
+
 ...
