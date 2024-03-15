@@ -26,7 +26,7 @@ categories: graphics
 
 ## Attenuation Equation Of OpenGL
 
-빛의 감쇠는 단순히 어떤 물체의 원본 색상을 얼마의 비율로 픽셀에 적용할지 계산하는데 사용 한다.<br>
+빛의 감쇠는 아래처럼 단순히 어떤 물체의 원본 색상을 얼마의 비율로 픽셀에 적용할지 계산하는데 사용 한다.<br>
 
 ```
 to_light = u_Light_position - v_Vertex;
