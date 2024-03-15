@@ -160,7 +160,7 @@ OpenGL Light 모델에서는 거리를 변수로 한 2차 방정식의 해로 �
 
 ## Calculate Light Volume Radius
 
-Deferred Shading 기법에서는 빛이 비추는 유효 거리를 계산하여, 비용이 큰 빛 계산을 빛의 영향을 받는 픽셀에만 수행할 수 있다.
+다양한 Light 처리 기술 중 Deferred Shading 기법에서는 빛이 비추는 유효 거리를 계산하여, 비용이 큰 빛 계산을 영향을 받는 픽셀에만 수행할 수 있다.
 
 <!--
 > <font size="2"> 
