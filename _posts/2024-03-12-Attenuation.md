@@ -44,6 +44,115 @@ OpenGL Light 모델은 거리를 변수로 한 2차 방정식의 해로 나눈 �
 \\( attenuation = \frac {1.0} {a * d^2 + b * d + c} \\)
 </span>
 
+여기서, 2차 방정식의 계수 a, b, c는 각각 이차(quadratic), 선형(linear), 상수(constant) 조절 값이다. 
 
+아래 그래프에서 a, b를 조절해가며 감쇠 값의 변화를 확인 할 수 있다.
 
+<html>
+<head>
+    <title>Attenuation Graph</title>
+    <style>
+        canvas {
+            max-width: 400px;
+            max-height: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .slider {
+            width: 300px;
+            margin-top: 10px;
+            text-align: left;
+            margin-left: -100px; /* 좌측으로 이동 */
+        }
+        .fixed-value {
+            margin-top: 10px;
+            margin-left: -361px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="myChart" width="400" height="200"></canvas>
+    <div class="slider-container">
+        <div class="slider">
+            <label for="a">a:</label>
+            <input type="range" id="a" name="a" min="0" max="10" step="0.1" value="1">
+            <span id="aValue">1</span>
+        </div>
+        <div class="slider">
+            <label for="b">b:</label>
+            <input type="range" id="b" name="b" min="0" max="10" step="0.1" value="1">
+            <span id="bValue">1</span>
+        </div>
+        <div class="fixed-value">
+            c: 1.0
+        </div>
+    </div>
 
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var data = {
+            labels: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+            datasets: [{
+                data: [],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                animation: {
+                    duration: 0 // 애니메이션 비활성화
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1.0
+                    },
+                    x: {
+                        max: 10.0
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        updateGraph();
+
+        document.getElementById('a').addEventListener('input', updateGraph);
+        document.getElementById('b').addEventListener('input', updateGraph);
+
+        function updateGraph() {
+            var aValue = document.getElementById('a').value;
+            var bValue = document.getElementById('b').value;
+
+            document.getElementById('aValue').textContent = aValue;
+            document.getElementById('bValue').textContent = bValue;
+
+            var newData = [];
+            for (var i = 0; i <= 10; i++) {
+                var d = i;
+                var attenuation = 1 / (parseFloat(aValue) * Math.pow(d, 2) + parseFloat(bValue) * d + 1.0);
+                newData.push(attenuation);
+            }
+
+            myChart.data.datasets[0].data = newData;
+            myChart.update(); 
+        }
+    </script>
+</body>
+</html>
