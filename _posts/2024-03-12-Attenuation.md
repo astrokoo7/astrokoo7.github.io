@@ -161,3 +161,5 @@ OpenGL Light 모델에서는 거리를 변수로 한 2차 방정식의 해로 �
 ## Calculate Light Volume Radius
 
 Deferred Shading 기법에선 감쇠에 따른 light가 비춰지는 유효 거리를 계산해야 할 필요가 있다.
+
+...
