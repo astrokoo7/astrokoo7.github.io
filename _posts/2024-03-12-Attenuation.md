@@ -38,7 +38,7 @@ color = attenuation * (ambient_color + diffuse_color + specular_color);
 
 하지만 물리적인 감쇠식을 그대로 사용하기에는 거리에 따른 매우 빠른 감쇠로 다양한 설정을 하기 어렵다. <br>
 
-OpenGL Light 모델은 거리를 변수로 한 2차 방정식의 해로 나눈 값으로 빛의  감쇠를 계산 한다.<br>
+OpenGL Light 모델에서는 거리를 변수로 한 2차 방정식의 해로 나눈 값으로 빛의 감쇠를 계산하여 좀 더 다양한 설정을 할 수 있다.<br>
 
 <span style="font-size: x-large;">
 \\( attenuation = \frac {1.0} {a * d^2 + b * d + c} \\)
