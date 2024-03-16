@@ -4,7 +4,7 @@ title: "Screen Space Decal"
 categories: graphics
 ---
 
-## overview
+## background
 
 Decal은 Mesh의 표면을 따라 특정 문양을 그려주는 기술로 Screen Space Decal이 소개되기 이전엔 투사될 Mesh에 문양이 그려질 부분에 해당하는 Decal Mesh를 똑같이 만들어 Mesh위에 살짝 띄워 그려주는 방식을 사용했다. 
 
