@@ -54,6 +54,12 @@ lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 �
 
 ## R-Value Reference
 
+<!-- 
+r value는 메모리 공간 자체가 원래는 없다.
+
+-->
+
+
 ## Identifying L value and R value using Reference
 
 ```
