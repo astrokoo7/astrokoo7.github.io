@@ -52,14 +52,16 @@ lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 �
 
 컴파일러는 함수 호출 전 함수 인자를 stack frame에 저장한 뒤 함수를 호출하는데 이때 인자 타입이 lvalue reference이면 stack frame에 값을 가리키는 메모리 주소만 할당한다. 반면 인자 타입이 lvalue 라면 stack frame에 값을 복사한다.
 
+## R-Value Reference
+
 ## Identifying L value and R value using Reference
 
 ```
-    int main() {
-        std::string firstName = "foo";
-        std::string secondName = "bar";
-        std::string fullName = firstName + secondName;
-    }
+int main() {
+    std::string firstName = "foo";
+    std::string secondName = "bar";
+    std::string fullName = firstName + secondName;
+}
 ```
 
 
