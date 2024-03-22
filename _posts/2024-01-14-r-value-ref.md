@@ -54,6 +54,21 @@ lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 �
 
 ## R-Value Reference
 
+r value는 이름이 없는 값 그 자체라고 이야기했었다.
+이는 값에 대한 주소 공간에 없단 말과 같고 코드에 상수처럼 존재한다.
+
+reference는 값에 대한 주소 공간을 가리킨다고 이야기했었다. 
+그렇다면 r value reference는 코드에 박혀있어 주소가 없는 r value를 reference 할 수 있을까?
+
+컴파일러는 내부적으로 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
+
+이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아니냐고 혼란스러워질 수 있다.
+
+중요한 건 기계어로 표현되는 방식이 같아도 c++ 언어 레벨에선 l value와 r value는 분명이 개념적으로 다르다. 이를 기계어 레벨로 같은 것으로 취급하면 안된다.
+
+
+
+
 <!-- 
 r value는 메모리 공간 자체가 원래는 없다.
 
