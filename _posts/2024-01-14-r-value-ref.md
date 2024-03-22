@@ -55,10 +55,10 @@ lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 �
 ## R-Value Reference
 
 r value는 이름이 없는 값 그 자체라고 이야기했었다. <br>
-이는 값에 대한 주소 공간에 없단 말과 같고 코드에 상수처럼 존재한다.<br>
+이는 값에 대한 주소 공간에 없단 말과 같고 코드에 상수처럼 박힌 채로 존재한다. <br>
 
-또한, reference는 값에 대한 주소 공간을 가리킨다고 이야기했었다. <br>
-그렇다면 r value reference는 코드에 박혀있어 주소가 없는 r value를 reference 할 수 있을까?
+한편, reference는 값에 대한 주소 공간을 가리킨다. <br>
+그런데 r value reference는 코드에 박혀있어 주소가 없는 r value를 reference 할 수 있을까?
 
 컴파일러는 내부적으로 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
 
