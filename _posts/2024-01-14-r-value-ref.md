@@ -60,11 +60,9 @@ r value는 이름이 없는 값 그 자체라고 이야기했었다. <br>
 한편, reference는 값에 대한 주소 공간을 가리킨다. <br>
 그런데 r value reference는 코드에 박혀있어 주소가 없는 r value를 reference 할 수 있을까?
 
-컴파일러는 내부에서 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
+컴파일러가 내부에서 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
 
-이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아닌지 혼란스러워질 수 있다.
-
-중요한 건 기계어로 표현되는 방식이 같아도 c++ 언어 레벨에선 l value와 r value는 분명히 개념적으로 다르다. 이를 기계어 레벨로 같은 것으로 취급하면 안 된다.
+이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아닌지 혼란스러워질 수 있는데, 중요한 건 기계어로 표현되는 방식이 같아도 c++ 언어 레벨에선 l value와 r value는 분명히 개념적으로 다르다. 단지, lvalue reference와 Pointer가 그랬듯 결과물인 기계어는 같아도 컴파일러는 둘을 명확히 구분하여 처리하고 있다.
 
 
 
