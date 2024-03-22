@@ -60,7 +60,7 @@ r value는 이름이 없는 값 그 자체라고 이야기했었다. <br>
 한편, reference는 값에 대한 주소 공간을 가리킨다. <br>
 그런데 r value reference는 코드에 박혀있어 주소가 없는 r value를 reference 할 수 있을까?
 
-컴파일러는 내부적으로 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
+컴파일러는 내부에서 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
 
 이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아니냐고 혼란스러워질 수 있다.
 
