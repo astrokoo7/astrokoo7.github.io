@@ -94,7 +94,7 @@ int main() {
     return 0;
 }
 ```
-또한, 이런식으로 함수 반환값을 l value reference로 우회하면 반환 값을 l value에 쓸 수 있다.
+또한, 이런 식으로 함수 반환값을 l value reference로 만들어 우회하면 반환값 l value에 쓸 수 있다.
 
 
 
