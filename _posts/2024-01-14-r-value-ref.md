@@ -56,6 +56,31 @@ Callee의 반환 값을 받기 위한 공간을 Caller의 스택에 마련하고
 
 Callee는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간을 미리 확보하고 Caller를 호출하는데, 이 스택의 값이 임시 값인 r value이다.
 
+```
+int GetValue() {
+    return 10;
+}
+
+int main() {
+    GetValue() = 20;
+    return 0;
+}
+```
+예를들어, 위와 같이 컴파일하면 
+
+```
+error: lvalue required as left operand of assignment
+add() = 10;
+```
+이런 에러를 컴파일러가 출력하는데, 이는 왼쪽 값이 l value가 아니란 오류이다. 
+
+```
+    int a = 20;
+    10 = a;
+```
+앞서 이야기한 코드에 박혀있는 r value에 l value를 입력할 때와 같은 에러다.
+
+
 
 ## L-Value Reference
 
