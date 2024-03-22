@@ -54,7 +54,7 @@ l value는 프로그램을 짜면 당연시되어 사용하는 부분이다. 그
 Callee의 반환 값을 받기 위한 공간을 Caller의 스택에 마련하고, <br>
 함수 처리 후 Caller의 실행 스택으로 돌아가기 위해 현재 Caller 스택 주소를 저장한 뒤, <br>함수 인자를 Callee 스택에 쌓고 함수를 실행한다.
 
-Callee는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간을 미리 확보하고 Caller를 호출하는데, 이 스택의 값이 임시 값인 r value이다.
+Caller는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간을 미리 확보하고 Callee를 호출하는데, 이 스택의 값이 임시 값인 r value이다.
 
 ```
 int GetValue() {
@@ -121,7 +121,8 @@ int& b = a; // l value reference
 int&& c = 10; // r value reference는 && 표기법을 사용한다.
 ```
 
-<!-- 함수 반환 값의 경우, r value reference로 지정하면 r value를 l value로 복사하는 비용 없이 r value를 다음과 같이 재사용할 수 있다.  
+<!--
+ 함수 반환 값의 경우, r value reference로 지정하면 r value를 l value로 복사하는 비용 없이 r value를 다음과 같이 재사용할 수 있다.  
 
 ```
 int add(int a, int b) {
