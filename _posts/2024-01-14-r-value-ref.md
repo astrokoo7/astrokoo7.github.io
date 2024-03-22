@@ -33,6 +33,13 @@ int main() {
 l value 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 
 따라서 이름이 있고 이름으로 의해 변수를 읽고 쓸 수 있는 x, y, z가 l value이다.
 
+```
+    z = x + y;
+```
+이런 식으로 l value는 이름 x와 y를 통해 값을 읽고 z에 쓸 수 있다.
+
+
+
 
 
 ## L-Value Reference
