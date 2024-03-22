@@ -75,11 +75,11 @@ add() = 10;
 이런 에러를 컴파일러가 출력하는데, 이는 왼쪽 값이 l value가 아니란 오류이다. 
 
 ```
-    int a = 20;
-    10 = a;
+int a = 20;
+10 = a;
 
-    error: lvalue required as left operand of assignment
-    10 = a;
+error: lvalue required as left operand of assignment
+10 = a;
 ```
 앞서 이야기한 코드에 박혀있는 r value에 l value를 입력할 때와 같은 에러로 r value라고 유추할 수 있다.
 
