@@ -101,6 +101,7 @@ int main() {
 > <font size="2"> 
 > 심지어, 함수 반환 값은 Literal r value와 다르게 코드상 노출되지도 않는다.
 > </font>
+
 ```
 int x = 5;
 int y = 10;
@@ -109,7 +110,7 @@ int z = add(x, y);
 
 따라서, 위 명령어의 x,y,z는 l value이고 5, 10 그리고 함수 add(x, y)의 반환 값은 r value가 된다.
 
-
+## Const L value Reference
 
 
 <!-- 
