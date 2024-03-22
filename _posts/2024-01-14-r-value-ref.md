@@ -96,14 +96,15 @@ int main() {
 ```
 또한, 이런 식으로 함수 반환 값을 l value reference로 만들어 우회하면 반환 값 l value에 쓸 수 있다.
 
-정리하면, 함수 반환 값도 이름이 없어 재사용이 불가능한 임시 변수인 r value다.
+정리하면, 함수 반환 값도 이름이 없어 재사용이 불가능한 임시 변수인 r value이고
 
 ```
 int x = 5;
 int y = 10;
 int z = add(x, y);
 ```
-5와 10 그리고 add(x, y) 함수의 반환 값은 이름이 없어 재사용이 불가능한 r value다.
+
+위 명령어의 x,y,z는 l value이고 5, 10 그리고 함수 add(x, y)의 반환 값은 r vale이다.
 
 
 
