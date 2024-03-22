@@ -81,7 +81,7 @@ int a = 20;
 error: lvalue required as left operand of assignment
 10 = a;
 ```
-앞서 이야기한 코드에 박혀있는 r value에 l value를 입력할 때와 같은 에러로 r value라고 유추할 수 있다.
+앞서 이야기한 코드에 박혀있는 r value에 l value를 입력할 때와 같은 에러로 함수 반환 값이 r value라고 유추할 수 있다.
 
 ```
 int& GetValue() {
