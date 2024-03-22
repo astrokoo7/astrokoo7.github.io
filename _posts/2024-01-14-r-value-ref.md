@@ -44,8 +44,7 @@ hint는 = 인 할당 연산자에서 찾을 수 있다. <br>
 
 rvalue reference를 살펴보기 전에 lvalue reference를 먼저 짚고 넘어가자.
 
-lvalue는 값을 가리키고 lvalue reference는 값의 주소를 가리킨다.
-
+lvalue는 값을 가리키고 lvalue reference는 값의 주소를 가리킨다.<br> 
 또한, [앞선 글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 lvalue  reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
 
 lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 장점인 stack frame을 벗어나 scope에 구애받지 않는 값 참조가 가능하다.
