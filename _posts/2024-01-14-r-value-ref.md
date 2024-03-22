@@ -98,18 +98,21 @@ int main() {
 
 
 
-## L-Value Reference
 
-<!-- lvalue는 값을 가리키고 lvalue reference는 값의 주소를 가리킨다.<br> 
+
+<!-- 
+
+## L-Value Reference
+lvalue는 값을 가리키고 lvalue reference는 값의 주소를 가리킨다.<br> 
 또한, [앞선 글](../../../../language/2023/05/27/c++-ref-pointer.html)에서 lvalue  reference와 pointer는 기계어 수준에선 동일하게 동작한다고 이야기했었다.
 
 lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 장점인 stack frame을 벗어나 scope에 구애받지 않는 값 참조가 가능하다.
 
-컴파일러는 함수 호출 전 함수 인자를 stack frame에 저장한 뒤 함수를 호출하는데 이때 인자 타입이 lvalue reference이면 stack frame에 값을 가리키는 메모리 주소만 할당한다. 반면 인자 타입이 lvalue 라면 stack frame에 값을 복사한다. -->
+컴파일러는 함수 호출 전 함수 인자를 stack frame에 저장한 뒤 함수를 호출하는데 이때 인자 타입이 lvalue reference이면 stack frame에 값을 가리키는 메모리 주소만 할당한다. 반면 인자 타입이 lvalue 라면 stack frame에 값을 복사한다. 
 
 ## R-Value Reference
 
-<!-- r value는 이름이 없는 값 그 자체라고 이야기했었다. <br>
+ r value는 이름이 없는 값 그 자체라고 이야기했었다. <br>
 이는 값에 대한 주소 공간에 없단 말과 같고 코드에 상수처럼 박힌 채로 존재한다. <br>
 
 한편, reference는 값에 대한 주소 공간을 가리킨다. <br>
@@ -118,23 +121,22 @@ lvalue reference는 pointer의 주소 연산 같은 취약점을 개선하고 �
 컴파일러가 내부에서 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
 
 이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아닌지 혼란스러워질 수 있는데, 중요한 건 기계어로 표현되는 방식이 같아도 c++ 언어 레벨에선 l value와 r value는 분명히 개념적으로 다르다. 단지, lvalue reference와 Pointer가 그랬듯 결과물인 기계어는 같아도 컴파일러는 둘을 명확히 구분하여 처리하고 있다.
- -->
 
 
 
-<!-- 
+
 r value는 메모리 공간 자체가 원래는 없다.
--->
 
 
 ## Identifying L value and R value using Reference
 
-<!-- ```
 int main() {
     std::string firstName = "foo";
     std::string secondName = "bar";
     std::string fullName = firstName + secondName;
 }
-``` -->
+
 
 ## Const L value Reference
+
+-->
