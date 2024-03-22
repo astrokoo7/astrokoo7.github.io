@@ -66,7 +66,7 @@ int main() {
     return 0;
 }
 ```
-예를들어, 위와 같이 컴파일하면 
+예를 들어, 위와 같이 컴파일하면 
 
 ```
 error: lvalue required as left operand of assignment
