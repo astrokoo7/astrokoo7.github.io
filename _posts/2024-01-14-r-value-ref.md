@@ -99,9 +99,9 @@ int main() {
 정리하면, 함수 반환 값도 이름이 없어 재사용이 불가능한 임시 변수인 r value다.
 
 ```
-    int x = 5;
-    int y = 10;
-    int z = add(x, y);
+int x = 5;
+int y = 10;
+int z = add(x, y);
 ```
 5와 10 그리고 add(x, y) 함수의 반환 값은 이름이 없어 재사용이 불가능한 r value다.
 
