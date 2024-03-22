@@ -81,7 +81,20 @@ add() = 10;
     error: lvalue required as left operand of assignment
     10 = a;
 ```
-앞서 이야기한 코드에 박혀있는 r value에 l value를 입력할 때와 같은 에러다.
+앞서 이야기한 코드에 박혀있는 r value에 l value를 입력할 때와 같은 에러로 r value라고 유추할 수 있다.
+
+```
+int& GetValue() {
+    static int value = 10;
+    return value;
+}
+
+int main() {
+    GetValue() = 20;
+    return 0;
+}
+```
+이런식으로 함수 반환값을 r value reference로 우회하면 컴파일 없이 r value에 값을 쓸 수 있다.
 
 
 
