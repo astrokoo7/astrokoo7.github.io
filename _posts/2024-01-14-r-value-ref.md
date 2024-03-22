@@ -24,14 +24,14 @@ int add(int a, int b) {
 int main() {
     int x = 5;
     int y = 10;
-    int additionResult = add(x, y);
+    int z = add(x, y);
     return 0;
 }
 ```
 
 먼저 위 코드에서 이름이 있는 l value를 찾아보자. <br> 
 l value 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 
-따라서 이름이 있고 이름으로 의해 변수를 읽고 쓸 수 있는 x, y, additionResult가 l value이다.
+따라서 이름이 있고 이름으로 의해 변수를 읽고 쓸 수 있는 x, y, z가 l value이다.
 
 
 
