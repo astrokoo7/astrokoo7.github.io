@@ -110,6 +110,35 @@ int z = add(x, y);
 
 따라서, 위 명령어의 x,y,z는 l value이고 5, 10 그리고 함수 add(x, y)의 반환 값은 r value가 된다.
 
+## R value reference
+
+[l value reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 r value reference도 r value에 대한 reference다.
+
+```
+int a = 10;
+int& b = a; // l value reference
+
+int&& c = 10; // r value reference는 && 표기법을 사용한다.
+```
+
+함수 반환 값의 경우, r value reference로 지정하면 r value를 l value로 복사하는 비용 없이 r value를 다음과 같이 재사용할 수 있다.  
+
+```
+int add(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int x = 5;
+    int y = 10;
+    int&& z = add(x, y);
+    return 0;
+}
+```
+
+
+
+
 ## Const L value Reference
 
 
