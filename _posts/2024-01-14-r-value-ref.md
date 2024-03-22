@@ -62,7 +62,7 @@ r value는 이름이 없는 값 그 자체라고 이야기했었다. <br>
 
 컴파일러는 내부에서 임시로 l value를 만들고 그 l value의 주소를 r value reference가 가리키게 만든다.
 
-이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아니냐고 혼란스러워질 수 있다.
+이쯤 되면 l value reference와 r value reference가 그럼 같은 것 아닌지 혼란스러워질 수 있다.
 
 중요한 건 기계어로 표현되는 방식이 같아도 c++ 언어 레벨에선 l value와 r value는 분명이 개념적으로 다르다. 이를 기계어 레벨로 같은 것으로 취급하면 안된다.
 
