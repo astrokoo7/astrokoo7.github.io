@@ -104,7 +104,7 @@ int y = 10;
 int z = add(x, y);
 ```
 
-따라서, 위 명령어의 x,y,z는 l value이고 5, 10 그리고 함수 add(x, y)의 반환 값은 r vale이 된다.
+따라서, 위 명령어의 x,y,z는 l value이고 5, 10 그리고 함수 add(x, y)의 반환 값은 r value가 된다.
 
 
 
