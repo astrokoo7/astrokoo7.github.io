@@ -121,7 +121,7 @@ int& b = a; // l value reference
 int&& c = 10; // r value reference는 && 표기법을 사용한다.
 ```
 
-함수 반환 값의 경우, r value reference로 지정하면 r value를 l value로 복사하는 비용 없이 r value를 다음과 같이 재사용할 수 있다.  
+<!-- 함수 반환 값의 경우, r value reference로 지정하면 r value를 l value로 복사하는 비용 없이 r value를 다음과 같이 재사용할 수 있다.  
 
 ```
 int add(int a, int b) {
@@ -134,7 +134,7 @@ int main() {
     int&& z = add(x, y);
     return 0;
 }
-```
+``` -->
 
 
 ## Const L value Reference
