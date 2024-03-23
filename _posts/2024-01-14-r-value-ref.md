@@ -109,6 +109,13 @@ int main() {
 ```
 참고로, 이런 식으로 함수 반환 값을 l value reference로 만들어 우회하면 함수 반환 값(l value)에도 값을 쓸 수 있긴 하다.
 
+정리하면, 함수의 반환 값 예시처럼 r value는 컴파일러가 특정 상황에 필요에 의해 생성하는 임시적인 변수이다. 
+
+> <font size="2"> 
+> 임시 변수는 C++11의 이동 시맨틱인 std::move가 소개되면서 임시 변수의 값 복사 대신 소유권을 넘길 수 있게 되었다.
+> </font>
+
+
 ## R value reference
 
 [l value reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 r value reference도 r value에 대한 reference다.
