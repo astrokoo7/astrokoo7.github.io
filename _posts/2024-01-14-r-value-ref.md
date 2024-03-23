@@ -55,8 +55,13 @@ Callee의 반환 값을 받기 위한 공간을 Caller의 스택에 마련하고
 함수 처리 후 Caller의 실행 스택으로 돌아가기 위해 현재 Caller 스택 주소를 저장한 뒤, <br>함수 인자를 Callee 스택에 쌓고 함수를 실행한다.
 
 
-<!-- 
-Caller는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간을 미리 확보하고 Callee를 호출하는데, 이 스택의 값이 임시 값인 r value이다.
+Caller는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간을 미리 확보하고 Callee를 호출하는데, Callee는 반환 값을 임시 변수로 생성한 뒤 Caller가 반환 값을 받기 위해 확보한 공간으로 복사하여 함수 결과를 전달한다.
+
+> <font size="3"> 
+> 위 예제는 컴파일러가 RVO(return value optimization)를 하여 임시 변수를 생성하지 않지만,  <br>
+> r value를 설명하기 위해 RVO를 안 했다는 가정으로 썼다.
+> </font>
+
 
 ```
 int GetValue() {
@@ -68,7 +73,7 @@ int main() {
     return 0;
 }
 ```
-예를 들어, 위와 같이 컴파일하면 
+예를 들어, 위와 같이 작성하고 컴파일하면 
 
 ```
 error: lvalue required as left operand of assignment
@@ -117,23 +122,8 @@ int a = 10;
 int& b = a; // l value reference
 
 int&& c = 10; // r value reference는 && 표기법을 사용한다.
-``` -->
+``` 
 
-<!--
- 함수 반환 값의 경우, r value reference로 지정하면 r value를 l value로 복사하는 비용 없이 r value를 다음과 같이 재사용할 수 있다.  
-
-```
-int add(int a, int b) {
-    return a + b;
-}
-
-int main() {
-    int x = 5;
-    int y = 10;
-    int&& z = add(x, y);
-    return 0;
-}
-``` -->
 
 
 ## Const L value Reference
