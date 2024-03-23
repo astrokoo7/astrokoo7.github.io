@@ -107,7 +107,7 @@ int main() {
     return 0;
 }
 ```
-참고로, 이런 식으로 함수 반환 값을 l value reference로 만들어 우회하면 반환 값 l value에도 값을 쓸 수 있긴 하다.
+참고로, 이런 식으로 함수 반환 값을 l value reference로 만들어 우회하면 함수 반환 값(l value)에도 값을 쓸 수 있긴 하다.
 
 정리하면, 함수 반환 값도 이름이 없어 재사용이 불가능한 임시 변수인 r value이고
 
