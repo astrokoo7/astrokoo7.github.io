@@ -8,8 +8,8 @@ categories: c++
 
 <!-- begin_excerpt -->
 
-l value 는 프로그래머가 이름을 지을 수 있는 반면 <br>
-r value 는 r value reference 개념이 나오기 전엔 <br> 
+lvalue 는 프로그래머가 이름을 지을 수 있는 반면 <br>
+rvalue 는 rvalue reference 개념이 나오기 전엔 <br> 
 프로그래머가 이름을 지어 사용할 수 없었다.<br> 
 
 <!-- end_excerpt -->
@@ -29,25 +29,25 @@ int main() {
 }
 ```
 
-먼저 위 코드에서 이름이 있는 l value를 찾아보자. <br> 
-l value 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 
-따라서 이름이 있어 이름으로 변수를 읽고 쓸 수 있는 x, y, z, a, b가 l value이다.
+먼저 위 코드에서 이름이 있는 lvalue를 찾아보자. <br> 
+lvalue 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 
+따라서 이름이 있어 이름으로 변수를 읽고 쓸 수 있는 x, y, z, a, b가 lvalue이다.
 
 ```
 z = x + y;
 ```
-위와 같이 l value는 이름 x와 y를 통해 값을 읽고 이름 z에 값을 쓸 수 있다.
-l value는 프로그램을 짜면 당연시되어 사용하는 부분이다. 그렇다면 처음 코드에서 r value는 어떤 것일까?
+위와 같이 lvalue는 이름 x와 y를 통해 값을 읽고 이름 z에 값을 쓸 수 있다.
+lvalue는 프로그램을 짜면 당연시되어 사용하는 부분이다. 그렇다면 처음 코드에서 rvalue는 어떤 것일까?
 
 5, 10, 0 그리고 하나가 숨어있다.
 
-우선, 5와 10 그리고 0은 [코드 영역에 박혀있는 값(Literal)](https://en.wikipedia.org/wiki/Literal_(computer_programming))으로 이름이 없는 값 자체, 즉 r value다. 덧붙여, 값은 있고 이름이 없어 재사용이 불가능한 `임시 변수`이다.
+우선, 5와 10 그리고 0은 [코드 영역에 박혀있는 값(Literal)](https://en.wikipedia.org/wiki/Literal_(computer_programming))으로 이름이 없는 값 자체, 즉 rvalue다. 덧붙여, 값은 있고 이름이 없어 재사용이 불가능한 `임시 변수`이다.
 
 > <font size="2"> 
 > 코드 영역에 박혀있으니 당연히 고유의 주소도 없다.
 > </font>
 
-한편, 숨어있는 r value를 찾으려면 스택 프레임(Stack Frame)에 대한 이해가 필요하다.
+한편, 숨어있는 rvalue를 찾으려면 스택 프레임(Stack Frame)에 대한 이해가 필요하다.
 
 함수를 호출할 때,
 
@@ -59,7 +59,7 @@ Caller는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간
 
 > <font size="3"> 
 > 위 예제는 컴파일러가 RVO(return value optimization)를 하여 임시 변수를 생성하지 않지만,  <br>
-> r value를 설명하기 위해 RVO를 안 했다는 가정으로 썼다.
+> rvalue를 설명하기 위해 RVO를 안 했다는 가정으로 썼다.
 > </font>
 
 
@@ -80,10 +80,10 @@ int main() {
 error: lvalue required as left operand of assignment
 add() = 10;
 ```
-이런 에러를 컴파일러가 출력하는데, 이는 왼쪽 값이 l value가 아니란 오류이다. 
+이런 에러를 컴파일러가 출력하는데, 이는 왼쪽 값이 lvalue가 아니란 오류이다. 
 
 > <font size="2"> 
-> 컴파일러가 RVO를 하여 r value를 생성 안 하는 상황이라도 r value라고 먼저 가정하고 rule 체크하는 부분을 엿볼 수 있다.
+> 컴파일러가 RVO를 하여 rvalue를 생성 안 하는 상황이라도 rvalue라고 먼저 가정하고 rule 체크하는 부분을 엿볼 수 있다.
 > </font>
 
 ```
@@ -93,7 +93,7 @@ int a = 20;
 error: lvalue required as left operand of assignment
 10 = a;
 ```
-r value(Literal)에 값을 할당하려고 하면 함수 반환 값(r value)에 값을 할당할 때와 같은 에러를 출력한다.
+rvalue(Literal)에 값을 할당하려고 하면 함수 반환 값(rvalue)에 값을 할당할 때와 같은 에러를 출력한다.
 
 
 ```
@@ -107,9 +107,9 @@ int main() {
     return 0;
 }
 ```
-참고로, 이런 식으로 함수 반환 값을 l value reference로 만들어 우회하면 함수 반환 값(l value)에도 값을 쓸 수 있긴 하다.
+참고로, 이런 식으로 함수 반환 값을 lvalue reference로 만들어 우회하면 함수 반환 값(lvalue)에도 값을 쓸 수 있긴 하다.
 
-정리하면, 함수의 반환 값 예시처럼 r value는 컴파일러가 특정 상황에 필요에 의해 생성하는 임시적인 변수 또는 Literal을 통칭한다. 
+정리하면, 함수의 반환 값 예시처럼 rvalue는 컴파일러가 특정 상황에 필요에 의해 생성하는 임시적인 변수 또는 Literal을 통칭한다. 
 
 > <font size="2"> 
 > 임시 변수는 C++11의 이동 시맨틱인 std::move가 소개되면서 임시 변수의 값 복사 대신 소유권을 넘길 수 있게 되었다.
@@ -118,13 +118,13 @@ int main() {
 
 ## R value reference
 
-[l value reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 r value reference도 r value에 대한 reference다.
+[lvalue reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 rvalue reference도 rvalue에 대한 reference다.
 
 ```
 int a = 10;
-int& b = a; // l value reference
+int& b = a; // lvalue reference
 
-int&& c = 10; // r value reference는 && 표기법을 사용한다.
+int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 ``` 
 
 
