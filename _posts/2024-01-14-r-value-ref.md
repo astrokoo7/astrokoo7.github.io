@@ -109,16 +109,6 @@ int main() {
 ```
 참고로, 이런 식으로 함수 반환 값을 l value reference로 만들어 우회하면 함수 반환 값(l value)에도 값을 쓸 수 있긴 하다.
 
-정리하면, 함수 반환 값도 이름이 없어 재사용이 불가능한 임시 변수인 r value이고
-
-```
-int x = 5;
-int y = 10;
-int z = add(x, y);
-```
-
-따라서, 위 명령어의 x,y,z는 l value이고 5, 10 그리고 함수 add(x, y)의 반환 값은 r value가 된다.
-
 ## R value reference
 
 [l value reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 r value reference도 r value에 대한 reference다.
