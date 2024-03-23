@@ -65,7 +65,8 @@ Caller는 반환 값을 돌려받기 위해 자신의 스택에 메모리 공간
 
 ```
 int GetValue() {
-    return 10;
+    int a = 10;
+    return a;
 }
 
 int main() {
