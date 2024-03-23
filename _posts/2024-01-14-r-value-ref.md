@@ -41,7 +41,7 @@ l value는 프로그램을 짜면 당연시되어 사용하는 부분이다. 그
 
 5, 10, 0 그리고 하나가 숨어있다.
 
-우선, 5와 10 그리고 0은 [코드 영역에 박혀있는 값(Literal)](https://en.wikipedia.org/wiki/Literal_(computer_programming))으로 이름이 없는 값 자체, 즉 r value다. 덧붙여, 값은 있고 이름이 없어 재사용이 불가능한 임시 변수이다.
+우선, 5와 10 그리고 0은 [코드 영역에 박혀있는 값(Literal)](https://en.wikipedia.org/wiki/Literal_(computer_programming))으로 이름이 없는 값 자체, 즉 r value다. 덧붙여, 값은 있고 이름이 없어 재사용이 불가능한 `임시 변수`이다.
 
 > <font size="2"> 
 > 코드 영역에 박혀있으니 당연히 고유의 주소도 없다.
