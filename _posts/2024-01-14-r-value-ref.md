@@ -96,7 +96,7 @@ int a = 20;
 error: lvalue required as left operand of assignment
 10 = a;
 ```
-rvalue(Literal)에 값을 할당하려고 하면 함수 반환 값(rvalue)에 값을 할당할 때와 같은 에러를 출력한다.
+명시적인 rvalue(Literal)에 값을 할당하려고 하면 함수 반환 값(rvalue)에 값을 할당할 때와 같은 에러를 출력한다.
 
 
 ```c++
