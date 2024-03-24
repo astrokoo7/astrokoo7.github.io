@@ -110,7 +110,7 @@ int main() {
     return 0;
 }
 ```
-참고로, 이런 식으로 함수 반환 값을 lvalue reference로 만들어 우회하면 함수 반환 값(lvalue)에도 값을 쓸 수 있긴 하다.
+참고로, 이런 식으로 함수 반환 값을 lvalue reference로 만들어 우회하면 lvalue 함수 반환 값에도 값을 쓸 수 있긴 하다.
 
 정리하면, 함수의 반환 값 예시처럼 rvalue는 컴파일러가 특정 상황에 필요에 의해 생성하는 임시적인 변수 또는 Literal을 말한다. 
 
