@@ -4,6 +4,8 @@ title: "Return Value Optimization in C++"
 categories: c++
 ---
 
+## Background
+
 ```c++
 int[] foo();
 ```
