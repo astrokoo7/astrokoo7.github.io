@@ -36,7 +36,7 @@ void foo()
 
 다시 말해, 컴파일 타임에 함수의 반환 값이 정확히 얼마의 크기인지 알려져 있어야 한다.
 
-## RVO
+## Return Value Optimization
 
 RVO는 Callee의 반환 값을 받기 위해 Caller의 스택에 반환 값의 크기만큼 할당된 공간에 값을 효율적으로 전달하는 방법에 관한 것이다.
 
