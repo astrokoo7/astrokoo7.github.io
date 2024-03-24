@@ -16,7 +16,7 @@ rvalue 는 rvalue reference 개념이 나오기 전엔 <br>
 
 이름을 지어 사용할 수 없다는 말의 의미는 무었일까?
 
-```
+```c++
 int add(int a, int b) {
     return a + b;
 }
@@ -33,7 +33,7 @@ int main() {
 lvalue 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 
 따라서 이름이 있어 이름으로 변수를 읽고 쓸 수 있는 x, y, z, a, b가 lvalue이다.
 
-```
+```c++
 z = x + y;
 ```
 위와 같이 lvalue는 이름 x와 y를 통해 값을 읽고 이름 z에 값을 쓸 수 있다.
@@ -66,7 +66,7 @@ Caller에게 함수 결과를 전달한다.
 > </font>
 
 
-```
+```c++
 int GetValue() {
     int a = 10;
     return a;
@@ -79,7 +79,7 @@ int main() {
 ```
 예를 들어, 위와 같이 작성하고 컴파일하면 
 
-```
+```c++
 error: lvalue required as left operand of assignment
 add() = 10;
 ```
@@ -89,7 +89,7 @@ add() = 10;
 > 컴파일러가 RVO를 하여 rvalue를 생성 안 하는 상황이라도 rvalue라고 먼저 가정하고 rule 체크하는 부분을 엿볼 수 있다.
 > </font>
 
-```
+```c++
 int a = 20;
 10 = a;
 
@@ -99,7 +99,7 @@ error: lvalue required as left operand of assignment
 rvalue(Literal)에 값을 할당하려고 하면 함수 반환 값(rvalue)에 값을 할당할 때와 같은 에러를 출력한다.
 
 
-```
+```c++
 int& GetValue() {
     static int value = 10;
     return value;
@@ -123,7 +123,7 @@ int main() {
 
 [lvalue reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 rvalue reference도 rvalue에 대한 reference다.
 
-```
+```c++
 int a = 10;
 int& b = a; // lvalue reference
 
