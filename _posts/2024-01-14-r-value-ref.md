@@ -54,7 +54,11 @@ lvalue는 프로그램을 짜면 흔하게 사용하는 부분이다. 그렇다�
 Callee의 반환 값을 받기 위한 공간을 Caller의 스택에 마련하고, <br>
 함수 처리 후 Caller의 실행 스택으로 돌아가기 위해 현재 Caller 스택 주소를 저장한 뒤, <br>함수 인자를 Callee 스택에 쌓고 함수를 실행한다.
 
-이때, Callee는 반환 값을 Caller에 돌려주기 위해, 반환 값에 대한 임시 변수를 생성한 뒤, Caller가 반환 값을 받기 위해 확보한 공간에 임시 변수를 복사하여, Caller에게 함수 결과를 전달한다.
+이때, <br>
+Callee는 반환 값을 Caller에 돌려주기 위해, <br>
+반환 값에 대한 임시 변수를 생성한 뒤, <br>
+Caller가 반환 값을 받기 위해 확보한 공간에 임시 변수를 복사하여, <br>
+Caller에게 함수 결과를 전달한다.
 
 > <font size="3"> 
 > 위 예제는 컴파일러가 RVO(return value optimization)를 하여 임시 변수를 생성하지 않지만,  <br>
@@ -115,7 +119,7 @@ int main() {
 > </font>
 
 
-## R value reference
+## RValue Reference
 
 [lvalue reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 rvalue reference도 rvalue에 대한 reference다.
 
@@ -128,6 +132,6 @@ int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 
 
 
-## Const L value Reference
+## Const LValue Reference
 
 
