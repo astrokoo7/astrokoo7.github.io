@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "R-Value Reference"
+title: "RValue Reference"
 categories: c++
 ---
 
-## Overview
+## RValue
 
 <!-- begin_excerpt -->
 
