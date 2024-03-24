@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "RValue Reference"
+title: "Rvalue Reference"
 categories: c++
 ---
 
-## RValue
+## Rvalue
 
 <!-- begin_excerpt -->
 
@@ -119,7 +119,7 @@ int main() {
 > </font>
 
 
-## RValue Reference
+## Rvalue Reference
 
 [lvalue reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 rvalue reference도 rvalue에 대한 reference다.
 
@@ -132,6 +132,6 @@ int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 
 
 
-## Const LValue Reference
+## Const Lvalue Reference
 
 
