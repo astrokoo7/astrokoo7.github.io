@@ -94,7 +94,6 @@ Widget g()
     else
         return b;
 }
-
 ```
 컴파일 타임에 반환 값을 결정 못 할 때 `Copy elision`는 작동 안 한다.
 
