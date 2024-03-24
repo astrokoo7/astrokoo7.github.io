@@ -39,5 +39,21 @@ void foo()
 
 RVO는 컴파일러가 컴파일 타임에 반환 값의 크기를, 앞에서 이야기했듯, 미리 알 수 있기 때문에 코드의 맥락에 따라 자동으로 최적화 해주는 방식을 말한다.
 
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/RVO1.png" width="100%">
+  <figcaption></figcaption>
+</div>
+</figure>
+
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/RVO2.png" width="100%">
+  <figcaption></figcaption>
+</div>
+</figure>
+
+
+
 
 ...
