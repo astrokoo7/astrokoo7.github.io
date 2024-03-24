@@ -83,6 +83,4 @@ void g()
 </div>
 </figure>
 
-
-
 ...
