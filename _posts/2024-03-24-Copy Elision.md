@@ -38,7 +38,7 @@ void foo()
 
 ## Return Value Optimization
 
-RVO는 Callee의 반환 값을 받기 위해 Caller의 반환 값의 크기만큼 할당된 스택에 값을 효율적으로 전달하는 방법에 관한 것이다.
+RVO는 Caller의 반환 값의 크기만큼 할당된 스택에 효율적으로 Callee의 반환 값을 받는 방법에 관한 것이다.
 
 구체적으로 컴파일러는 아래 1, 2, 3의 우선순위를 가지고 그중 하나를 선택한다.
 
