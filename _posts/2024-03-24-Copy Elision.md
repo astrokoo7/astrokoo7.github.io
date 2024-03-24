@@ -4,17 +4,16 @@ title: "Return Value Optimization in C++"
 categories: c++
 ---
 
-```
+```c++
 int[] foo();
 ```
 
 <!-- begin_excerpt -->
 c++에서 함수 반환 값 타입으로 `int[]` 같은 배열 타입은 지정할 수 없다. 
 
-왜 그럴까?
 <!-- end_excerpt -->
 
-```
+```c++
 void foo()
 {
     int i[];
@@ -38,6 +37,35 @@ void foo()
 ## RVO
 
 RVO는 컴파일러가 컴파일 타임에 반환 값의 크기를, 앞에서 이야기했듯, 미리 알 수 있기 때문에 코드의 맥락에 따라 자동으로 최적화 해주는 방식을 말한다.
+
+구체적으로 컴파일러는 아래 1, 2, 3의 우선순위를 가지고 그중 하나를 선택한다.
+
+1. Copy elision
+2. Implicit move
+3. Traditional copy
+
+> <font size="2"> 
+> 컴파일러는 1,2번 둘 다 할 수 없으면 3번 복사를 선택한다.
+> </font>
+
+## Copy elision
+
+```c++
+using namespace std;
+
+string f()
+{
+    string a = "A";
+    int b = 23;
+    ...
+    return a;
+}
+
+void g()
+{
+    string x = f();
+}
+```
 
 <figure>
 <div style="text-align:center;">
