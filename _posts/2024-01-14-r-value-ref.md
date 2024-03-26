@@ -125,9 +125,9 @@ int main() {
 
 ```c++
 int a = 10;
-int& b = a; // lvalue reference
+int& b = a;   <-- lvalue reference
 
-int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
+int&& c = 10; <-- rvalue reference는 && 표기법을 사용한다.
 ``` 
 
 rvalue reference는 특이한 점이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br>
@@ -142,8 +142,8 @@ void foo(int& a) {}
 void bar()
 {
     int a = 10;
-    foo(a);      << lvalue를 lvalue reference에 할당해서 문제없다. 
-    foo(10);     << rvalue를 lvalue reference에 할당하려 해서 컴파일 오류나 발생한다.
+    foo(a);      <-- lvalue를 lvalue reference에 할당해서 문제없다. 
+    foo(10);     <-- rvalue를 lvalue reference에 할당하려 해서 컴파일 오류나 발생한다.
 }
 ```
 
@@ -153,10 +153,9 @@ void foo(int&& a) {}
 void bar()
 {
     int a = 10;
-    foo(a);      << lvalue를 rvalue reference에 할당해서 해서 컴파일 오류나 발생한다.
-    foo(10);     << rvalue를 rvalue reference에 할당해서 문제없다. 
+    foo(a);      <-- lvalue를 rvalue reference에 할당해서 해서 컴파일 오류나 발생한다.
+    foo(10);     <-- rvalue를 rvalue reference에 할당해서 문제없다. 
 }
-
 ```
 
 이때, rvalue reference는 위 조건에 따라 lvalue reference에 대입하면 문제가 없고 rvalue reference에 대입하면 컴파일 오류가 발생한다.
@@ -167,7 +166,7 @@ void foo(int& a) {}
 void bar()
 {
     int&& a = 10;
-    foo(a);     << rvalue reference는 lvalue라서 컴파일 오류가 발생 안 한다.
+    foo(a);     <-- rvalue reference는 lvalue라서 컴파일 오류가 발생 안 한다.
 }
 ```
 
@@ -177,7 +176,7 @@ void foo(int&& a) {}
 void bar()
 {
     int&& a = 10;
-    foo(a);     << rvalue reference를 rvalue reference에 대입하면 오류가 발생한다.
+    foo(a);     <-- rvalue reference를 rvalue reference에 대입하면 오류가 발생한다.
 }
 ```
 
