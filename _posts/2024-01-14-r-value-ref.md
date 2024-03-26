@@ -125,9 +125,9 @@ int main() {
 
 ```
 int a = 10;
-int& b = a;   <-- lvalue reference
+int& b = a;   // lvalue reference
 
-int&& c = 10; <-- rvalue reference는 && 표기법을 사용한다.
+int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 ``` 
 
 rvalue reference는 특이한 점이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br>
