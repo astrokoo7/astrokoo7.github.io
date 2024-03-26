@@ -130,6 +130,57 @@ int& b = a; // lvalue reference
 int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 ``` 
 
+rvalue reference는 특이한 점이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br>
+이를 확인할 수 있는 직관적인 방법이 있는데 그 방법은 다음과 같다.
+
+1. lvalue reference는 lvalue만 reference 할 수 있다.<br>
+2. rvalue reference는 rvalue만 reference 할 수 있다.
+
+```c++
+void foo(int& a) {}
+
+void bar()
+{
+    int a = 10;
+    foo(a);      // lvalue를 lvalue reference에 할당해서 문제없다. 
+    foo(10);     // rvalue를 lvalue reference에 할당하려 해서 컴파일 오류나 발생한다.
+}
+```
+
+```c++
+void foo(int&& a) {}
+
+void bar()
+{
+    int a = 10;
+    foo(a);      // lvalue를 rvalue reference에 할당해서 해서 컴파일 오류나 발생한다.
+    foo(10);     // rvalue를 rvalue reference에 할당해서 문제없다. 
+}
+
+```
+
+이때, rvalue reference는 위 조건에 따라 lvalue reference에 대입하면 문제가 없고 rvalue reference에 대입하면 컴파일 오류가 발생한다.
+
+```c++
+void foo(int& a) {}
+
+void bar()
+{
+    int&& a = 10;
+    foo(a);     // rvalue reference는 lvalue라서 컴파일 오류가 발생 안 한다.
+}
+```
+
+```c++
+void foo(int&& a) {}
+
+void bar()
+{
+    int&& a = 10;
+    foo(a);     // rvalue reference를 rvalue reference에 대입하면 오류가 발생한다.
+}
+```
+
 
 
 ## Const Lvalue Reference
