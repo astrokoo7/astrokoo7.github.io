@@ -132,6 +132,7 @@ string f()
 {
     std::string a = "A";
     gp = &a;  // 반환 값의 로컬 변수 주소를 글로벌 변수에 저장해 둔다.
+    return a;
 }
 
 int main()
