@@ -111,7 +111,7 @@ void g()
 </div>
 </figure>
 
-```
+```c++
 Fruit apples_to_apples(int i, Fruit x, int j)
 {
     ...
