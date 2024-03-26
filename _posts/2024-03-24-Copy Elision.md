@@ -80,7 +80,7 @@ RVO는 Caller의 스택 중 Callee의 반환 값을 받기 위해 반환 값의 
 
 ## Copy elision
 
-```
+```c++
 using namespace std;
 
 string f()
@@ -100,20 +100,17 @@ void g()
 <figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/RVO1.png" width="100%">
-  <figcaption></figcaption>
+  <figcaption>copy elision이 아닐 땐, Callee의 반환 값 로컬 변수 a를 Caller의 로컬 변수 x로 복사한다.</figcaption>
 </div>
 </figure>
-
-copy elision이 아닐 땐, Callee의 반환 값 로컬 변수 a를 Caller의 로컬 변수 x로 복사한다.
 
 <figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/RVO2.png" width="100%">
-  <figcaption></figcaption>
+  <figcaption>copy elision 일 땐, Callee의 반환 값 로컬 변수 a를 Caller의 로컬 변수 x의 저장 공간에 직접 썼다.</figcaption>
 </div>
 </figure>
 
-copy elision 일 땐, Callee의 반환 값 로컬 변수 a를 Caller의 로컬 변수 x의 저장 공간에 직접 썼다.
 
 ## when can't we elide?
 
