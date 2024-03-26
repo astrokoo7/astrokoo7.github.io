@@ -111,6 +111,8 @@ void g()
 </div>
 </figure>
 
+## when can't we elide?
+
 ```c++
 Fruit apples_to_apples(int i, Fruit x, int j)
 {
@@ -118,7 +120,28 @@ Fruit apples_to_apples(int i, Fruit x, int j)
     return x;
 }
 ```
-위와 같이 x가 어디서 생성되어 왔는지 알 수 없을 때, Caller의 반환 값 스택에 Callee의 반환 값을 바로 쓸 수 없어 `Copy elision`는 작동하지 않는다. x와 Caller가 받을 반환 값은 공유할 수 없는 자원이고 서로 다른 life cycle을 가지기 때문이다.
+위와 같이 x가 어디서 생성되어 왔는지 알 수 없을 때, Caller의 반환 값 스택에 Callee의 반환 값을 바로 쓸 수 없어 Copy elision은 작동하지 않는다. x와 Caller가 받을 반환 값은 공유할 수 없는 자원이고 서로 다른 life cycle을 가지기 때문이다.
 
+
+## Copy elision is obserable
+
+```
+string* gp;
+
+string f()
+{
+    std::string a = "A";
+    gp = &a;  // 반환 값의 로컬 변수 주소를 글로벌 변수에 저장해 둔다.
+}
+
+int main()
+{
+    std::string x = f();
+
+    // Caller의 로컬 변수 x의 주소와 Callee의 반환 값이
+    // Copy elision이 되어 주소가 같다.
+    assert(&x == gp); 
+}
+```
 
 ...
