@@ -39,23 +39,23 @@ void foo()
 ```c++
 struct Foo
 {
-	char a[10];
+    char a[10];
 };
 
 struct Bar : Foo
 {
-	char a[10];
+    char a[10];
 };
 
 Foo hello()
 {
-	Bar b = Bar();
-	return b;
+    Bar b = Bar();
+    return b;
 }
 
 int main()
 {
-	Foo foo = hello();
+    Foo foo = hello();
 }
 ```
 참고로, 위 코드는 에러가 안 나기 때문에 Caller가 반환 값 크기를 모를 수 있지 않냐고 반문할 수 있다. 하지만 main에서 받은 foo는 Bar type이 아니고 Bar type 중 잘린 Foo type이고 이를 [Object slicing](https://en.wikipedia.org/wiki/Object_slicing)이라고 부른다. 마찬가지로 컴파일 타임에 반환 값 크기는 정해져 있다. 
