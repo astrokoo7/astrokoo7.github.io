@@ -175,7 +175,7 @@ void foo(int&& a) {}
 void bar()
 {
     int&& a = 10;
-    foo(a);     // rvalue reference를 rvalue reference에 대입하면 오류가 발생한다.
+    foo(a);     // rvalue reference는 value라서 rvalue reference에 대입하면 오류가 발생한다.
 }
 ```
 
