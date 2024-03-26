@@ -123,7 +123,7 @@ int main() {
 
 [lvalue reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 rvalue reference도 rvalue에 대한 reference다.
 
-```c++
+```
 int a = 10;
 int& b = a;   <-- lvalue reference
 
@@ -136,7 +136,7 @@ rvalue reference는 특이한 점이 있는데 rvalue를 가리키지만 rvalue 
 1. lvalue reference는 lvalue만 reference 할 수 있다.<br>
 2. rvalue reference는 rvalue만 reference 할 수 있다.
 
-```c++
+```
 void foo(int& a) {}
 
 void bar()
@@ -147,7 +147,7 @@ void bar()
 }
 ```
 
-```c++
+```
 void foo(int&& a) {}
 
 void bar()
@@ -160,7 +160,7 @@ void bar()
 
 이때, rvalue reference는 위 조건에 따라 lvalue reference에 대입하면 문제가 없고 rvalue reference에 대입하면 컴파일 오류가 발생한다.
 
-```c++
+```
 void foo(int& a) {}
 
 void bar()
@@ -170,7 +170,7 @@ void bar()
 }
 ```
 
-```c++
+```
 void foo(int&& a) {}
 
 void bar()
