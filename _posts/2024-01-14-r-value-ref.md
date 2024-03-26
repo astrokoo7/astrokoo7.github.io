@@ -129,7 +129,7 @@ int& b = a;   // lvalue reference
 int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 ``` 
 
-rvalue reference는 특이한 점이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br>
+한편, rvalue reference는 특이한 특성이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br>
 이를 확인할 수 있는 직관적인 방법이 있는데 그 방법은 다음과 같다.
 
 1. lvalue reference는 lvalue만 reference 할 수 있다.<br>
