@@ -58,7 +58,7 @@ int main()
     Foo foo = hello();
 }
 ```
-참고로, 위 코드는 에러가 안 나기 때문에 Caller가 반환 값 크기를 모를 수 있지 않냐고 반문할 수 있다. 하지만 main에서 받은 foo는 Bar type이 아니고 Bar type 중 잘린 Foo type이고 이를 [Object slicing](https://en.wikipedia.org/wiki/Object_slicing)이라고 부른다. 마찬가지로 컴파일 타임에 반환 값 크기는 정해져 있다. 
+참고로, 위 코드는 에러가 안 나기 때문에 Caller가 반환 값 크기를 모를 수 있지 않냐고 반문할 수 있다. 하지만 main에서 받은 foo는 Bar type이 아니고 Bar type 중 잘린 Foo type이다. 이를 [Object slicing](https://en.wikipedia.org/wiki/Object_slicing)이라고 부른다. 마찬가지로 컴파일 타임에 반환 값 크기는 정해져 있다. 
 
 > <font size="2"> 
 > 함수 종료와 함께 callee의 스택이 전부 Pop 되는 걸 생각하면 이 모든 동작이 자연스럽다.
