@@ -142,7 +142,7 @@ int main()
     std::string x = f();
 
     // Caller의 로컬 변수 x의 주소와 Callee의 반환 값이
-    // Copy elision이 되어 주소가 같다.
+    // 같아 Copy elision이 된 걸 확인 할 수 있다.
     assert(&x == gp); 
 }
 ```
