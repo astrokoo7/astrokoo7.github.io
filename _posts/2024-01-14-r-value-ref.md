@@ -126,7 +126,6 @@ int main() {
 ```
 int a = 10;
 int& b = a;   // lvalue reference
-
 int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 ``` 
 
