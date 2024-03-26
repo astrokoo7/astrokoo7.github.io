@@ -36,6 +36,31 @@ void foo()
 
 다시 말해, 컴파일 타임에 함수의 반환 값이 정확히 얼마의 크기인지 알려져 있어야 한다.
 
+```c++
+struct Foo
+{
+	char a[10];
+};
+
+struct Bar : Foo
+{
+	char a[10];
+};
+
+Foo hello()
+{
+	Bar b = Bar();
+	return b;
+}
+
+int main()
+{
+	Foo foo = hello();
+}
+```
+참고로, 위 코드는 에러가 안 나기 때문에 Caller가 반환 값 크기를 모를 수 있지 않냐고 반문할 수 있다. 하지만 main에서 받은 foo는 Bar type이 아니고 잘린 Foo type이고 [Object slicing](https://en.wikipedia.org/wiki/Object_slicing)이라고 부른다. 마찬가지로 컴파일 타임에 반환 값 크기는 정해져 있다. 
+
+
 ## Return Value Optimization
 
 RVO는 Caller의 스택 중 Callee 반환 값을 받기 위해 Callee의 반환 값의 크기만큼 할당된 메모리 공간에 함수 반환 값을 효율적으로 전달하는 방법에 관한 것이다.
