@@ -128,9 +128,7 @@ Fruit apples_and_oranges()
 {
     Foo x = ...;
     Foo y = ...;
-
     ...
-
     if (evaluate(x, y)) {
         return x;
     } else {
