@@ -4,9 +4,9 @@ title: About Me
 # permalink: /about/
 ---
 
-멀리 있는 건 작게 보인다.
+바라보고자 하는 방향에 따라 
 
-가까이 다가가야 그 크기가 얼마나 큰지 체감된다.
+논리적 연역 과정이 전개된다.
 
 game programmer
 
