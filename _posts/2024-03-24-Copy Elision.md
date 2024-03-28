@@ -170,20 +170,20 @@ std::string* s;
 
 std::string factory(std::string name)
 {
-	s = &name;
-	return name;
+    s = &name;
+    return name;
 }
 
 int main()
 {
-	auto a = factory(std::string{ "hello" });
+    auto a = factory(std::string{ "hello" });
 
     // 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
     // 이는 copy elision이 되지 않았음을 알 수 있다. 
     // Callee의 반환 값이 Caller의 로컬 변수로 암묵적 이동 되었음을 알 수 있다.
-	assert(&a != s); 
+    assert(&a != s); 
     assert(!a.empty() and s->empty());
-	return 0;
+    return 0;
 }
 ```
 앞서 이야기한 것처럼 이 경우는 copy elision이 무시된다.
