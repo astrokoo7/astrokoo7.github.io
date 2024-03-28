@@ -96,6 +96,7 @@ void g()
     string x = f(); 
 }
 ```
+위 코드를 예로 copy elision이 어떻게 동작하는지 아래 그림을 통해 확인해 보자
 
 <figure>
 <div style="text-align:center;">
@@ -137,8 +138,6 @@ Fruit apples_and_oranges()
 }
 ```
 컴파일 타임에 반환 값을 결정할 수 없을 때도 Copy elision은 작동하지 않는다. 컴파일러는 미리 정해진 반환 값을 Caller의 스택 영역에 쓰도록 코드를 생성하는데 반환 값을 모른다면 Copy elision을 할 수 없기 때문이다.
-
-...
 
 ## Copy elision is obserable
 
