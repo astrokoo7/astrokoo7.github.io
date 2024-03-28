@@ -163,7 +163,7 @@ int main()
 복사 생략(copy elision)은 위처럼 코드를 통해 확인할 수 있다.
 
 
-## Implicit move is observable also!
+## Implicit move is also observable
 
 ```
 std::string* s;
