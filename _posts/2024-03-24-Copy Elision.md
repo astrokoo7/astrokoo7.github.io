@@ -160,7 +160,6 @@ int main()
     assert(&x == gp); 
 }
 ```
-복사 생략(copy elision)은 위처럼 코드를 통해 확인할 수 있다.
 
 
 ## Implicit move is also observable
@@ -188,7 +187,6 @@ int main()
     return 0;
 }
 ```
-앞서 이야기한 것처럼 이 경우는 copy elision이 무시된다.
-하지만 컴파일러는 차선책으로 암묵적 이동을 해줬다.
+
 
 ...
