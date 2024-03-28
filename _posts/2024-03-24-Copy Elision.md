@@ -180,8 +180,10 @@ int main()
 
     // 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
     // 이는 copy elision이 되지 않았음을 알 수 있다. 
-    // Callee의 반환 값이 Caller의 로컬 변수로 암묵적 이동 되었음을 알 수 있다.
     assert(&a != s); 
+
+    // 아래의 조건문으로 Callee의 반환 값이 Caller의 로컬 변수로
+    // 암묵적 이동 되었음을 알 수 있다.    
     assert(!a.empty() and s->empty());
     return 0;
 }
