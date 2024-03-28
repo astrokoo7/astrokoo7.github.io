@@ -160,5 +160,33 @@ int main()
     assert(&x == gp); 
 }
 ```
+복사 생략(copy elision)은 위처럼 코드를 통해 확인할 수 있다.
+
+
+## Implicit move is observable also!
+
+```
+std::string* s;
+
+std::string factory(std::string name)
+{
+	s = &name;
+	return name;
+}
+
+int main()
+{
+	auto a = factory(std::string{ "hello" });
+
+    // 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
+    // 이는 copy elision이 되지 않았음을 알 수 있다. 
+    // Callee의 반환 값이 Caller의 로컬 변수로 암묵적 이동 되었음을 알 수 있다.
+	assert(&a != s); 
+    assert(!a.empty() and s->empty());
+	return 0;
+}
+```
+앞서 이야기한 것처럼 이 경우는 copy elision이 무시된다.
+하지만 컴파일러는 차선책으로 암묵적 이동(implicit move)을 한다.
 
 ...
