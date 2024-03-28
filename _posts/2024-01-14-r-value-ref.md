@@ -152,7 +152,7 @@ void foo(int&& a) {}
 void bar()
 {
     int a = 10;
-    foo(a);      // lvalue를 rvalue reference에 할당해서 해서 컴파일 오류가 발생한다.
+    foo(a);      // lvalue를 rvalue reference에 할당해서 컴파일 오류가 발생한다.
     foo(10);     // rvalue를 rvalue reference에 할당해서 문제없다. 
 }
 ```
