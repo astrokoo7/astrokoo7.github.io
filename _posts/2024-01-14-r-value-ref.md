@@ -86,6 +86,10 @@ add() = 10;
 ```
 이런 에러를 컴파일러가 출력하는데, 이는 할당 연산자 왼쪽의 값이 lvalue가 아니란 오류이다. 즉, 위 예제 코드에서 함수의 반환 값은 rvalue임을 알 수 있다.
 
+> <font size="3"> 
+> rvalue는 이름이 없어 값을 읽을 수 없을 뿐만 아니라 쓸 수도 없다.
+> </font>
+
 ```c++
 int a = 20;
 10 = a;
@@ -93,7 +97,7 @@ int a = 20;
 error: lvalue required as left operand of assignment
 10 = a;
 ```
-명시적인 rvalue(Literal)에 값을 할당하려고 하면 함수 반환 값(rvalue)에 값을 할당할 때와 같은 에러를 출력한다.
+명시적인 rvalue(Literal)에 값을 할당하려고 하면 lvalue가 아니라서 쓸 수 없다고 에러를 출력한다. 함수 반환 값인 rvalue에 값을 쓰려고 할 때와 같은 에러이다.
 
 
 ```c++
