@@ -191,7 +191,7 @@ public:
     	if (m_Data != nullptr) {
     	    cout << "Destroyed " << m_Data << endl;;
     	} else {
-    	    // 암묵적 이동 생성자가 호출되어 m_data는 nullptr이 된다.
+    	    // 암묵적으로 이동 생성자가 호출되어 m_data는 nullptr이 됐다.
     	    cout << "Destroyed " << endl;;
     	}
     }
