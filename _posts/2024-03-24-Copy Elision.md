@@ -168,36 +168,36 @@ int main()
 class String
 {
 public:
-	String(const char* string)
-	{
-		m_Size = strlen(string);
-		m_Data = new char[m_Size];
-	}
-	String(const String& ohter)
-	{
-		m_Size = ohter.m_Size;
-		m_Data = new char[m_Size];
-		memcpy(m_Data, ohter.m_Data, m_Size);
-	}
-	String(String&& ohter) noexcept
-	{
-		m_Size = ohter.m_Size;
-		m_Data = ohter.m_Data;
-		ohter.m_Size = 0;
-		ohter.m_Data = nullptr;
-	}
-	~String()
-	{
-		if (m_Data != nullptr) {
-			cout << "Destroyed " << m_Data << endl;;
-		} else {
-			// 암묵적 이동 생성자가 호출되어 m_data는 nullptr이 된다.
-			cout << "Destroyed " << endl;;
-		}
-	}
+    String(const char* string)
+    {
+    	m_Size = strlen(string);
+    	m_Data = new char[m_Size];
+    }
+    String(const String& ohter)
+    {
+    	m_Size = ohter.m_Size;
+    	m_Data = new char[m_Size];
+    	memcpy(m_Data, ohter.m_Data, m_Size);
+    }
+    String(String&& ohter) noexcept
+    {
+    	m_Size = ohter.m_Size;
+    	m_Data = ohter.m_Data;
+    	ohter.m_Size = 0;
+    	ohter.m_Data = nullptr;
+    }
+    ~String()
+    {
+    	if (m_Data != nullptr) {
+    		cout << "Destroyed " << m_Data << endl;;
+    	} else {
+    		// 암묵적 이동 생성자가 호출되어 m_data는 nullptr이 된다.
+    		cout << "Destroyed " << endl;;
+    	}
+    }
 
-	uint32_t m_Size;
-	char* m_Data;
+    uint32_t m_Size;
+    char* m_Data;
 };
 
 String* s;
@@ -205,25 +205,25 @@ char* c;
 
 String factory(String name)
 {
-	s = &name;
-	c = name.m_Data;
-	return name;
+    s = &name;
+    c = name.m_Data;
+    return name;
 }
 
 int main()
 {
-	auto a = factory(String("hello"));
+    auto a = factory(String("hello"));
 
-	// 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
-	// 이는 copy elision이 되지 않았음을 알 수 있다. 
-	assert(&a != s);
+    // 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
+    // 이는 copy elision이 되지 않았음을 알 수 있다. 
+    assert(&a != s);
 
-	// 아래의 조건문으로 Callee의 반환 값이 Caller의 로컬 변수로
-	// 암묵적 이동 되었음을 알 수 있다.  
-	assert(a.m_Data and s->m_Data == nullptr);
-	assert(a.m_Data == c);
+    // 아래의 조건문으로 Callee의 반환 값이 Caller의 로컬 변수로
+    // 암묵적 이동 되었음을 알 수 있다.  
+    assert(a.m_Data and s->m_Data == nullptr);
+    assert(a.m_Data == c);
 
-	return 0;
+    return 0;
 }
 ```
 
