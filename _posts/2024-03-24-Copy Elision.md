@@ -172,18 +172,15 @@ public:
 	{
 		m_Size = strlen(string);
 		m_Data = new char[m_Size];
-		cout << "Created " << m_Data << endl;
 	}
 	String(const String& ohter)
 	{
-		printf("Copyed\n");
 		m_Size = ohter.m_Size;
 		m_Data = new char[m_Size];
 		memcpy(m_Data, ohter.m_Data, m_Size);
 	}
 	String(String&& ohter) noexcept
 	{
-		printf("Moved\n");
 		m_Size = ohter.m_Size;
 		m_Data = ohter.m_Data;
 		ohter.m_Size = 0;
@@ -192,8 +189,10 @@ public:
 	~String()
 	{
 		if (m_Data != nullptr) {
-            // 암묵적 이동일 경우 이동 생성자가 호출되어 m_data는 nullptr이다.
 			cout << "Destroyed " << m_Data << endl;;
+		} else {
+			// 암묵적 이동 생성자가 호출되면 m_data는 nullptr이다.
+			cout << "Destroyed " << endl;;
 		}
 	}
 
@@ -202,10 +201,12 @@ public:
 };
 
 String* s;
+char* c;
 
 String factory(String name)
 {
 	s = &name;
+	c = name.m_Data;
 	return name;
 }
 
@@ -213,16 +214,18 @@ int main()
 {
 	auto a = factory(String("hello"));
 
-    // 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
-    // 이는 copy elision이 되지 않았음을 알 수 있다. 
+	// 로컬 변수 a의 주소와 Callee의 로컬 변수 name의 주소가 다르다.
+	// 이는 copy elision이 되지 않았음을 알 수 있다. 
 	assert(&a != s);
 
-    // 아래의 조건문으로 Callee의 반환 값이 Caller의 로컬 변수로
-    // 암묵적 이동 되었음을 알 수 있다.     
+	// 아래의 조건문으로 Callee의 반환 값이 Caller의 로컬 변수로
+	// 암묵적 이동 되었음을 알 수 있다.  
 	assert(a.m_Data and s->m_Data == nullptr);
+	assert(a.m_Data == c);
 
 	return 0;
 }
+```
 
 ```
 앞서 이야기한 것처럼 이 경우는 copy elision이 무시되지만, 컴파일러는 암묵적 이동을 하여 코드를 최적화한다.
