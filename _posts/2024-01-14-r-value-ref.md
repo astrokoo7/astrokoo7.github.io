@@ -84,7 +84,7 @@ int main() {
 error: lvalue required as left operand of assignment
 add() = 10;
 ```
-이런 에러를 컴파일러가 출력하는데, 이는 할당 연산자 왼쪽의 값이 lvalue가 아니란 오류이다. 즉, 함수의 반환 값은 rvalue이다.
+이런 에러를 컴파일러가 출력하는데, 이는 할당 연산자 왼쪽의 값이 lvalue가 아니란 오류이다. 즉, 위 예제 코드에서 함수의 반환 값은 rvalue임을 알 수 있다.
 
 ```c++
 int a = 20;
