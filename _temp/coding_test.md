@@ -50,3 +50,15 @@
 map<string, int> nameYearning;
 vs
 unordered_map<string, int> nameYearning; 
+
+    year = stoi(today.substr(0, 4)); month = stoi(today.substr(5, 2)); day = stoi(today.substr(8, 2));
+    total = year * 12 * 28 + (month - 1) * 28 + day;
+    
+    for(int i = 0; i < terms.size(); i++){
+        stringstream ss(terms[i]);
+        char alpha; int month;
+        ss >> alpha >> month;
+        t_map[alpha] = month;
+    }
+    
+    
