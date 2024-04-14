@@ -37,4 +37,9 @@
 
 
 
+    vector<vector<int>> points;
+    map<pair<string, string>, int> points;
+    map<string, int> totalPoints;
+    vector<int> totalPoints;
 
+자료 구조 선택부터가 에러였음
