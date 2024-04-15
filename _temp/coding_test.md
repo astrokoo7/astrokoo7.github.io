@@ -64,3 +64,12 @@ unordered_map<string, int> nameYearning;
     
 	
 키패드 누르기
+
+
+
+    map<pair<int, int>, int> keyPad;
+
+keyPad.emplace({ i, j }, 10); X
+
+keyPad.emplace(pair<int, int>{ i, j }, 10);
+keyPad.emplace(make_pair(i, j), 10);
