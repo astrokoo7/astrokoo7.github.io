@@ -1,0 +1,25 @@
+    map<int, pair<int, int>> keyPadMap;
+    vector<int> keyPad = { 1, 4, 7, -1, 2, 5, 8, 0, 3, 6, 9, -2};
+    vector<int> input = { 1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5 };
+
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 4; j++) {
+            keyPadMap.emplace(keyPad[i*4 + j], make_pair(i, j));
+        }
+    }
+
+    int left = -1;
+    int right = -2;
+
+    for (auto in : input) {
+
+        auto left_it = keyPadMap.find(left);
+        auto right_it = keyPadMap.find(right);
+
+        auto it = keyPadMap.find(in);
+
+        std::cout << it->second.first << "," << it->second.second << endl;
+    }
+
+    
