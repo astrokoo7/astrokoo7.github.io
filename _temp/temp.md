@@ -13,57 +13,68 @@ pair<int, int> getLocation(const Containter& container, int key) {
 }
 
 
-int main()
+
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <set>
+
+using namespace std;
+
+queue<pair<int, int>> q;
+vector<vector<int>> map = {
+    {0,0,1,1},
+    {1,1,1,1},
+    {2,2,2,1},
+    {0,0,0,2}
+};
+
+vector<pair<int, int>> dir = {
+    {-1, 0},
+    {0, 1},
+    {1, 0},
+    {0, -1}
+};
+
+int maxX;
+int maxY;
+
+vector<int> result = { 0, 0, 0 };
+set<pair<int, int>> visited;
+
+void bfs(queue<pair<int, int>>& q)
 {
-    // 1, 4, 7, *
-    // 2, 5, 8, 0
-    // 3, 6, 9, *
+    while (!q.empty()) {
 
-    //vector<vector<int>>(friends.size(), vector<int>(friends.size(), 0));
+        auto& k = q.front();
+        q.pop();
 
-    // 7 -> {0, 2}
-    //[1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]	"right"	"LRLLLRLLRRL"
+        for (int i = 0; i < 4; i++) {
+            auto x = k.first + dir[i].first;
+            auto y = k.second + dir[i].second;
 
-
-    vector<int> keyPad = { 1, 4, 7, -1, 2, 5, 8, 0, 3, 6, 9, -2};
-    vector<int> input = { 1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5 };
-
-    map<int, pair<int, int>> keyPadMap;
-    set<int> leftSet = { 1,4,7,-1 };
-    set<int> rightSet = { 3,6,9,-2 };
-
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            keyPadMap.emplace(keyPad[i*4 + j], make_pair(i, j));
+            if (visited.end() == visited.find(make_pair(x, y)))
+                continue;
+            if (x < maxX && y < maxY) {
+                auto value = map[x][y];
+                result[value]++;
+                visited.emplace(make_pair(x,y));
+                q.push(make_pair(x, y));
+            }
         }
     }
-
-    int left = -1;
-    int right = -2;
-
-    auto lookUp = [](int key) -> void {
-
-    };
-
-    for (auto in : input) {
-
-
-        leftSet.find(in);
-
-
-        auto left_it = keyPadMap.find(left);
-        auto right_it = keyPadMap.find(right);
-
-        auto it = keyPadMap.find(in);
-
-        std::cout << it->second.first << "," << it->second.second << endl;
-    }
-
-    
-
-
-    return 0;
-    
 }
+
+int main()
+{
+    maxX = map.size();
+    maxY = map[0].size();
+
+    q.push(make_pair(0, 0));
+
+    std::cout << "Hello World!\n";
+}
+
+
 
 
