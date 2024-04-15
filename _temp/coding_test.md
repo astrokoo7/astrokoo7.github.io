@@ -67,9 +67,22 @@ unordered_map<string, int> nameYearning;
 
 
 
+pair 오류
+
 map<pair<int, int>, int> keyPad;
 
 keyPad.emplace({ i, j }, 10); X
 
 keyPad.emplace(pair<int, int>{ i, j }, 10);
 keyPad.emplace(make_pair(i, j), 10);
+
+
+generic
+
+template<typename Container>
+void printContainer(const Container& container) {
+    for (const auto& element : container) {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+}
