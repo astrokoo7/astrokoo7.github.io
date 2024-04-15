@@ -49,6 +49,13 @@ void bfs(queue<pair<int, int>>& q)
         auto& k = q.front();
         q.pop();
 
+        if (visited.end() == visited.find(make_pair(k.first, k.second)) &&
+            k.first < maxX && k.second < maxY) {
+            auto value = map[k.first][k.second];
+            result[value]++;
+            visited.emplace(make_pair(k.first, k.second));
+        }
+
         for (int i = 0; i < 4; i++) {
             auto x = k.first + dir[i].first;
             auto y = k.second + dir[i].second;
