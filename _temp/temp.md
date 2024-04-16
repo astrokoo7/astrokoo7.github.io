@@ -117,6 +117,9 @@ int main()
 
 
 
+// 0417.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
 #include <iostream>
 #include <vector>
 #include <set>
@@ -144,21 +147,27 @@ int main()
     it++;
 
     for (; it != stars.end(); it++) {
+        auto found = false;
+
         for (auto& group : graph) {
             auto it1 = group.find(it->first);
             auto it2 = group.find(it->second);
             auto it_end = group.end();
 
             if (it1 != it_end) {
+                found = true;
                 group.insert(it->second);
-            }
-            else if (it2 != it_end) {
-                group.insert(it->second);
-            }
-            else {
-                graph.push_back({ it->first, it->second });
                 break;
             }
+            else if (it2 != it_end) {
+                found = true;
+                group.insert(it->second);
+                break;
+            }
+        }
+
+        if (!found) {
+            graph.push_back({ it->first, it->second });
         }
     }
 
