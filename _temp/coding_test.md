@@ -86,3 +86,26 @@ void printContainer(const Container& container) {
     }
     std::cout << std::endl;
 }
+
+
+
+두 쌍에 대해
+
+각각 찾고 
+
+없다면 넣고 
+
+set<int> a
+
+for (all set)
+    a.find(first)
+    a.find(second)
+
+    not at all
+        new set and insert first, second
+
+    else
+        
+
+
+
