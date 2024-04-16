@@ -117,3 +117,50 @@ int main()
 
 
 
+#include <iostream>
+#include <vector>
+#include <set>
+
+using namespace std;
+
+int main()
+{
+    vector<pair<int, int>> stars = {
+        {21, 88},
+        //{23, 75},
+        //{97, 35},
+        //{2, 8},
+        //{67, 9},
+        //{64, 75},
+        {65, 71},
+        //{70, 98},
+        {9, 71},
+        //{60, 35}
+    };
+
+    vector<set<int>> graph = { {21, 88}  };
+
+    auto it = stars.begin();
+    it++;
+
+    for (; it != stars.end(); it++) {
+        for (auto& group : graph) {
+            auto it1 = group.find(it->first);
+            auto it2 = group.find(it->second);
+            auto it_end = group.end();
+
+            if (it1 != it_end) {
+                group.insert(it->second);
+            }
+            else if (it2 != it_end) {
+                group.insert(it->second);
+            }
+            else {
+                graph.push_back({ it->first, it->second });
+                break;
+            }
+        }
+    }
+
+    std::cout << "Hello World!\n";
+}
