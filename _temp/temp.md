@@ -118,6 +118,7 @@ int main()
 
 
 
+
 #include <iostream>
 #include <vector>
 #include <set>
@@ -140,7 +141,7 @@ int main()
     };
 
     vector<set<int>> graph = { {21, 88}  };
-    vector<set<int>> graph2;
+    set<int> graph2;
 
     auto it = stars.begin();
     it++;
@@ -156,7 +157,9 @@ int main()
 
             if (it1 != it_end) {
                 if (0 < foundIdx) {
-                    graph2.push_back(group);
+                    for (auto a : group) {
+                        graph2.insert(a);
+                    }
                     group.clear();
                 }
                 else {
@@ -166,7 +169,9 @@ int main()
             }
             else if (it2 != it_end) {
                 if (0 < foundIdx) {
-                    graph2.push_back(group);
+                    for (auto a : group) {
+                        graph2.insert(a);
+                    }
                     group.clear();
                 }
                 else {
@@ -181,9 +186,7 @@ int main()
         }
         else {
             for (auto& a : graph2) {
-                for (auto& b : a) {
-                    graph[foundIdx].insert(b);
-                }
+                graph[foundIdx].insert(a);
             }
             graph2.clear();
         }
