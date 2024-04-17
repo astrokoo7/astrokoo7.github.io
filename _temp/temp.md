@@ -117,8 +117,6 @@ int main()
 
 
 
-// 0417.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <iostream>
 #include <vector>
@@ -130,44 +128,64 @@ int main()
 {
     vector<pair<int, int>> stars = {
         {21, 88},
-        //{23, 75},
-        //{97, 35},
-        //{2, 8},
-        //{67, 9},
-        //{64, 75},
+        {23, 75},
+        {97, 35},
+        {2, 8},
+        {67, 9},
+        {64, 75},
         {65, 71},
-        //{70, 98},
+        {70, 98},
         {9, 71},
-        //{60, 35}
+        {60, 35}
     };
 
     vector<set<int>> graph = { {21, 88}  };
+    vector<set<int>> graph2;
 
     auto it = stars.begin();
     it++;
 
     for (; it != stars.end(); it++) {
-        auto found = false;
+        auto foundIdx = -1;
 
-        for (auto& group : graph) {
+        for (int i = 0; i < graph.size(); i++) {
+            auto& group = graph[i];
             auto it1 = group.find(it->first);
             auto it2 = group.find(it->second);
             auto it_end = group.end();
 
             if (it1 != it_end) {
-                found = true;
-                group.insert(it->second);
-                break;
+                if (0 < foundIdx) {
+                    graph2.push_back(group);
+                    group.clear();
+                }
+                else {
+                    group.insert(it->second);
+                    foundIdx = i;
+                }
             }
             else if (it2 != it_end) {
-                found = true;
-                group.insert(it->second);
-                break;
+                if (0 < foundIdx) {
+                    graph2.push_back(group);
+                    group.clear();
+                }
+                else {
+                    group.insert(it->first);
+                    foundIdx = i;
+                }
             }
         }
 
-        if (!found) {
+        if (foundIdx < 0) {
             graph.push_back({ it->first, it->second });
+        }
+        else {
+            for (auto& a : graph2) {
+                for (auto& b : a) {
+                    graph[foundIdx].insert(b);
+                }
+            }
+            graph2.clear();
         }
     }
 
