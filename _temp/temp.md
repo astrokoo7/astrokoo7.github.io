@@ -194,3 +194,17 @@ int main()
 
     std::cout << "Hello World!\n";
 }
+
+
+bool containsPattern(const std::string& str, const std::string& pattern) {
+    size_t strLen = str.length();
+    size_t patternLen = pattern.length();
+
+    for (size_t i = 0; i <= strLen - patternLen; ++i) {
+        if (str.substr(i, patternLen) == pattern) {
+            return true;
+        }
+    }
+
+    return false;
+}
