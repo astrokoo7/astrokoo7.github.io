@@ -115,3 +115,32 @@ https://velog.io/@rondido/coding-Testjavascript-%EA%B2%BD%EC%B0%B0%EA%B3%BC-%EB%
 
 
 https://bowbowbow.tistory.com/25
+
+
+
+window 
+ascii 로 ecoding 
+
+adcd == dcba same hash value so error
+permutation 조합
+
+자리수 만큼 * 10 해서 위 문제 해결
+
+문자열이 크면 overflow 될 수 있음
+
+mod 로 나눈다. 적당히 hash collision 이 안날 소수로 
+
+10^99 mod 113 같은 건 어떻게?
+
+
+    int power = 1;
+    for (int i = 1; i <= 99; i++) {
+        power = (power * 10) % 103;
+    }
+
+(a * b) mod c = ((a mod c) * (b mod c)) mod c
+
+https://m.blog.naver.com/bujya_road/222759739376
+
+
+https://goldenrabbit.co.kr/2023/12/01/%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%95%A9%EA%B2%A9%EC%9E%90-%EB%90%98%EA%B8%B0-%ED%95%B4%EC%8B%9C-2-%ED%95%B4%EC%8B%9C-%ED%95%A8%EC%88%98%EC%99%80-%EC%B6%A9%EB%8F%8C-%EC%B2%98/
