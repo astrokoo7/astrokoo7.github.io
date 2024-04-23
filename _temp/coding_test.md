@@ -164,3 +164,93 @@ a 라는 ascii code를 자릿수에 따라 10 같은 수로 지수 처리하면
 10의 배수로 a 문자의 modular가 같아져서 충돌이 일어남.
 
 알파펫 개수 26개를 지수 자리수처리하면 배수가 만들어짐
+
+
+x mod 10 = (2 * 10^3 + 2 * 10^2 + 2 * 10^1 + 2 * 10^0) mod 10
+
+            (2000 + 200 + 20 + 2) mod 10
+
+            (2222) mod 10
+
+x mod 7 = (2 * 10^3 + 2 * 10^2 + 2 * 10^1 + 2 * 10^0) mod 7
+
+            (2000 + 200 + 20 + 2) mod 7
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+const int MOD = 1000000007;
+
+int hashFunction(char c) {
+    return c - 'a' + 1;
+}
+
+int calculateRollingHash(const string& s, int start, int end, int base) {
+    int hash = 0;
+    int power = 1;
+    for (int i = end; start <= i; i--) {
+        hash += (hashFunction(s[i]) * power) % MOD;
+        power = (power * base) % MOD;
+    }
+    return hash;
+}
+
+vector<int> findPatternOccurrences(const string& text, const string& pattern) {
+    vector<int> occurrences;
+    int n = text.length();
+    int m = pattern.length();
+    int base = 256;
+
+    int patternHash = calculateRollingHash(pattern, 0, m - 1, base);
+    int textHash = calculateRollingHash(text, 0, m - 1, base);
+
+    if (patternHash == textHash && pattern == text.substr(0, m)) {
+        occurrences.push_back(0);
+    }
+
+    int power = 1;
+    for (int i = 1; i <= m - 1; i++) {
+        power = (power * base) % MOD;
+    }
+
+    for (int i = m; i < n; i++) {
+        textHash = (((textHash - hashFunction(text[i - m]) * power) % MOD) * base) % MOD;
+        textHash = (textHash + hashFunction(text[i])) % MOD;
+
+        if (patternHash == textHash && pattern == text.substr(i - m + 1, m)) {
+            occurrences.push_back(i - m + 1);
+        }
+    }
+
+    return occurrences;
+}
+
+int main() {
+    string text = "aaabbaaabbbaaabbbb";
+    string pattern = "aaab";
+
+    vector<int> occurrences = findPatternOccurrences(text, pattern);
+    for (const auto& occurrence : occurrences) {
+        cout << occurrence << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+
+
+
