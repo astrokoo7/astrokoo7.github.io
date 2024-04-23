@@ -145,41 +145,6 @@ https://m.blog.naver.com/bujya_road/222759739376
 
 https://goldenrabbit.co.kr/2023/12/01/%EC%BD%94%EB%94%A9-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%95%A9%EA%B2%A9%EC%9E%90-%EB%90%98%EA%B8%B0-%ED%95%B4%EC%8B%9C-2-%ED%95%B4%EC%8B%9C-%ED%95%A8%EC%88%98%EC%99%80-%EC%B6%A9%EB%8F%8C-%EC%B2%98/
 
-% 15
-
-0~14
-3, 6, 9, 12, 3, 6, 
-5, 10, 5, 10, 
-
-(3 * 5) % 15  = k % 15
-
-(3 * 5) % 15 이면 
-((3 % 15) * (5 % 15)) % 15 로 쓸수 있어?
-
-왜 소수로 해야하는가? 
-
-
-a 라는 ascii code를 자릿수에 따라 10 같은 수로 지수 처리하면
-
-10의 배수로 a 문자의 modular가 같아져서 충돌이 일어남.
-
-알파펫 개수 26개를 지수 자리수처리하면 배수가 만들어짐
-
-
-x mod 10 = (2 * 10^3 + 2 * 10^2 + 2 * 10^1 + 2 * 10^0) mod 10
-
-            (2000 + 200 + 20 + 2) mod 10
-
-            (2222) mod 10
-
-x mod 7 = (2 * 10^3 + 2 * 10^2 + 2 * 10^1 + 2 * 10^0) mod 7
-
-            (2000 + 200 + 20 + 2) mod 7
-
-
-
-
-
 
 
 
@@ -188,70 +153,102 @@ x mod 7 = (2 * 10^3 + 2 * 10^2 + 2 * 10^1 + 2 * 10^0) mod 7
 
 
 #include <iostream>
-#include <string>
 #include <vector>
+#include <string>
+#include <unordered_set>
 
-using namespace std;
+// Trie 노드 구조체
+struct TrieNode {
+    TrieNode* children[26] = { nullptr };
+    bool isEndOfWord = false;
+};
 
-const int MOD = 1000000007;
+// Trie 클래스
+class Trie {
+public:
+    Trie() : root(new TrieNode()) {}
+    ~Trie() { deleteTree(root); }
 
-int hashFunction(char c) {
-    return c - 'a' + 1;
-}
-
-int calculateRollingHash(const string& s, int start, int end, int base) {
-    int hash = 0;
-    int power = 1;
-    for (int i = end; start <= i; i--) {
-        hash += (hashFunction(s[i]) * power) % MOD;
-        power = (power * base) % MOD;
-    }
-    return hash;
-}
-
-vector<int> findPatternOccurrences(const string& text, const string& pattern) {
-    vector<int> occurrences;
-    int n = text.length();
-    int m = pattern.length();
-    int base = 256;
-
-    int patternHash = calculateRollingHash(pattern, 0, m - 1, base);
-    int textHash = calculateRollingHash(text, 0, m - 1, base);
-
-    if (patternHash == textHash && pattern == text.substr(0, m)) {
-        occurrences.push_back(0);
+    void insert(const std::string& word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (!node->children[index]) {
+                node->children[index] = new TrieNode();
+            }
+            node = node->children[index];
+        }
+        node->isEndOfWord = true;
     }
 
-    int power = 1;
-    for (int i = 1; i <= m - 1; i++) {
-        power = (power * base) % MOD;
+    bool search(const std::string& word) {
+        TrieNode* node = searchNode(word);
+        return node && node->isEndOfWord;
     }
 
-    for (int i = m; i < n; i++) {
-        textHash = (((textHash - hashFunction(text[i - m]) * power) % MOD) * base) % MOD;
-        textHash = (textHash + hashFunction(text[i])) % MOD;
+    bool startsWith(const std::string& prefix) {
+        TrieNode* node = searchNode(prefix);
+        return node != nullptr;
+    }
 
-        if (patternHash == textHash && pattern == text.substr(i - m + 1, m)) {
-            occurrences.push_back(i - m + 1);
+private:
+    TrieNode* root;
+
+    TrieNode* searchNode(const std::string& word) {
+        TrieNode* node = root;
+        for (char c : word) {
+            int index = c - 'a';
+            if (!node->children[index]) {
+                return nullptr;
+            }
+            node = node->children[index];
+        }
+        return node;
+    }
+
+    void deleteTree(TrieNode* node) {
+        for (int i = 0; i < 26; i++) {
+            if (node->children[i]) {
+                deleteTree(node->children[i]);
+            }
+        }
+        delete node;
+    }
+};
+
+std::vector<std::string> soln(const std::vector<std::string>& words) {
+    std::vector<std::string> reports;
+    std::unordered_set<std::string> badWords;
+    Trie trie;
+
+    for (const std::string& word : words) {
+        if (badWords.count(word) || trie.search(word)) {
+            reports.push_back(word);
+        }
+        else {
+            badWords.insert(word);
+            trie.insert(word);
         }
     }
 
-    return occurrences;
+    std::cout << "Total bad words: " << badWords.size() << std::endl;
+    for (const std::string& badWord : badWords) {
+        std::cout << badWord << std::endl;
+    }
+
+    return reports;
 }
 
 int main() {
-    string text = "aaabbaaabbbaaabbbb";
-    string pattern = "aaab";
+    std::vector<std::string> words = { "abcd", "abcde", "sdkfkkoxcc", "dkfuds", "kdgugs", "dkfdu", "dsf", "dkjfgusdgg", "dkdkfdufd", "abcdef", "kkoxcc" };
 
-    vector<int> occurrences = findPatternOccurrences(text, pattern);
-    for (const auto& occurrence : occurrences) {
-        cout << occurrence << " ";
+    std::vector<std::string> reports = soln(words);
+    std::cout << "Reported words:" << std::endl;
+    for (const std::string& report : reports) {
+        std::cout << report << std::endl;
     }
-    cout << endl;
 
     return 0;
 }
-
-
 
 https://blog.naver.com/babobigi
