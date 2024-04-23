@@ -54,6 +54,10 @@ int main() {
 
 ## Rolling Hash
 
+롤링 해쉬 알고리즘은 간단히 말하면 입력 문자열에 대해 패턴 문자열을 이중 for loop로 검색했던 brutal force 방식을 for if 해쉬 값 비교로 최대 O(n+m) 시간 복잡도를 가지도록 만들어준다.
+
+
+
 
 
 ```c++
