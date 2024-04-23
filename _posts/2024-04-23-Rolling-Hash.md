@@ -68,7 +68,7 @@ h(aaa) = h(a, a, a)
        = 66823
 ```
 > <font size="2"> 
-> 편이상 a의 ascii code가 1이라 치고 base는 ascii code의 두 배로 넉넉히 258로 정했다.
+> 편이상 a의 ascii code가 1이라 치고 base는 ascii code 크기의 두 배로 넉넉히 258로 정했다.
 > </font>
 
 ```
