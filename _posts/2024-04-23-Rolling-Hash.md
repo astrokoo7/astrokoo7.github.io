@@ -16,10 +16,6 @@ categories: c++
 
 이러한 문제를 효율적으로 해결하기 위한 방법으로 KMP 알고리즘, Boyer-Moore 알고리즘 등이 있는데 여기선 Rabin-Karp 알고리즘으로 알려진 간단한 Rolling Hash에 대해 살펴보려고 한다.
 
-> <font size="2"> 
-> c++ string find 함수는 KMP와 Boyer-Moore 알고리즘을 이용해 구현했다.
-> </font>
-
 ```c++
 #include <iostream>
 #include <string>
