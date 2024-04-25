@@ -282,17 +282,23 @@ public:
     int longestIdealString(string s, int k) {
         int longest = 0;
 
-        for (int i = 0; i < s.size()-1; i++) {
+        for (int i = 0; i < s.size() - 1; i++) {
             auto c1 = s[i];
-            for (int j = i+1; j < s.size(); j++) {
+            bool failed = false;
+            for (int j = i + 1; j < s.size(); j++) {
                 auto c2 = s[j];
                 if (abs(c1 - c2) <= k) {
+                    if (failed) {
+                        i = j-i;
+                    }
                     longest++;
                     break;
                 }
+                else {
+                    failed = true;
+                }
             }
         }
-
         return longest;
     }
 };
