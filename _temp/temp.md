@@ -277,28 +277,47 @@ int main() {
     return 0;
 }
 
-class Solution {
-public:
-    int longestIdealString(string s, int k) {
-        int longest = 0;
+#include <iostream>
+#include <string>
+#include <vector>
 
-        for (int i = 0; i < s.size() - 1; i++) {
-            auto c1 = s[i];
-            bool failed = false;
-            for (int j = i + 1; j < s.size(); j++) {
-                auto c2 = s[j];
-                if (abs(c1 - c2) <= k) {
-                    if (failed) {
-                        i = j-i;
-                    }
-                    longest++;
-                    break;
+using namespace std;
+
+int longestIdealString(string s, int k) {
+    vector<char> reports;
+
+    for (int i = 0; i < s.size() - 1; i++) {
+        auto c1 = s[i];
+        bool failed = false;
+        for (int j = i + 1; j < s.size(); j++) {
+            auto c2 = s[j];
+            if (abs(c1 - c2) <= k) {
+                if (failed) {
+                    i = j-i;
                 }
-                else {
-                    failed = true;
+                reports.push_back(c1);
+                if (j + 1 == s.size()) {
+                    reports.push_back(c2);
                 }
+                break;
+            }
+            else {
+                failed = true;
             }
         }
-        return longest;
     }
-};
+    return reports.size();
+}
+
+
+int main() {
+
+    // "acfgbd"
+    // "acbd"
+    longestIdealString("lkpkxcigcs", 6);
+
+
+    // expect 7, output 8
+
+    return 0;
+}
