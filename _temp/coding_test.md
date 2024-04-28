@@ -258,3 +258,7 @@ https://www.youtube.com/watch?v=cjWnW0hdF1Y
 https://www.youtube.com/watch?v=2pcNxd2t6uc
 
 https://www.youtube.com/watch?v=HXU17rokY-o
+
+재귀 함수는 왜 중복 실행이 많을까?
+
+그래서 메모니제이션을 한다.
