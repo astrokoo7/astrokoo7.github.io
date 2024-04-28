@@ -262,3 +262,60 @@ https://www.youtube.com/watch?v=HXU17rokY-o
 재귀 함수는 왜 중복 실행이 많을까?
 
 그래서 메모니제이션을 한다.
+
+int fibonacci(int n) {
+    vector<int> fib(n + 1);
+    fib[0] = 0;
+    fib[1] = 1;
+
+    for (int i = 2; i <= n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
+
+    return fib[n];
+}
+
+int fibonacci(int n) {
+    if (n <= 0) {
+        return 0;
+    }
+    if (n == 1) {
+        return 1;
+    }
+
+    int a = 0, b = 1, c;
+    for (int i = 2; i <= n; i++) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+
+    return b;
+}
+
+// 재귀 버전
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// 메모이제이션 버전
+vector<int> memo(51, -1); // 메모이제이션 배열 초기화
+
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    
+    // 메모이제이션 체크
+    if (memo[n] != -1) {
+        return memo[n];
+    }
+    
+    // 메모이제이션
+    memo[n] = fibonacci(n - 1) + fibonacci(n - 2);
+    
+    return memo[n];
+}
