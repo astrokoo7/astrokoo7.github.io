@@ -320,15 +320,62 @@ int fibonacci(int n) {
     return memo[n];
 }
 
-
 	현재와 다음 차이가 k 보다 같거나 작은지 확인
 
-	만족하면 이어서 확인 
-		결과1 = 1 + 다음과 그 다음 인덱스
+	만족하면 다음과 다음의 다음으로 진행
+		결과1 += 1
 
-	결과2 = 현재와 그 다음 인덱스
+	결과2 = 현재와 다음의 다음 인덱스 (바로 다음은 건너띈 것의 총합)
 
 	max(결과1, 결과2)
 
 
+    i, i+1
+    i+1, i+2
 
+    i, i+2
+
+    1현재가 끝인가? 종료
+
+
+    1현재와 2현재가 같은가?
+        1 + 재귀
+
+    1현재와 2 다음이 같은가?
+        재귀
+
+
+
+
+class Solution {
+public:
+    int foo(string text1, string text2, int idx1, int idx2) {
+
+        if (text1.size() == idx1) return 0;
+
+        int result = 0;
+
+        if (text1[idx1] == text2[idx2]) {
+
+            result = 1 + foo(text1, text2, idx1+1, idx2+1);
+        } else {
+            result = foo(text1, text2, idx1+1, idx2);
+        }
+
+
+
+        return result;
+}
+
+    int longestCommonSubsequence(string text1, string text2) {
+
+        return foo(text1, text2, 0, 0);
+    }
+};
+
+https://leetcode.com/problems/longest-common-subsequence/
+
+
+코딩이 문제가 아니고 경우의 수를 찾고 
+
+그걸 논리적으로 기술하면 된다.
