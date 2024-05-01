@@ -406,8 +406,8 @@ int foo(string text1, string text2, int idx1, int idx2) {
 
         if (fistIdx == -1) {
             fistIdx = idx1;
-            nextIdx = idx2 + 1;
         }
+        nextIdx = idx2 + 1;
 
         result = 1 + foo(text1, text2, idx1+1, idx2+1);
 
@@ -476,25 +476,25 @@ int main()
     // 시작점은 제일 처음 매칭 포인트를 찾았을 때로 가정해보자
     // 이건 p 다음은 나오는 모든 매칭 포인트는 선택 안하게 됨?
 
-    //int a = foo("oxcpqrsvwf", "shmtulqrypy", 0, 0);
-    //if (a == 2) {
-    //    cout << a;
-    //    cout << endl;
-    //}
+    int a = foo("oxcpqrsvwf", "shmtulqrypy", 0, 0);
+    if (a == 2) {
+        cout << a;
+        cout << endl;
+    }
 
     //// ace
     //// ce
     //// e
 
-    //int b = foo("abcde", "ace", 0, 0);
-    //if (b == 3) {
-    //    cout << b;
-    //    cout << endl;
-    //}
-    //else {
-    //    cout << b;
-    //    cout << endl;
-    //}
+    int b = foo("abcde", "ace", 0, 0);
+    if (b == 3) {
+        cout << b;
+        cout << endl;
+    }
+    else {
+        cout << b;
+        cout << endl;
+    }
 
     //// up
     //// p
