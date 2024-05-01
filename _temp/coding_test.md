@@ -379,3 +379,143 @@ https://leetcode.com/problems/longest-common-subsequence/
 코딩이 문제가 아니고 경우의 수를 찾고 
 
 그걸 논리적으로 기술하면 된다.
+
+
+// 0430.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int fistIdx = -1;
+int nextIdx = 0;
+
+
+int foo(string text1, string text2, int idx1, int idx2) {
+
+    if (text1.size() <= idx1 || text2.size() <= idx2) {
+        return 0;
+    }
+
+    int result = 0;
+    int nextResult = 0;
+
+    if (text1[idx1] == text2[idx2]) {
+
+        if (fistIdx == -1) {
+            fistIdx = idx1;
+            nextIdx = idx2 + 1;
+        }
+
+        result = 1 + foo(text1, text2, idx1+1, idx2+1);
+
+        if (fistIdx == idx1) {
+            fistIdx = -1;
+            nextIdx = 0;
+            nextResult = foo(text1, text2, idx1+1, 0);
+        }
+        else {
+            int a = 0;
+            a;
+        }
+
+        result = max(result, nextResult);
+    }
+    else {
+        if (text2.size() == idx2 + 1) {
+            result = foo(text1, text2, idx1 + 1, nextIdx);
+        }
+        else {
+            result = foo(text1, text2, idx1, idx2 + 1);
+        }
+    }
+
+    return result;
+}
+
+
+int main()
+{
+    // p
+    // qr
+
+    // p 부터 시작해 최대 길이 문자 길이 값
+    // q 부터 시작해 최대 길이 문자 길이 값
+
+    // 을 동등히 비교해서 제일 큰 값을 찾는다.
+
+
+    // 저장이 필요해서 
+    // 저장을 했더니 제일 처음 저장한 값만 가져오더라
+
+    //int d = foo("abc", "ab", 0, 0);
+    //if (d == 2) {
+    //    cout << d;
+    //    cout << endl;
+    //}
+
+
+    // 근데 이 경우에도 뒤로 못하게 하면 
+    // 가장 긴 거리를 찾지 못하게 됨
+
+    // pr 로 잘못 된 로직이지만 결과는 2로 맞음
+    // 원래는 qr 로 2가 되어야 함
+    // 이것부터 해결 필요
+    // 그러니깐 어쩌다 맞춘것일뿐
+    // 
+
+    // 그래서 p 에서 선택된 문자 기준 앞에 문자를 선택 못하게 해봤는데
+    // q 관점에서 더 긴 문자열을 찾을 수 있음에도 찾기 못하게 됨
+
+    // p가 시작점이 되서 모든 해당하는 수를 찾는 것과
+    // q가 시작점이 되서 모든 해당하는 수를 찾는 것이 분리 되어야 함
+    // 
+
+    // 시작점은 제일 처음 매칭 포인트를 찾았을 때로 가정해보자
+    // 이건 p 다음은 나오는 모든 매칭 포인트는 선택 안하게 됨?
+
+    //int a = foo("oxcpqrsvwf", "shmtulqrypy", 0, 0);
+    //if (a == 2) {
+    //    cout << a;
+    //    cout << endl;
+    //}
+
+    //// ace
+    //// ce
+    //// e
+
+    //int b = foo("abcde", "ace", 0, 0);
+    //if (b == 3) {
+    //    cout << b;
+    //    cout << endl;
+    //}
+    //else {
+    //    cout << b;
+    //    cout << endl;
+    //}
+
+    //// up
+    //// p
+
+    // 이 경우만 보면 성공한 마지막을 저장하고 뒤로는 검색 못하게 하는게
+    // 맞아 보임
+    int c = foo("ezupkr", "ubmrapg", 0, 0);
+    if (c == 2) {
+        cout << c;
+        cout << endl;
+    }
+    else {
+        cout << c;
+        cout << endl;
+    }
+
+
+    //
+    //
+
+
+    return 0;
+}
+
