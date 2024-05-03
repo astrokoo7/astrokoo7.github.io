@@ -530,68 +530,28 @@ int main()
 
 using namespace std;
 
-vector<vector<int>> dp;
-
-
 int foo(string text1, string text2, int idx1, int idx2, int nextIdx) 
 {
-    int size1 = text1.size();
-    int size2 = text2.size();
-    if (size1 <= idx1 || size2 <= idx2) {
+    if (text1.size() <= idx1 || text2.size() <= idx2) {
         return 0;
     }
 
     int result = 0;
+
     if (text1[idx1] == text2[idx2]) {
         int prevR = 0;
         for (int i = 1; i < text1.size(); i++) {
-            if (size1 <= idx1 + i || size2 <= idx2 + 1)
-                continue;
-            auto val = dp[idx1 + i][idx2 + 1];
-            if (val != -1) {
-                prevR = max(prevR, val);
-            }
-            else {
-                int tmp = foo(text1, text2, idx1 + i, idx2 + 1, idx2 + 1);
-                dp[idx1 + i][idx2 + 1] = tmp;
-                prevR = max(prevR, tmp);
-            }
+            int tmp = foo(text1, text2, idx1 + i, idx2 + 1, idx2 + 1);
+            prevR = max(prevR, tmp);
         }
         result = 1 + prevR;
     }
     else {
         if (text2.size() == idx2 + 1) {
-            do {
-                if (size1 <= idx1 + 1) {
-                    result = 0;
-                    break;
-                }
-                auto val = dp[idx1 + 1][nextIdx];
-                if (val != -1) {
-                    result = val;
-                }
-                else {
-                    result = foo(text1, text2, idx1 + 1, nextIdx, nextIdx);
-                    dp[idx1 + 1][nextIdx] = result;
-                }
-            } while (0);
-
+            result = foo(text1, text2, idx1 + 1, nextIdx, nextIdx);
         }
         else {
-            do {
-                if (size2 <= idx2 + 1) {
-                    result = 0;
-                    break;
-                }
-                auto val = dp[idx1][idx2 + 1];
-                if (val != -1) {
-                    result = val;
-                }
-                else {
-                    result = foo(text1, text2, idx1, idx2 + 1, nextIdx);
-                    dp[idx1][idx2 + 1] = result;
-                }
-            } while (0);
+            result = foo(text1, text2, idx1, idx2 + 1, nextIdx);
         }
     }
 
