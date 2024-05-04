@@ -10,9 +10,9 @@ categories: c++
 어떤 문자열에서 특정 문자열 패턴을 검색할 때 brutal force 방식을 사용하여 검색하면 입력 문자열 길이 n과 문자열 패턴 길이 m일 때 시간 복잡도는 O(n*m)이 된다.
 <!-- end_excerpt -->
 
-코드로 짜보면 아래와 같고 문자열의 문자 하나씩 검색하려는 패턴 문자열과 비교하여 다르면 문자열의 다음 문자를 패턴 문자열과 처음부터 다시 검색하는 부분을 엿볼 수 있다.
+brutal force 방식을 코드로 짜면 문자열의 문자 하나씩 검색하려는 패턴 문자열의 문자와 하나씩 비교하여 다르면 문자열의 다음 문자를 패턴 문자열과 처음부터 다시 검색하면서 진행한다.
 
-이는 입력 문자열과 문자열 패턴 길이가 길어질수록 O(n^2) 되어 지수적 시간 복잡도를 가져 효율성이 많이 떨어지게 된다.
+이러한 방식은 입력 문자열과 문자열 패턴 길이가 길어질수록 O(n^2) 되어 지수적 시간 복잡도를 가져 효율성이 많이 떨어지는 문제가 있다.
 
 이러한 문제를 효율적으로 해결하기 위한 방법으로 KMP 알고리즘, Boyer-Moore 알고리즘 등이 있는데 여기선 Rabin-Karp 알고리즘으로 알려진 간단한 Rolling Hash에 대해 살펴보려고 한다.
 
@@ -23,6 +23,7 @@ categories: c++
 
 using namespace std;
 
+// brutal force 방식으로 효율성이 많이 떨어진다.
 vector<int> findPatternOccurrences(const string& text, const string& pattern) {
     vector<int> occurrences;
     int n = text.size();
