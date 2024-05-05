@@ -27,6 +27,7 @@ vector<int> findPatternOccurrences(const string& text, const string& pattern) {
 
     for (int i = 0; i <= (n - m); i++) {
         int j = 0;
+        // 0~(n-m)까지 m번 검색한다.
         for (; j < m; j++) {
             if (text[i + j] != pattern[j])
                 break;
