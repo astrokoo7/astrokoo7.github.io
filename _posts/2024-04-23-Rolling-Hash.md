@@ -53,7 +53,7 @@ int main() {
 
 ## Rolling Hash
 
-롤링 해쉬 알고리즘은 brutal force 방식의 시간 복잡도 O(n*m)를 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 최소 O(n+m) 시간 복잡도를 가지도록 개선한다.
+롤링 해쉬 알고리즘은 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 최소 O(n+m) 시간 복잡도를 가지게 만들어준다.
 
 ### Generate Hash
 
