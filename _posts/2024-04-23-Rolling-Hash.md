@@ -57,6 +57,8 @@ int main() {
 
 롤링 해쉬 알고리즘은 brutal force 방식의 시간 복잡도 O(n*m)를 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 최소 O(n+m) 시간 복잡도를 가지도록 개선한다.
 
+### Generate Hash
+
 입력 문자열과 패턴 문자열의 해쉬 값 생성은 문자열의 각 문자당 ascii code 값으로 할당(encoding)하고, ascii 문자는 같지만, 문자열의 자릿수가 다른 문자를 구분하기 위해 자릿수를 지숫값으로 hash 충돌이 덜 발생할 base (밑)을 정해 문자에 곱해 구분하여 만들어 준다.
 
 ```
@@ -118,6 +120,8 @@ rolling hash 알고리즘은 hash 충돌이 많이 발생할수록 시간 복잡
         power = (power * 258) % 1000000007;
     }
 ```
+
+### Sliding Window
 
 마지막으로 문자열의 인덱스를 하나씩 밀면서 (sliding window) hash 값을 구해 패턴 문자의 hash 값과 비교 후 같다면 찾는 문자열이 맞는지 확인하여 문자열의 패턴 위치를 돌려주면 된다.
 
