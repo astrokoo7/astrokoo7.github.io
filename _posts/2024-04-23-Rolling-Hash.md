@@ -104,7 +104,7 @@ rolling hash 알고리즘은 hash 충돌이 많이 발생할수록 시간 복잡
 ```
 258^99 mod 1000000007 = ?
 ```    
-문자열 길이가 클 때 modular 연산 시에도 overflow가 발생할 수 있다. 이는 modular 연산 특성을 통해 아래와 같이 작은 수로 나눠서 계산 할 수 있다.
+문자열 길이가 길면 modular 연산 시에도 overflow가 발생할 수 있다. 이는 modular 연산 특성을 통해 아래와 같이 작은 수로 나눠서 계산 할 수 있다.
 
 ```
 (A * B) mod C = ((A mod C) * (B mod C)) mod C
