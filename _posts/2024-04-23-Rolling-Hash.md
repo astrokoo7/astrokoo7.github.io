@@ -55,6 +55,9 @@ int main() {
 
 롤링 해쉬 알고리즘은 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 최소 O(n+m) 시간 복잡도를 가지게 만들어준다.
 
+- [Generate Hash]()
+- [Sliding Hash Window]()
+
 ### Generate Hash
 
 입력 문자열과 패턴 문자열의 해쉬 값 생성은 문자열의 각 문자당 ascii code 값으로 할당(encoding)하고, ascii 문자는 같지만, 문자열의 자릿수가 다른 문자를 구분하기 위해 자릿수를 지숫값으로 hash 충돌이 덜 발생할 base (밑)을 정해 문자에 곱해 구분하여 만들어 준다.
@@ -119,7 +122,7 @@ rolling hash 알고리즘은 hash 충돌이 많이 발생할수록 시간 복잡
     }
 ```
 
-### Sliding Window
+### Sliding Hash Window
 
 처음 패턴 문자열의 크기만큼 문자열에서 hash 값을 생성 후 패턴 문자열 hash 와 비교하고 다르면 문자열의 인덱스를 하나씩 밀면서 hash 값을 갱신 후 다시 비교하면서 일치하는 문자열 패턴을 찾을 수 있다.
 
@@ -131,7 +134,7 @@ rolling hash 알고리즘은 hash 충돌이 많이 발생할수록 시간 복잡
     h(bcde) = (((h(abcd) - a * power mod 1000000007) mod 258) + e) mod 258
 ```
 
-위 수식은 sliding window 계산식으로 복잡해 보이긴 하지만 한칸씩 밀면서 맨 앞의 값(a)을 빼고 뒤에 값(e)을 추가하는 단순한 수식임을 알 수 있다.
+위 수식은 Sliding Hash Window 계산식으로 복잡해 보이긴 하지만 한칸씩 밀면서 맨 앞의 값(a)을 빼고 뒤에 값(e)을 추가하는 단순한 수식임을 알 수 있다.
 
 완성된 코드는 아래와 같다.
 
