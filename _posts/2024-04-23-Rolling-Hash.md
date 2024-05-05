@@ -4,8 +4,6 @@ title: "Rolling Hash"
 categories: c++
 ---
 
-## Background
-
 <!-- begin_excerpt -->
 어떤 문자열에서 특정 문자열 패턴을 검색할 때 brutal force 방식을 사용하여 검색하면 입력 문자열 길이 n과 문자열 패턴 길이 m일 때 시간 복잡도는 O(n*m)이 된다.
 <!-- end_excerpt -->
