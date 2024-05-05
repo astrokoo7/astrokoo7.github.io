@@ -53,10 +53,10 @@ int main() {
 
 ## Rolling Hash
 
-롤링 해쉬 알고리즘은 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 최소 O(n+m) 시간 복잡도를 가지게 만들어준다.
+롤링 해쉬 알고리즘은 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 최대 O(n+m) 시간 복잡도를 가지게 만들어준다.
 
-- [Generate Hash]()
-- [Sliding Hash Window]()
+- [Generate Hash](#generate-hash)
+- [Sliding Hash Window](#sliding-hash-window)
 
 ### Generate Hash
 
@@ -124,7 +124,7 @@ rolling hash 알고리즘은 hash 충돌이 많이 발생할수록 시간 복잡
 
 ### Sliding Hash Window
 
-최초 패턴 문자열의 크기만큼 문자열에서 hash 값을 생성하고, 패턴 문자열 hash 와 비교 후 다르면 문자열의 인덱스를 하나씩 밀면서 hash 값을 갱신 후 다시 비교하면서 일치하는 문자열 패턴을 찾을 수 있다.
+최초 패턴 문자열의 길이만큼 문자열에서 hash 값을 생성하고, 패턴 문자열 hash 와 비교 후 다르면 문자열의 인덱스를 하나씩 밀면서 hash 값을 갱신 후 다시 비교하면서 일치하는 문자열 패턴을 찾을 수 있다.
 
 ```
     text: abcdefghijk
