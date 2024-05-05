@@ -23,7 +23,7 @@ brutal force 방식으로 코드를 짜면 문자열의 문자 하나씩 검색�
 
 using namespace std;
 
-// brutal force 방식으로 효율성이 많이 떨어진다.
+// brutal force 방식으로 긴 문자열에서 사용할 때는 적합하지 않다.
 vector<int> findPatternOccurrences(const string& text, const string& pattern) {
     vector<int> occurrences;
     int n = text.size();
