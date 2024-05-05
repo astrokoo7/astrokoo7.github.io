@@ -19,7 +19,7 @@ categories: c++
 
 using namespace std;
 
-// brutal force 방식으로 긴 문자열에서 사용할 때는 적합하지 않다.
+// brutal force 방식으로 긴 문자열에서 검색할 땐 적합하지 않다.
 vector<int> findPatternOccurrences(const string& text, const string& pattern) {
     vector<int> occurrences;
     int n = text.size();
