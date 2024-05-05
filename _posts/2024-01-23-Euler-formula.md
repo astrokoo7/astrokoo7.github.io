@@ -14,7 +14,7 @@ categories: math
 
 예를들어 0 에서 미분가능한 함수 \\(f(x)=sin x\\)를 매클로린 급수를 사용해 다항식으로 변경해보자.
 
-아래의 [매클로린 급수](../19/Taylor-series.html/#Maclaurin)를 \\(f(x)=sin x\\)에 대해 풀어보면
+아래의 [매클로린 급수](../19/Taylor-series.html/#Maclaurin's-series)를 \\(f(x)=sin x\\)에 대해 풀어보면
 
 \\(f(x) = f(0) + f'(0)(x) + \frac {f'' (0)} {2!}(x)^2 + \frac {f''' (0)} {3!}(x)^3...\\)
 
