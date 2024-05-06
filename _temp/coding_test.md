@@ -730,3 +730,25 @@ public:
         return find(0, 0, t1, t2);
     }
 };
+
+
+int foo(string s, int p1, int p2)
+{
+    std::cout << p1 << "," << p2 << endl;
+
+    if (p2 < p1 || p1 < 0 || p2 < 0)
+        return 0;
+
+    if (p1 == p2)
+        return 1;
+
+    int result = 0;
+    if (s[p1] == s[p2]) {
+        result = 2 + foo(s, p1 + 1, p2 - 1);
+    }
+    else {
+        result = max(foo(s, p1, p2 - 1), foo(s, p1 + 1, p2));
+    }
+
+    return result;
+}
