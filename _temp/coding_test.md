@@ -782,7 +782,9 @@ public:
         }
 
         for (auto& node : stack) {
-            // node->value
+            if (node->val >= node->next->val) {
+                
+            }
         }
 
         ListNode* nxtGreater = removeNodes(head->next);
