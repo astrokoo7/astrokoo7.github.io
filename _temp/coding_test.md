@@ -752,3 +752,45 @@ int foo(string s, int p1, int p2)
 
     return result;
 }
+
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+
+    ListNode* removeNodes(ListNode* head) {
+        if (head == nullptr) {
+            return nullptr;
+        }
+
+        stack<ListNode*> stack;
+        stack.push(head);
+
+        ListNode* node = head->next;
+        while (node != nullptr) {
+            stack.push(node);
+            node = node->next;
+        }
+
+        for (auto& node : stack) {
+            // node->value
+        }
+
+        ListNode* nxtGreater = removeNodes(head->next);
+
+        head->next = nxtGreater;
+        if (nxtGreater == nullptr || head->val >= nxtGreater->val) {
+            return head;
+        }
+        return nxtGreater;
+    }
+};
