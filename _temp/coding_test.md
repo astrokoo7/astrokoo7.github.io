@@ -753,24 +753,13 @@ int foo(string s, int p1, int p2)
     return result;
 }
 
-
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
- *     ListNode(int x, ListNode *next) : val(x), next(next) {}
- * };
- */
 class Solution {
 public:
 
     ListNode* removeNodes(ListNode* head) {
-        if (head == nullptr) {
-            return nullptr;
-        }
+        // if (head == nullptr) {
+        //     return nullptr;
+        // }
 
         stack<ListNode*> stack;
         stack.push(head);
@@ -781,18 +770,31 @@ public:
             node = node->next;
         }
 
-        for (auto& node : stack) {
-            if (node->val >= node->next->val) {
-                
+        ListNode* nxtGreater = nullptr;
+        
+        while (!stack.empty()) {
+            node = stack.top();
+            stack.pop();
+            node->next = nxtGreater;
+
+            if (nxtGreater == nullptr || node->val >= nxtGreater->val) {
+                nxtGreater = node;
+            } else {
+                nxtGreater = node->next;
             }
         }
 
-        ListNode* nxtGreater = removeNodes(head->next);
+        return node;
 
-        head->next = nxtGreater;
-        if (nxtGreater == nullptr || head->val >= nxtGreater->val) {
-            return head;
-        }
-        return nxtGreater;
+        // // push
+        // ListNode* nxtGreater = removeNodes(head->next);
+
+
+        // // pop
+        // head->next = nxtGreater;
+        // if (nxtGreater == nullptr || head->val >= nxtGreater->val) {
+        //     return head;
+        // }
+        // return nxtGreater;
     }
 };
