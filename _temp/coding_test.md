@@ -784,7 +784,7 @@ public:
             }
         }
 
-        return node;
+        return nxtGreater;
 
         // // push
         // ListNode* nxtGreater = removeNodes(head->next);
