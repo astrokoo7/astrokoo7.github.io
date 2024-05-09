@@ -800,10 +800,16 @@ public:
 };
 
 
+
+#include <iostream>
+#include <stack>
+
 using namespace std;
 
 int Fi(int num)
 {
+    cout << num << endl;
+
     if (num == 1)
         return 1;
     else if (num == 2)
@@ -816,13 +822,23 @@ void foo(int num)
 {
     stack<int> stack_;
 
-    while (!(num == 1 || num == 2)) {
+    int num1 = num;
+    int num2 = num;
 
+    while (!(num1 == 1 || num1 == 2 || num2 == 1 || num2 == 2)) {
 
-        stack_.push(num - 1);
-        stack_.push(num - 2);
+        num1 -= 1;
+        num2 -= 2;
+
+        stack_.push(num1);
+        stack_.push(num2);
     }
+}
 
+int main()
+{
+    Fi(10);
+    foo(10);
 
-
+    return 0;
 }
