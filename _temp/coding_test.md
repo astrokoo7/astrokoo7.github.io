@@ -744,13 +744,11 @@ int foo(string s, int p1, int p2)
 
     int result = 0;
     if (s[p1] == s[p2]) {
-        result = 2 + foo(s, p1 + 1, p2 - 1);
+        return 2 + foo(s, p1 + 1, p2 - 1);
     }
     else {
-        result = max(foo(s, p1, p2 - 1), foo(s, p1 + 1, p2));
+        return max(foo(s, p1, p2 - 1), foo(s, p1 + 1, p2));
     }
-
-    return result;
 }
 
 class Solution {
@@ -820,22 +818,35 @@ int Fi(int num)
 
 // 0, 1, 1, 2, 3, 5, 8, 13, 21
 
-void foo(int num) 
+int foo(int num)
 {
     stack<int> stack_;
+    stack_.push(num);
 
-    int num1 = num;
-    int num2 = num;
+    int result = 0;
 
-    while (!(num1 == 1 || num1 == 2 || num2 == 1 || num2 == 2)) {
+    while (!stack_.empty()) {
 
-        num1 -= 1;
-        num2 -= 2;
+        auto num2 = stack_.top();
+        stack_.pop();
 
-        stack_.push(num1);
-        stack_.push(num2);
+        //cout << num2 << endl;
+
+        if (num2 == 1) {
+            result += 1;
+        }
+        else if (num2 == 2) {
+            result += 1;
+        }
+        else {
+            stack_.push(num2 - 2);
+            stack_.push(num2 - 1);
+        }
     }
+
+    return result;
 }
+
 
 int main()
 {
