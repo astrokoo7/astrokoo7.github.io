@@ -818,6 +818,8 @@ int Fi(int num)
         return Fi(num - 1) + Fi(num - 2);
 }
 
+// 0, 1, 1, 2, 3, 5, 8, 13, 21
+
 void foo(int num) 
 {
     stack<int> stack_;
@@ -848,3 +850,5 @@ https://kldp.org/node/39437
 https://github.com/microsoft/WSL/issues/4926
 
 https://www.algodale.com/guides/
+
+https://dalgona.dev/posts/2018-02-12-memoization-in-elixir-part-1.html
