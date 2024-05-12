@@ -856,6 +856,102 @@ int main()
     return 0;
 }
 
+// 0512.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<string> result;
+
+void bar(string& s)
+{
+    s.push_back('(');
+
+    if (true) {
+        bar(s);
+    }
+
+    s.push_back(')');
+}
+
+string foo(int n, string& s)
+{
+    if (n == 0) {
+        return s;
+    }
+
+    while (!(n < 0)) {
+
+        s.push_back('(');
+            s.push_back('(');
+                s.push_back('(');
+                s.push_back(')');
+            s.push_back(')');
+        s.push_back(')');
+
+        s.push_back('(');
+            s.push_back('(');
+            s.push_back('(');
+            s.push_back(')');
+            s.push_back(')');
+        s.push_back(')');
+
+        s.push_back('(');
+            s.push_back('(');
+        s.push_back('(');
+
+        s.push_back('(');
+        s.push_back('(');
+            s.push_back('(');
+
+        s.push_back('(');
+        s.push_back('(');
+        s.push_back('(');
+
+    }
+
+
+    if (s.empty()) {
+        for (int i = 0; i < n; i++) {
+            s.push_back('(');
+        }
+        return foo(n, s);
+    }
+    else {
+        auto size = s.size();
+        for (int i = 0; i < size; i++) {
+            s.push_back(')');
+        }
+        result.push_back(s);
+        s = "";
+        return foo(n - 1, s);
+    }
+}
+
+vector<string> generateParenthesis(int n) {
+
+    for (int i = n; -1 < i ; i--) {
+        string s;
+        foo(i, s);
+    }
+
+    return result;
+}
+
+int main()
+{
+    auto r = generateParenthesis(3);
+
+    return 1;
+
+}
+
+
+
 https://kldp.org/node/39437
 
 https://github.com/microsoft/WSL/issues/4926
@@ -863,3 +959,5 @@ https://github.com/microsoft/WSL/issues/4926
 https://www.algodale.com/guides/
 
 https://dalgona.dev/posts/2018-02-12-memoization-in-elixir-part-1.html
+
+https://learn.microsoft.com/en-us/powershell/module/netnat/remove-netnat?view=windowsserver2022-ps
