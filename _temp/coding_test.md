@@ -867,16 +867,16 @@ using namespace std;
 
 vector<string> result;
 
-void bar(string& s)
-{
-    s.push_back('(');
+//vector<string> generateParenthesis(int n) {
+//
+//    for (int i = n; -1 < i; i--) {
+//        string s;
+//        foo(i, s);
+//    }
+//
+//    return result;
+//}
 
-    if (true) {
-        bar(s);
-    }
-
-    s.push_back(')');
-}
 
 string foo(int n, string& s)
 {
@@ -886,24 +886,22 @@ string foo(int n, string& s)
 
     while (!(n < 0)) {
 
+        // ((()))
         s.push_back('(');
             s.push_back('(');
                 s.push_back('(');
-                s.push_back(')');
-            s.push_back(')');
-        s.push_back(')');
 
+        // (()())
         s.push_back('(');
             s.push_back('(');
             s.push_back('(');
-            s.push_back(')');
-            s.push_back(')');
-        s.push_back(')');
 
+        // (())()
         s.push_back('(');
             s.push_back('(');
         s.push_back('(');
 
+        // ()(())
         s.push_back('(');
         s.push_back('(');
             s.push_back('(');
@@ -912,43 +910,62 @@ string foo(int n, string& s)
         s.push_back('(');
         s.push_back('(');
 
-    }
-
-
-    if (s.empty()) {
-        for (int i = 0; i < n; i++) {
-            s.push_back('(');
-        }
-        return foo(n, s);
-    }
-    else {
-        auto size = s.size();
-        for (int i = 0; i < size; i++) {
-            s.push_back(')');
-        }
-        result.push_back(s);
-        s = "";
-        return foo(n - 1, s);
+        // (()()()())
+        // ((()())())
+        // ((()()()))
     }
 }
 
-vector<string> generateParenthesis(int n) {
+void bar(int n, string& s)
+{
+    s.push_back('(');
 
-    for (int i = n; -1 < i ; i--) {
-        string s;
-        foo(i, s);
+    if (0 < n) {
+
+        bar(n-1, s);
+
+
+        bar(0, s);
+        bar(0, s);
+        bar(0, s);
     }
 
-    return result;
+    s.push_back(')');
 }
 
 int main()
 {
-    auto r = generateParenthesis(3);
+    {
+        string s;
+        bar(1, s);
+        //bar(0, s);
+        cout << s << endl;
+    }
+
+    //{
+    //    string s;
+    //    bar(1, s);
+    //    bar(0, s);
+    //    cout << s << endl;
+    //}
+
+    //{
+    //    string s;
+    //    bar(0, s);
+    //    bar(1, s);
+    //    cout << s << endl;
+    //}
+
+    // call 3
+    //bar(0, s);
+
+    //auto r = generateParenthesis(3);
 
     return 1;
 
 }
+
+
 
 
 
