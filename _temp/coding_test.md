@@ -978,3 +978,27 @@ https://www.algodale.com/guides/
 https://dalgona.dev/posts/2018-02-12-memoization-in-elixir-part-1.html
 
 https://learn.microsoft.com/en-us/powershell/module/netnat/remove-netnat?view=windowsserver2022-ps
+
+
+
+void generateParenthesesHelper(std::vector<std::string>& result, std::string current, int open, int close, int max) {
+    if (current.length() == max * 2) {
+        result.push_back(current);
+        return;
+    }
+
+    //  (           
+    //  ((                          
+    //  (((         )
+    //  (((         ))
+    //  (((         )))
+
+    //  ((          )
+    //  ((          ))
+    //  ((          )))
+
+    if (open < max)
+        generateParenthesesHelper(result, current + "(", open + 1, close, max);
+    if (close < open)
+        generateParenthesesHelper(result, current + ")", open, close + 1, max);
+}
