@@ -1002,3 +1002,45 @@ void generateParenthesesHelper(std::vector<std::string>& result, std::string cur
     if (close < open)
         generateParenthesesHelper(result, current + ")", open, close + 1, max);
 }
+
+class Solution {
+public:
+
+        map<char, string> keyPad = {
+            {'2', "abc"},
+            {'3', "def"},
+            {'4', "ghi"},
+            {'5', "jkl"},
+            {'6', "mno"},
+            {'7', "pqrs"},
+            {'8', "tuv"},
+            {'9', "wxyz"},
+        };
+
+    void foo(vector<string>& result, string& digits, int idx) 
+    {
+        if (idx == digits.size()) 
+            return;
+        auto c = digits[idx];
+        auto str = keyPad[c];
+
+        for (auto c2 : str) {
+
+            foo(result, digits, idx + 1);
+
+        }
+
+
+
+    }
+
+
+    vector<string> letterCombinations(string digits) {
+
+
+
+        vector<string> ret;
+
+        return ret;
+    }
+};
