@@ -5,6 +5,7 @@ title: About Me
 ---
 
 <!-- 실패로부터 해결의 실마리를 찾다. -->
+<!-- 다른 사람은 어떻게 헤처 나갔을까?>
 
 game programmer
 
