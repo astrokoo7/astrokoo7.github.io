@@ -1044,3 +1044,31 @@ public:
         return ret;
     }
 };
+
+
+using namespace std;
+
+string longestPalindrome(string s) {
+
+    stack<string> stack_;
+
+    for (auto c : s) {
+        if (stack_.empty()) {
+            stack_.push(string(1, c));
+        }
+        else {
+            auto str = stack_.top();
+            stack_.push(str + c);
+        }
+    }
+    
+    // 붙이면서 동등이 됬는지 검사
+
+    for (int i = 0; i < stack_.size(); i++) {
+
+        auto c = stack_[i];
+    }
+
+
+    return "";
+}
