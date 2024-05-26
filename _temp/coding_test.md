@@ -1072,3 +1072,77 @@ string longestPalindrome(string s) {
 
     return "";
 }
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+
+using namespace std;
+
+// 데이터 포인트 구조체
+struct Point {
+    int dim;
+    vector<int> val;
+    Point(vector<int> v) : val(v) {
+        dim = v.size();
+    }
+};
+
+// KD 트리 노드 구조체
+struct Node {
+    Point p;
+    int split;
+    Node* left;
+    Node* right;
+    Node(Point p, int split) : p(p), split(split), left(nullptr), right(nullptr) {}
+};
+
+// KD 트리 생성 및 검색 함수
+Node* makeTree(vector<Point>& points, int depth) {
+    if (points.empty())
+        return nullptr;
+
+    int split = depth % points[0].dim;
+    sort(points.begin(), points.end(), [split](Point a, Point b) {
+        return a.val[split] < b.val[split];
+    });
+
+    int mid = points.size() / 2;
+    Node* root = new Node(points[mid], split);
+
+    vector<Point> left_points(points.begin(), points.begin() + mid);
+    vector<Point> right_points(points.begin() + mid + 1, points.end());
+
+    root->left = makeTree(left_points, depth + 1);
+    root->right = makeTree(right_points, depth + 1);
+
+    return root;
+}
+
+bool search(Node* root, Point target, int depth) {
+    if (!root)
+        return false;
+
+    int split = root->split;
+    if (root->p.val == target.val)
+        return true;
+
+    if (target.val[split] < root->p.val[split])
+        return search(root->left, target, depth + 1);
+    else
+        return search(root->right, target, depth + 1);
+}
+
+int main() {
+    vector<Point> points = {{2, 3}, {5, 4}, {9, 6}, {4, 7}, {8, 1}, {7, 2}};
+    Node* root = makeTree(points, 0);
+
+    Point target = {2, {9, 6}};
+    if (search(root, target, 0))
+        cout << "Target found!" << endl;
+    else
+        cout << "Target not found." << endl;
+
+    return 0;
+}
