@@ -1146,3 +1146,87 @@ int main() {
 
     return 0;
 }
+
+
+#include <vector>
+
+using namespace std;
+
+class Solution {
+public:
+
+    const std::pair<int, int> axis[4] = {
+        { 1,  0},
+        {-1,  0},
+        { 0,  1},
+        { 0, -1}
+    };
+
+    vector<int> search(vector<vector<int>>& matrix, int i, int j, int val)
+    {
+        vector<int> longest;
+
+        for (auto ax : axis) {
+            vector<int> current;
+
+            auto ii = i + ax.first;
+            if (ii < 0 && matrix.size() <= ii)
+                continue;
+
+            auto jj = j + ax.second;
+            if (jj < 0 && matrix[ii].size() <= jj)
+                continue;
+
+            int next = matrix[ii][jj];
+            if (next < val)
+                continue;
+
+            current.push_back(next);
+            auto ret = search(matrix, ii, jj, next);
+            current.insert(std::end(current), std::begin(ret), std::end(ret));
+
+            if (longest.size() < current.size()) {
+                longest = ret;
+            }
+        }
+
+        return longest;
+    }
+
+    int alg(vector<vector<int>>& matrix)
+    {
+        int longest = 0;
+
+        for (int i = 0; i < matrix.size(); i++) {
+            auto& row = matrix[i];
+            for (int j = 0; j < row.size(); j++) {
+                auto ret = search(matrix, i, j, row[j]);
+                if (longest < ret.size())
+                    longest = ret.size();
+            }
+        }
+        return longest;
+    }
+
+    int longestIncreasingPath(vector<vector<int>>& matrix) {
+        return alg(matrix);
+    }
+}; 
+
+int main()
+{
+    // [[9,9,4],[6,6,8],[2,1,1]]
+
+    vector<vector<int>> matrix = {
+        {9,9,4},
+        {6,6,8},
+        {2,1,1}
+    };
+
+    Solution a;
+
+    auto b = a.longestIncreasingPath(matrix);
+
+
+    return 1;
+}
