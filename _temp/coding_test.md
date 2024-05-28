@@ -1162,13 +1162,11 @@ public:
         { 0, -1}
     };
 
-    vector<int> search(vector<vector<int>>& matrix, int i, int j, int val)
+    vector<int> search(vector<vector<int>>& matrix, int i, int j, int val, vector<int>& acc)
     {
         vector<int> longest;
 
         for (auto ax : axis) {
-            vector<int> current;
-
             auto ii = i + ax.first;
             if (ii < 0 && matrix.size() <= ii)
                 continue;
@@ -1181,11 +1179,13 @@ public:
             if (next < val)
                 continue;
 
-            current.push_back(next);
-            auto ret = search(matrix, ii, jj, next);
-            current.insert(std::end(current), std::begin(ret), std::end(ret));
+            acc.push_back(next);
 
-            if (longest.size() < current.size()) {
+            vector<int> start{ next };
+            auto ret = search(matrix, ii, jj, next, start);
+
+
+            if (longest.size() < acc.size()) {
                 longest = ret;
             }
         }
@@ -1200,7 +1200,8 @@ public:
         for (int i = 0; i < matrix.size(); i++) {
             auto& row = matrix[i];
             for (int j = 0; j < row.size(); j++) {
-                auto ret = search(matrix, i, j, row[j]);
+                vector<int> start;
+                auto ret = search(matrix, i, j, row[j], start);
                 if (longest < ret.size())
                     longest = ret.size();
             }
