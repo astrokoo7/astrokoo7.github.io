@@ -1149,6 +1149,7 @@ int main() {
 
 
 #include <vector>
+#include <unordered_map>
 
 using namespace std;
 
@@ -1162,32 +1163,46 @@ public:
         { 0, -1}
     };
 
-    vector<int> search(vector<vector<int>>& matrix, int i, int j, int val, vector<int>& acc)
-    {
-        vector<int> longest;
+    struct PairHash {
+        std::size_t operator()(const std::pair<int, int>& p) const {
+            return std::hash<int>()(p.first) ^ std::hash<int>()(p.second);
+        }
+    };
 
+    unordered_map<std::pair<int, int>, int, PairHash> save;
+
+    int search(vector<vector<int>>& matrix, int i, int j, int val)
+    {
+        auto it = save.find(std::make_pair(i, j));
+        if (it != save.end()) {
+            return it->second;
+        }
+
+        int longest = 0;
         for (auto ax : axis) {
+            int current = 0;
             auto ii = i + ax.first;
-            if (ii < 0 && matrix.size() <= ii)
+            if (ii < 0 || matrix.size() <= ii) {
                 continue;
+            }
 
             auto jj = j + ax.second;
-            if (jj < 0 && matrix[ii].size() <= jj)
+            if (jj < 0 || matrix[ii].size() <= jj) {
                 continue;
+            }
 
             int next = matrix[ii][jj];
-            if (next < val)
+            if (val <= next) {
                 continue;
-
-            acc.push_back(next);
-
-            vector<int> start{ next };
-            auto ret = search(matrix, ii, jj, next, start);
-
-
-            if (longest.size() < acc.size()) {
-                longest = ret;
             }
+
+            current += 1;
+            auto ret = search(matrix, ii, jj, next);
+            current += ret;
+
+            save.insert({ std::make_pair(ii, jj), current });
+
+            longest = std::max(longest, current);
         }
 
         return longest;
@@ -1200,10 +1215,8 @@ public:
         for (int i = 0; i < matrix.size(); i++) {
             auto& row = matrix[i];
             for (int j = 0; j < row.size(); j++) {
-                vector<int> start;
-                auto ret = search(matrix, i, j, row[j], start);
-                if (longest < ret.size())
-                    longest = ret.size();
+                auto current = search(matrix, i, j, row[j]);
+                longest = std::max(longest, current);
             }
         }
         return longest;
