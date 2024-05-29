@@ -1173,6 +1173,7 @@ public:
 
     int search(vector<vector<int>>& matrix, int i, int j, int val)
     {
+                // 한바뀌 돌고나서 save 확인
         auto it = save.find(std::make_pair(i, j));
         if (it != save.end()) {
             return it->second;
