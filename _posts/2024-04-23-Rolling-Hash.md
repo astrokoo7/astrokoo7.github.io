@@ -12,7 +12,8 @@ categories: c++
 보통 입력 문자열과 찾으려는 패턴이 짧은 경우 brutal force 방식을 사용하지만, <br>
 리눅스 grep 명령어처럼 아주 큰 입력 문자열에서 긴 문자열 패턴을 찾으려 할 땐 적합하지 않다.
 
-이러한 상황에선 KMP, Boyer-Moore 같은 알고리즘을 주로 사용하는데 여기선 Rabin-Karp 으로 알려진 간단한 Rolling Hash에 대해 살펴보려고 한다.
+이러한 상황에선 KMP, Boyer-Moore 같은 알고리즘을 주로 사용하는데,<br>
+여기선 Rabin-Karp 으로 알려진 간단한 Rolling Hash에 대해 살펴보려고 한다.
 
 ```c++
 #include <iostream>
