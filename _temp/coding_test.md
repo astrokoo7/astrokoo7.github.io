@@ -1169,17 +1169,21 @@ public:
         }
     };
 
-    unordered_map<std::pair<int, int>, int, PairHash> save;
+    //unordered_map<std::pair<int, int>, int, PairHash> visited;
 
-    int search(vector<vector<int>>& matrix, int i, int j, int val)
+    int search(vector<vector<int>>& matrix, int i, int j, int val, vector<vector<int>>& visited)
     {
-                // 한바뀌 돌고나서 save 확인
-        auto it = save.find(std::make_pair(i, j));
-        if (it != save.end()) {
-            return it->second;
-        }
+        //auto it = visited.find(std::make_pair(i, j));
+        //if (it != visited.end()) {
+        //    return it->second;
+        //}
 
-        int longest = 0;
+        if (visited[i][j] != -1) {
+            return visited[i][j];
+        }
+             
+
+        int longest = 1;
         for (auto ax : axis) {
             int current = 0;
             auto ii = i + ax.first;
@@ -1193,17 +1197,17 @@ public:
             }
 
             int next = matrix[ii][jj];
-            if (val <= next) {
-                continue;
+            if (val < next) {
+                current += 1;
+                auto ret = search(matrix, ii, jj, next, visited);
+                current += ret;
+
+                visited[ii][jj] = ret;
+
+                //visited.insert({ std::make_pair(ii, jj), ret });
+
+                longest = std::max(longest, current);
             }
-
-            current += 1;
-            auto ret = search(matrix, ii, jj, next);
-            current += ret;
-
-            save.insert({ std::make_pair(ii, jj), current });
-
-            longest = std::max(longest, current);
         }
 
         return longest;
@@ -1212,11 +1216,13 @@ public:
     int alg(vector<vector<int>>& matrix)
     {
         int longest = 0;
+        vector<vector<int>> visited(matrix.size(), vector<int>(matrix[0].size(), -1));
+
 
         for (int i = 0; i < matrix.size(); i++) {
             auto& row = matrix[i];
             for (int j = 0; j < row.size(); j++) {
-                auto current = search(matrix, i, j, row[j]);
+                auto current = search(matrix, i, j, row[j], visited);
                 longest = std::max(longest, current);
             }
         }
@@ -1231,11 +1237,16 @@ public:
 int main()
 {
     // [[9,9,4],[6,6,8],[2,1,1]]
+    // [[3,4,5],[3,2,6],[2,2,1]]
 
     vector<vector<int>> matrix = {
-        {9,9,4},
-        {6,6,8},
-        {2,1,1}
+        //{9,9,4},
+        //{6,6,8},
+        //{2,1,1}
+
+        {3,4,5},
+        {3,2,6},
+        {2,2,1}
     };
 
     Solution a;
