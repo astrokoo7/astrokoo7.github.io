@@ -46,6 +46,7 @@ categories: reading
 - [c#-server](https://github.com/dngur807/lecture-CSharp-Basic-GameServer?tab=readme-ov-file)
 https://angeloyeo.github.io/2022/01/05/complex_number_basic.html
 - [shadow](https://developer.nvidia.com/gpugems/gpugems2/part-ii-shading-lighting-and-shadows/chapter-17-efficient-soft-edged-shadows-using)
+- [shadow](https://rito15.github.io/posts/unity-shader-receive-and-cast-shadow/)
 
 https://www.korecmblog.com/blog/jvm-stack-and-register
 
