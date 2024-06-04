@@ -43,7 +43,7 @@ categories: reading
 - [projection](114847/scatter-gather-async-socket-i-o-in-net)
 - [unprojection]https://vec3.ca/code/math/projection-direct3d)
 - [c#-server](https://blog.danggun.net/3596)
-
+- [c#-server](https://github.com/dngur807/lecture-CSharp-Basic-GameServer?tab=readme-ov-file)
 https://angeloyeo.github.io/2022/01/05/complex_number_basic.html
 
 
