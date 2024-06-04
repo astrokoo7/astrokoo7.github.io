@@ -47,6 +47,7 @@ categories: reading
 https://angeloyeo.github.io/2022/01/05/complex_number_basic.html
 - [shadow](https://developer.nvidia.com/gpugems/gpugems2/part-ii-shading-lighting-and-shadows/chapter-17-efficient-soft-edged-shadows-using)
 - [shadow](https://rito15.github.io/posts/unity-shader-receive-and-cast-shadow/)
+- [shadow](https://xibanya.github.io/UnityShaderViewer/Library/BuiltinShaders/CGIncludes/UnityShadowLibrary.html)
 
 https://www.korecmblog.com/blog/jvm-stack-and-register
 
