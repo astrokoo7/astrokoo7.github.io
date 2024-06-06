@@ -1256,3 +1256,91 @@ int main()
 
     return 1;
 }
+
+
+class Solution {
+public:
+
+    int mid1 = -1;
+    int mid2 = -1;
+    int save1 = -1;
+    int save2 = -1;
+
+    void alg(vector<int>& nums1, vector<int>& nums2, int i, int j)
+    {
+        if (mid2 == (i + j)) {
+            return;
+        }
+
+        save2 = save1;
+
+        if (i != nums1.size() && j != nums2.size()) {
+            float ret = 0.0;
+            auto a = nums1[i];
+            auto b = nums2[j];
+
+            if (b < a) {
+               save1 = nums2[j];
+               alg(nums1, nums2, i, j + 1);
+            }
+            else {
+               save1 = nums1[i];
+               alg(nums1, nums2, i + 1, j);
+            }
+        }
+        else if (i < nums1.size()) {
+            save1 = nums1[i];
+
+            alg(nums1, nums2, i+1, j);
+        } 
+        else if (j < nums2.size()) {
+            save1 = nums2[j];
+
+            alg(nums1, nums2, i, j+1);
+        }
+    }
+
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int size = nums1.size() + nums2.size();
+        mid1 = size / 2.0;
+        mid2 = mid1 + 1;
+
+        alg(nums1, nums2, 0, 0);
+
+        double ret = 0;
+        if ((size % 2) == 0) {
+            ret = (save1 + save2) / 2.0;
+        }
+        else {
+            ret = save2 > save1 ? save2 : save1;
+        }
+
+        return ret;
+    }
+};
+
+int main()
+{
+    Solution sol;
+
+    vector<int> nums1{1,3};
+    vector<int> nums2{2};
+
+    //vector<int> nums1{1,2};
+    //vector<int> nums2{3,4};
+
+    //vector<int> nums1{};
+    //vector<int> nums2{2,3};
+
+    //vector<int> nums1{3};
+    //vector<int> nums2{-2,-1};
+
+    //vector<int> nums1{ 1 };
+    //vector<int> nums2{ 1 };
+
+    // tree?
+
+    auto a = sol.findMedianSortedArrays(nums1, nums2);
+
+    std::cout << "Hello World!\n";
+}
