@@ -1,0 +1,26 @@
+---
+layout: post
+title: "gamma space & sRGB"
+categories: graphics
+---
+
+<!-- begin_excerpt -->
+
+인간은 감각에 따라 자극의 정도가 특정 지수에 비례한다고 알려져 있다.
+
+<!-- end_excerpt -->
+
+그중 색상 차의 미묘한 변화는 알아차리기 어렵다고 한다.
+
+만약 0은 검은색 1은 흰색일 때,
+
+검은색에서 흰색으로 변화를 일정하게 표현 한다면 색상 차의 미묘한 변화를 
+
+알아차리지 못해 아래 이미지처럼 급격한 변화를 느낀다.
+
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gamma1.png" width="100%">
+    <figcaption></figcaption>
+</div>
+</figure>
