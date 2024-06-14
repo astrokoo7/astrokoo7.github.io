@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "gamma space & sRGB vs linear space"
+title: "gamma space & sRGB"
 categories: graphics
 ---
 
