@@ -16,7 +16,7 @@ categories: graphics
 
 검은색에서 흰색으로의 변화를 일정하게 표현 한다면 색상 차의 미묘한 변화를 
 
-알아차리지 못해 아래 이미지처럼 급격한 변화를 느낀다.
+알아차리지 못해 아래 이미지처럼 검은색에서 흰색으로의 급격한 변화를 느낀다.
 
 <figure>
 <div style="text-align:center;">
@@ -35,3 +35,4 @@ gamma space란 이러한 감각적 특정에 맞춰 색상 차를 잘 인지할 
     <figcaption></figcaption>
 </div>
 </figure>
+
