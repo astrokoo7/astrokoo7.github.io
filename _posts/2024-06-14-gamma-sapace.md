@@ -6,7 +6,7 @@ categories: graphics
 
 <!-- begin_excerpt -->
 
-사람은 감각에 따라 자극의 정도가 특정 지수에 비례한다고 알려져 있다.
+사람은 감각에 따라 자극의 정도가 특정 지수 값에 비례한다고 알려져 있다.
 
 <!-- end_excerpt -->
 
