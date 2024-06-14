@@ -6,7 +6,7 @@ categories: graphics
 
 <!-- begin_excerpt -->
 
-인간은 감각에 따라 자극의 정도가 특정 지수에 비례한다고 알려져 있다.
+사람은 감각에 따라 자극의 정도가 특정 지수에 비례한다고 알려져 있다.
 
 <!-- end_excerpt -->
 
@@ -27,7 +27,7 @@ categories: graphics
 
 gamma space란 이러한 감각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
 
-아래와 같이 인간이 색상 차를 잘 인지할 수 있도록 도와준다.
+아래처럼 사람이 구분하기 쉽게 도와준다.
 
 <figure>
 <div style="text-align:center;">
