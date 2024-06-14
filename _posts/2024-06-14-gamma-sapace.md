@@ -24,3 +24,14 @@ categories: graphics
     <figcaption></figcaption>
 </div>
 </figure>
+
+gamma space란 이러한 감각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
+
+아래와 같이 인간이 색상 차를 잘 인지할 수 있도록 도와준다.
+
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/gamma2.png" width="100%">
+    <figcaption></figcaption>
+</div>
+</figure>
