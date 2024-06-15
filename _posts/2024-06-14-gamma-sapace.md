@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "color space"
+title: "Color space"
 categories: graphics
 ---
 
