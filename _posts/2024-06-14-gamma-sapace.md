@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "gamma space & sRGB"
+title: "color space"
 categories: graphics
 ---
 
@@ -10,7 +10,9 @@ categories: graphics
 
 <!-- end_excerpt -->
 
-그중 색상 차의 미묘한 변화는 알아차리기 어렵다고 한다.
+## Gamma Space
+
+그중 시각은 색상 차의 미묘한 변화를 알아차리기 어렵다고 한다.
 
 만약 0은 검은색 1은 흰색일 때,
 
@@ -25,7 +27,7 @@ categories: graphics
 </div>
 </figure>
 
-gamma space란 이러한 감각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
+gamma space란 이러한 시각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
 
 아래처럼 사람이 변화를 구분하기 쉽게 도와준다.
 
@@ -35,4 +37,7 @@ gamma space란 이러한 감각적 특정에 맞춰 색상 차를 잘 인지할 
     <figcaption></figcaption>
 </div>
 </figure>
+
+
+## Gamma Correction
 
