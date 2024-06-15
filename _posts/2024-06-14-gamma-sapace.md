@@ -10,8 +10,6 @@ categories: graphics
 
 <!-- end_excerpt -->
 
-## Gamma Space
-
 그중 시각은 색상 차의 미묘한 변화를 알아차리기 어렵다고 한다.
 
 만약 0은 검은색 1은 흰색일 때,
@@ -26,6 +24,8 @@ categories: graphics
     <figcaption></figcaption>
 </div>
 </figure>
+
+## Gamma Space
 
 gamma space란 이러한 시각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
 
