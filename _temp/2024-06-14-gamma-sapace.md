@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Color Space"
+title: "Gamma"
 categories: graphics
 ---
 
@@ -25,9 +25,9 @@ categories: graphics
 </div>
 </figure>
 
-## Gamma Space
+## Gamma
 
-gamma space란 이러한 시각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
+gamma 란 이러한 시각적 특정에 맞춰 색상 차를 잘 인지할 수 있도록 보정해주는 기법으로
 
 아래처럼 사람이 변화를 구분하기 쉽게 도와준다.
 
@@ -37,6 +37,7 @@ gamma space란 이러한 시각적 특정에 맞춰 색상 차를 잘 인지할 
     <figcaption></figcaption>
 </div>
 </figure>
+
 
 
 ## Gamma Correction
