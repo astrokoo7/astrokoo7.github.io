@@ -6,7 +6,7 @@ categories: graphics
 
 ## background
 
-데칼은 특정 물체의 표면을 따라 텍스쳐를 입혀주는 기술로,
+데칼은 특정 물체의 표면을 따라 런타임에 텍스쳐를 입혀주는 기술로,
 
 Screen Space Decal이 소개되기 이전엔 
 
