@@ -72,12 +72,6 @@ Screen Space Decal이 소개되기 이전엔
 
 판단 할 수 있다.
 
-또한 픽셀의 3차원상 좌표를 박스의 로컬 좌표계로 바꾸면 복잡한 AABB 계산을 대신하여,
-
-픽셀이 박스의 크기를 넘어갔는지 쉽게 판단할 수 있고 더불어 로컬 좌표계상 x와 y는 값은,
-
-그대로 텍스쳐의 uv 좌표로 사용 할 수 있다.
-
 <figure>
 <div style="text-align:center;">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303.png" width="70%">
@@ -85,6 +79,11 @@ Screen Space Decal이 소개되기 이전엔
 </div>
 </figure>
 
+또한 픽셀의 3차원상 좌표를 박스의 로컬 좌표계로 바꾸면 복잡한 AABB 계산을 대신하여,
+
+픽셀이 박스의 크기를 넘어갔는지 쉽게 판단할 수 있고 더불어 로컬 좌표계상 x와 y는 값은,
+
+그대로 텍스쳐의 uv 좌표로 사용 할 수 있다.
 
 <figure>
 <div style="text-align:center;">
