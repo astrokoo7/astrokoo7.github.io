@@ -19,7 +19,7 @@ Screen Space Decal이 소개되기 이전엔
 
 텍스쳐를 입힐 물체를 직교 투영(Orthogonal) 박스로 투영한 뒤
 
-공간 안에 있는 물체의 vertex를 추리고
+투영 공간 안에 있는 물체의 vertex를 추려
 
 서로 다시 이어 붙여 텍스쳐가 그려질 데칼 메쉬를 만드는 식이다.
 <!-- end_excerpt -->
