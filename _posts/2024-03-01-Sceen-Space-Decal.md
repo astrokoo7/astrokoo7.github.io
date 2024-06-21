@@ -27,7 +27,7 @@ Screen Space Decal이 소개되기 이전엔
 > 이는 GPU에서 clip space 밖의 vertex를 clipping하는 방법과 동일하다.
 > </font>
 
-한편, 물체의 vertex를 투영 공간으로 변환하여 계산하는데,
+한편, 물체의 vertex는 투영 공간으로 변환하여 계산하는데,
 
 이때의 투영 공간상 물체의 vertex 좌표는 그대로 물체의 uv texture 좌표계로 쓰면 된다.
 
