@@ -4,6 +4,8 @@ title: "Why use a socket broadcast server?"
 categories: c++
 ---
 
+왜 MMORPG 서버는 로직 서버 앞단에 소켓 방송 서버를 따로 두어 사용할까?
+
 <!-- begin_excerpt -->
 
 모든 물리적 장치와 사용자 프로세스 간에는 버퍼가 존재한다.
