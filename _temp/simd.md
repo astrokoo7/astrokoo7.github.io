@@ -134,6 +134,6 @@ SIMD와 스레드는 병렬 처리를 위한 개념이지만, 그 접근 방식�
 이 두 기술은 상호 배타적이지 않으며, 많은 현대적인 시스템에서 SIMD와 멀티스레딩을 함께 사용하여 성능을 최적화합니다.
 
 
+if statement in shader and simd
 
-
-
+https://www.rastergrid.com/blog/gpu-tech/2022/02/simd-in-the-gpu-world/
