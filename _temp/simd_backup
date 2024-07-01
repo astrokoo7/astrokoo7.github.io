@@ -1,0 +1,909 @@
+#AltDevBlog
+twitter googleplus rss
+Author login
+Authors
+Search
+About
+#AltDevConf
+Andre LeiradellaFollow @leiradelI'm an information-aholic. I know many things superficially and almost nothing in depth. I'm also a perfectionist and addicted to over-engineering and early optimization. I love Lua for customizable applications, Java for quick'n'dirty prototyping and C/CPP for everything else. I also love low level programming and think the SPU is the new Z80. I work as Generalist Programmer at Insomniac Games.
+Find me:
+@leiradel
+I post in:
+Game design
+Instapaper Text
+Share:
+Twitter
+Facebook
+Reddit
+Google+
+if ( simd ) { o_O }, or How to Vectorize Code With Different Execution Paths
+A Vector
+
+Vectorization of scalar code can result in great performance speedups. Even if you never realized the magnitude of the this benefit, you can sense it because of the simple fact that vectorized code can execute arithmetic and logic instructions on (usually) four values at the same time instead of only one in scalar code.
+.
+But sometimes the initial point is a bit complicated to vectorize because the code would take different execution paths depending on the values involved in the operations. The purpose of this article is to give you some direction on how you can overcome this problem and get the benefits of vectorization.
+.
+I’ll present a couple of techniques to vectorize code along with concrete examples using the SSE2 intrinsics. I’d rather give examples using SPU intrinsics but I don’t have access to one right now to test the code. On the other hand, SSE2 means more people will be able to try out the code I show here, and most intrinsics will have a 1:1 mapping to other ISAs anyway. When there isn’t a direct mapping the same result can be achieved by another instruction or a couple of them.
+Basics
+Vectorizing number-crunching code isn’t hard. Consider this rather unuseful example:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  
+static float sdp1( float a, float b, float c, float x )
+ 
+  {
+ 
+    return x * x * a + x * b + c;
+ 
+  }
+Vectorizing it is straightforward:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  
+static __m128 sdp2( __m128 a, __m128 b, __m128 c, __m128& x )
+ 
+  {
+ 
+    // Computes x^2
+ 
+    __m128 x2 = _mm_mul_ps( x, x );
+ 
+    // Computes b*x
+ 
+    __m128 t1 = _mm_mul_ps( b, x );
+ 
+    // Computes a*x^2
+ 
+    __m128 t2 = _mm_mul_ps( a, x2 );
+ 
+    // Computes b*x + c
+ 
+    __m128 t3 = _mm_add_ps( t1, c );
+ 
+    // Returns a*x^2 + b*x + c
+ 
+    return _mm_add_ps( t2, t3 );
+ 
+  }
+What makes it easy is the fact that the execution path is the same regardless of the values involved in the operations. But what if the execution path is different depending on the value?
+Vectorizing Code With Different Execution Paths
+Let’s take a look at this factorial function:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  
+static float fat1( float x )
+ 
+  {
+ 
+    float res = 1.0f;
+ 
+   
+ 
+    while ( x > 1.0f )
+ 
+    {
+ 
+      res *= x;
+ 
+      x--;
+ 
+    }
+ 
+    return res;
+ 
+  }
+It’s not difficult to see that this code is not that simple to vectorize. The problem is that when x <= 1, execution jumps past the end of the while statement. But what if your vector contains <1, 2, 3, 4>? Since you can’t continue execution on two places at the same time, and each place with part of a register, we must change the code to follow the same execution path for all values and still give the expected results. To do that I like to introduce a second scalar variable and fix the obvious problems that come with it:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  16
+ 
+  17
+ 
+  
+static void fat2( float x1, float x2, float* r1, float* r2 )
+ 
+  {
+ 
+    float res1 = 1.0f, res2 = 1.0f;
+ 
+   
+ 
+    // We must stay in the loop as long as x1 or x2 or both are greater than 1
+ 
+    // otherwise we'll get a partial result for one of them.
+ 
+    while ( x1 > 1.0f || x2 > 1.0f )
+ 
+    {
+ 
+      res1 *= x1;
+ 
+      res2 *= x2;
+ 
+   
+ 
+      x1--;
+ 
+      x2--;
+ 
+    }
+ 
+    *r1 = res1;
+ 
+    *r2 = res2;
+ 
+  }
+The only thing we must fix here is x1 or x2 going below 1 to avoid zeroing the results. We could test for them being > 1 before decrementing, and while that would translate nicely to SIMD an easier translation can be achieved by using a max function:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  16
+ 
+  17
+ 
+  18
+ 
+  19
+ 
+  20
+ 
+  21
+ 
+  22
+ 
+  23
+ 
+  
+static inline float max( float a, float b )
+ 
+  {
+ 
+    return a > b ? a : b;
+ 
+  }
+ 
+   
+ 
+  static void fat3( float x1, float x2, float* r1, float* r2 )
+ 
+  {
+ 
+    float res1 = 1.0f, res2 = 1.0f;
+ 
+   
+ 
+    while ( x1 > 1.0f || x2 > 1.0f )
+ 
+    {
+ 
+      x1 = max( x1, 1.0f );
+ 
+      x2 = max( x2, 1.0f );
+ 
+   
+ 
+      res1 *= x1;
+ 
+      res2 *= x2;
+ 
+   
+ 
+      x1--;
+ 
+      x2--;
+ 
+    }
+ 
+    *r1 = res1;
+ 
+    *r2 = res2;
+ 
+  }
+Now the code works as expected and is easy enough to vectorize. One last change we’ll do is to turn the while loop into an infinite loop with an explicit break statement because the loop condition will require a couple of lines to compute instead of a simple expression:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  16
+ 
+  17
+ 
+  18
+ 
+  19
+ 
+  20
+ 
+  21
+ 
+  22
+ 
+  23
+ 
+  24
+ 
+  25
+ 
+  26
+ 
+  27
+ 
+  28
+ 
+  29
+ 
+  30
+ 
+  31
+ 
+  32
+ 
+  33
+ 
+  34
+ 
+  35
+ 
+  36
+ 
+  37
+ 
+  38
+ 
+  39
+ 
+  
+static __m128 fat4( __m128 x )
+ 
+  {
+ 
+    // Create a vector of ones.
+ 
+    __m128 one = _mm_set_ps1( 1.0f );
+ 
+   
+ 
+    // Our result vector.
+ 
+    __m128 res = one;
+ 
+   
+ 
+    for ( ;; )
+ 
+    {
+ 
+      // The loop condition. First we create a mask testing for x > 1. This will
+ 
+      // set each vector slot to all ones where the condition is true and to all
+ 
+      // zeros where the condition is false.
+ 
+      __m128 x_gt_1 = _mm_cmpgt_ps( x, one );
+ 
+   
+ 
+      // This intrinsic gets the most significant bit of each vector slot and put
+ 
+      // them into an integer, resulting in values from 0 to 15. Other ISAs will
+ 
+      // likely have slightly different ways to combine all vector slots into
+ 
+      // a value that can be tested.
+ 
+      int mask = _mm_movemask_ps( x_gt_1 );
+ 
+   
+ 
+      // If the mask is zero, all x vector slots are <= 1 and we exit the loop.
+ 
+      if ( mask == 0 )
+ 
+      {
+ 
+        break;
+ 
+      }
+ 
+   
+ 
+      // If you don't have a max instruction, use the x_gt_1 mask above to select
+ 
+      // slots from either x or one.
+ 
+      x = _mm_max_ps( x, one );
+ 
+   
+ 
+      // res *= x
+ 
+      res = _mm_mul_ps( res , x );
+ 
+   
+ 
+      // x--
+ 
+      x = _mm_sub_ps( x, one );
+ 
+    }
+ 
+    return res;
+ 
+  }
+Vectorizing More Complicated Code
+Sometimes the execution path is complicated enough that this simple vectorization method will still leave us with some grey areas. So another trick that can help finish the vectorization, which happens to be the most general method I use, is to remove if statements and use masks to select values:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  
+static float func1( float a, float b, float c )
+ 
+  {
+ 
+    if ( a >= 0.0f )
+ 
+    {
+ 
+      // do something to b
+ 
+      b = -b;
+ 
+    }
+ 
+    else
+ 
+    {
+ 
+      // do something to c
+ 
+      c = -c;
+ 
+    }
+ 
+    return b + c;
+ 
+  }
+To remove the if statement we have to save the original values of b and c, since both the true and false execution paths will be executed, and then select the correct values just after of what is left from the if statement:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  16
+ 
+  17
+ 
+  18
+ 
+  19
+ 
+  20
+ 
+  21
+ 
+  22
+ 
+  
+static float func2( float a, float b, float c )
+ 
+  {
+ 
+    // Save the values of b and c.
+ 
+    float b_saved = b, c_saved = c;
+ 
+   
+ 
+    // Always execute both execution paths.
+ 
+    // if ( a >= 0.0f )
+ 
+    {
+ 
+      // do something to b
+ 
+      b = -b;
+ 
+    }
+ 
+    // else
+ 
+    {
+ 
+      // do something to c
+ 
+      c = -c;
+ 
+    }
+ 
+    // Select the correct values of b and c based on the condition.
+ 
+    b = a >= 0.0f ? b : b_saved;
+ 
+    c = a >= 0.0f ? c_saved : c;
+ 
+   
+ 
+    return b + c;
+ 
+  }
+Now the code can be easily vectorized:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  16
+ 
+  17
+ 
+  18
+ 
+  19
+ 
+  20
+ 
+  21
+ 
+  22
+ 
+  23
+ 
+  24
+ 
+  25
+ 
+  26
+ 
+  27
+ 
+  28
+ 
+  29
+ 
+  30
+ 
+  
+static __m128 func3( __m128 a, __m128 b, __m128 c )
+ 
+  {
+ 
+    __m128 zero = _mm_sub_ps( a, a );
+ 
+   
+ 
+    // Save the values of b and c.
+ 
+    __m128 b_saved = b, c_saved = c;
+ 
+   
+ 
+    // Always execute both execution paths.
+ 
+    // if ( a >= 0.0f )
+ 
+    {
+ 
+      // do something to b
+ 
+      b = _mm_sub_ps( zero, b );
+ 
+    }
+ 
+    // else
+ 
+    {
+ 
+      // do something to c
+ 
+      c = _mm_sub_ps( zero, c );
+ 
+    }
+ 
+    // Select the correct values of b and c based on the condition.
+ 
+    __m128 a_ge_0 = _mm_cmpge_ps( a, zero );
+ 
+    __m128 b1 = _mm_and_ps( a_ge_0, b );
+ 
+    __m128 b2 = _mm_andnot_ps( a_ge_0, b_saved );
+ 
+    b = _mm_or_ps( b1, b2 );
+ 
+   
+ 
+    __m128 c1 = _mm_and_ps( a_ge_0, c_saved );
+ 
+    __m128 c2 = _mm_andnot_ps( a_ge_0, c );
+ 
+    c = _mm_or_ps( c1, c2 );
+ 
+   
+ 
+    return _mm_add_ps( b, c );
+ 
+  }
+If you have an if statement inside another if statement, apply this method to the innermost statement first. And if the execution paths of the if statement are too expensive, you can check whether you really have to execute them:
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  
+  __m128 a_ge_0 = _mm_cmpge_ps( a, zero );
+ 
+    int test = _mm_movemask_ps( a_ge_0 );
+ 
+   
+ 
+    // Check if at least one vector slot passes the condition.
+ 
+    if ( test != 0 )
+ 
+    {
+ 
+      // do something to b
+ 
+      b = _mm_sub_ps( zero, b );
+ 
+    }
+ 
+    // Check if at least one vector slot fails the condition.
+ 
+    if ( test != 15 )
+ 
+    {
+ 
+      // do something to c
+ 
+      c = _mm_sub_ps( zero, c );
+ 
+    }
+Calling Other Functions
+All functions being called from within the function you’re vectorizing must be vectorized too. If a function cannot be vectorized, you’ll have to call it for each vector slot of its arguments, and if it returns a result you’ll have to build a vector with each of the results.
+.
+When a function is conditionally called you can apply the previous method to get rid of the condition. If a function is too expensive to call, you can test if at least one of the values in the vector satisfy the condition before calling it.
+.
+1
+ 
+  2
+ 
+  3
+ 
+  4
+ 
+  5
+ 
+  6
+ 
+  7
+ 
+  8
+ 
+  9
+ 
+  10
+ 
+  11
+ 
+  12
+ 
+  13
+ 
+  14
+ 
+  15
+ 
+  16
+ 
+  17
+ 
+  18
+ 
+  19
+ 
+  20
+ 
+  21
+ 
+  22
+ 
+  23
+ 
+  
+static __m128 func4( __m128 a, __m128 b )
+ 
+  {
+ 
+    __m128 zero = _mm_sub_ps( a, a );
+ 
+   
+ 
+    // Save the value of b.
+ 
+    __m128 b_saved = b;
+ 
+   
+ 
+    // Check if at least one value in the vector satisfies the condition.
+ 
+    __m128 a_ge_0 = _mm_cmpge_ps( a, zero );
+ 
+    int test = _mm_movemask_ps( a_ge_0 );
+ 
+   
+ 
+    if ( test != 0 )
+ 
+    {
+ 
+      // Only call fat4 if a >= 0.
+ 
+      b = fat4( b );
+ 
+    }
+ 
+    // Select the correct value of b based on the condition.
+ 
+    __m128 b1 = _mm_and_ps( a_ge_0, b );
+ 
+    __m128 b2 = _mm_andnot_ps( a_ge_0, b_saved );
+ 
+    b = _mm_or_ps( b1, b2 );
+ 
+   
+ 
+    return b;
+ 
+  }
+Conclusion
+Vectorizing code is not that difficult. The methods exposed here can help you vectorize complicated execution paths and get the speedup benefits of SIMD instructions.
+.
+If you have other vectorization tips please share them here, I’d love to see them.
+ 
+Share:
+Twitter
+Facebook
+Reddit
+Google+
