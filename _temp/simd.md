@@ -137,3 +137,43 @@ SIMD와 스레드는 병렬 처리를 위한 개념이지만, 그 접근 방식�
 if statement in shader and simd
 
 https://www.rastergrid.com/blog/gpu-tech/2022/02/simd-in-the-gpu-world/
+
+
+
+#include <immintrin.h>
+#include <iostream>
+
+static __m128 simd_factorial(__m128 x) {
+    __m128 one = _mm_set1_ps(1.0f);
+    __m128 res = one;
+    __m128 decrement = _mm_set1_ps(1.0f);
+    
+    // 모든 요소가 1 이하가 될 때까지 반복
+    while (_mm_movemask_ps(_mm_cmpgt_ps(x, one)) != 0) {
+        // res *= x
+        res = _mm_mul_ps(res, x);
+        
+        // x--
+        x = _mm_sub_ps(x, decrement);
+    }
+    
+    return res;
+}
+
+int main() {
+    // 입력값 설정: 1, 2, 3, 4
+    __m128 input = _mm_set_ps(4.0f, 3.0f, 2.0f, 1.0f);
+    
+    // 팩토리얼 계산
+    __m128 result = simd_factorial(input);
+    
+    // 결과 출력
+    float results[4];
+    _mm_store_ps(results, result);
+    
+    for (int i = 0; i < 4; i++) {
+        std::cout << "Factorial of " << i+1 << ": " << results[3-i] << std::endl;
+    }
+    
+    return 0;
+}
