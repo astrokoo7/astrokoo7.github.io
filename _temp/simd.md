@@ -177,3 +177,16 @@ int main() {
     
     return 0;
 }
+
+
+simd line 은 물리적인 병렬 처리 데이터 양
+
+4 - way simd line 처럼
+
+execution path 는 소프트웨어적인 것
+
+하나의 물리적인 데이터는 mask 에 따라 분기 되어 
+
+다른 execution path 가 실행 될 수 있음
+
+최적화는 simd line 과 execution path 를 일치시키는 것
