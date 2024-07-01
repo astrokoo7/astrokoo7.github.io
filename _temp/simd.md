@@ -80,6 +80,8 @@ float4 PixelShader(float2 uv : TEXCOORD0) : SV_Target
     return result;
 }   
 
+simd 에서 if 문은 mask 로 변환되어 동작하는데 mask 는 여려개의 simd line 중 mask 된 애들만 실행하고 나머지는 안하는 걸텐데그럼 이런 관점에선 simd line 이 if 조건에 따라 각각 두번 실행되는건 아니지 않아? Edit네, 맞습니다
+
 개선
 float4 result = lerp(color2, color1, step(0.5, uv.x));
 
