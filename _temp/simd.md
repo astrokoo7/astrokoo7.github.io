@@ -240,3 +240,112 @@ execution path 는 소프트웨어적인 것
 다른 execution path 가 실행 될 수 있음
 
 최적화는 simd line 과 execution path 를 일치시키는 것
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OP
+•
+2y ago
+decomposed by the compiler as four vector registers
+
+Did you mean scalar registers?
+
+Does this mean when I have a vec4 in my shader, it does 4 different loads into 4 registers and operate on each register separately?
+
+
+pezezin
+•
+2y ago
+No, I mean vector registers.
+
+As you know, shaders run in parallel (warps, waves, workgroups, however you want to call it). In modern architectures, that is implemented as big vector units, so when you run a 32-element warp, it is internally implemented as a bunch of 32-element vector registers and ALUs.
+
+Going back to your vec4, the GPU will use four vector registers, one for each xyzw component, and run operations on 32 vec4's at a time. This is called structure of arrays, and it is a common technique to exploit SIMD units: https://en.wikipedia.org/wiki/AoS_and_SoA#Structure_of_arrays
+
+But this is invisible for you as a programmer. From the point of view of a shader, you just have a bunch of scalar registers.
+
+
+OP
+•
+2y ago
+So let's say we have 4 vector registers, R0~R3 and 32 threads, T0~T31.
+
+For T0, vec4 a; would be R0[0], R1[0], R2[0], R3[0], for T1 it would be R0[1], R1[1], R2[1], R3[1] and so on ?
+
+
+pezezin
+•
+2y ago
+Exactly.
+
+
+
+
+OP와 pezezin의 대화인데 OP가 shader코드의 vec4(자료구조)를 한번에 계산하는걸 simd로 착각한거 맞지?
+
+pezezin는 그래서 그게 아니라 vector register로 데이터가 한번에 여러 thread로 동시에 입력 되어 처리하는거라고 알려준거고?
+
+내가 해석한게 맞아?
+
+
+네, 당신의 해석이 정확합니다. 대화를 요약하고 설명해 드리겠습니다:
+
+1. OP의 오해:
+   OP는 처음에 셰이더의 vec4가 SIMD(Single Instruction, Multiple Data) 연산으로 처리된다고 생각했습니다. 즉, vec4의 x, y, z, w 컴포넌트가 한 번에 계산된다고 오해했습니다.
+
+2. pezezin의 설명:
+   pezezin은 OP의 오해를 바로잡았습니다. 그가 설명한 내용은 다음과 같습니다:
+   - 셰이더는 병렬로 실행됩니다 (warps, waves, workgroups 등으로 불림).
+   - 현대 GPU 아키텍처에서는 큰 벡터 유닛을 사용하여 이를 구현합니다.
+   - 32개 요소의 warp를 실행할 때, 내부적으로 32개 요소의 벡터 레지스터와 ALU를 사용합니다.
+   - vec4의 경우, GPU는 4개의 벡터 레지스터를 사용하며, 각각 x, y, z, w 컴포넌트를 나타냅니다.
+   - 이 방식으로 32개의 vec4를 동시에 처리할 수 있습니다.
+   - 이는 "Structure of Arrays" 기법으로, SIMD 유닛을 활용하는 일반적인 방법입니다.
+
+3. 결론:
+   SIMD는 vec4의 개별 컴포넌트에 적용되는 것이 아니라, 여러 스레드의 동일한 컴포넌트에 적용됩니다. 이는 데이터 병렬성을 극대화하는 방식입니다.
+
+따라서 당신의 해석이 정확합니다. OP는 SIMD의 개념을 오해했고, pezezin이 GPU에서의 실제 병렬 처리 방식을 설명해 주었습니다.
+
+
+그러니깐 프로그래머 눈에는 vec4가 스칼라 값으로 보이지만 사실은 vec4[] array register로 동시에 여러 쓰레드에서 실행 된다 인거야?
+
+
+네, 정확히 그렇습니다. 당신의 이해가 아주 정확합니다. 좀 더 자세히 설명해 드리겠습니다:
+
+1. 프로그래머의 관점:
+   - 셰이더를 작성할 때, 프로그래머는 vec4를 단일 벡터 변수로 다룹니다.
+   - 코드 상에서는 마치 하나의 스레드에서 하나의 vec4를 처리하는 것처럼 보입니다.
+
+2. 실제 GPU의 처리 방식:
+   - 내부적으로 GPU는 여러 스레드의 vec4를 동시에 처리합니다.
+   - vec4의 각 컴포넌트(x, y, z, w)는 별도의 벡터 레지스터에 저장됩니다.
+   - 각 벡터 레지스터는 여러 스레드의 동일한 컴포넌트 값을 포함합니다.
+
+3. 데이터 구조:
+   - 이는 "Structure of Arrays (SoA)" 방식으로 구현됩니다.
+   - 예를 들어, 32개 스레드의 vec4를 처리한다면:
+     - R0: [x0, x1, x2, ..., x31] (모든 스레드의 x 값)
+     - R1: [y0, y1, y2, ..., y31] (모든 스레드의 y 값)
+     - R2: [z0, z1, z2, ..., z31] (모든 스레드의 z 값)
+     - R3: [w0, w1, w2, ..., w31] (모든 스레드의 w 값)
+
+4. 병렬 처리:
+   - 이 구조를 통해 GPU는 단일 명령으로 32개 스레드의 동일한 연산을 동시에 수행할 수 있습니다.
+   - 이는 SIMD (Single Instruction, Multiple Data) 병렬 처리의 한 형태입니다.
+
+결론적으로, 프로그래머에게는 단순한 vec4로 보이지만, GPU 내부에서는 효율적인 병렬 처리를 위해 여러 스레드의 데이터를 재구성하여 처리합니다. 이 방식은 GPU의 높은 처리량을 가능하게 하는 핵심 요소입니다.
