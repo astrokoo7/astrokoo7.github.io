@@ -349,3 +349,14 @@ pezezin는 그래서 그게 아니라 vector register로 데이터가 한번에 
    - 이는 SIMD (Single Instruction, Multiple Data) 병렬 처리의 한 형태입니다.
 
 결론적으로, 프로그래머에게는 단순한 vec4로 보이지만, GPU 내부에서는 효율적인 병렬 처리를 위해 여러 스레드의 데이터를 재구성하여 처리합니다. 이 방식은 GPU의 높은 처리량을 가능하게 하는 핵심 요소입니다.
+
+
+
+
+1. scalar vs vector register
+2. mask
+3. static vs dynamic vs none uniform
+
+
+
+
