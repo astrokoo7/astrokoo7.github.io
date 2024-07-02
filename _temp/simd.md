@@ -353,10 +353,18 @@ pezezin는 그래서 그게 아니라 vector register로 데이터가 한번에 
 
 
 
-1. scalar vs vector register
+1. scalar vs vector register 
 2. mask
 3. static vs dynamic vs none uniform
 
 
+uniform bool useTexture;
+if (useTexture) {
+    // 텍스처 사용
+} else {
+    // 단색 사용
+}
 
+
+useTexture 값은 CPU에서 변경될 수 있지만(동적), 하나의 드로우 콜 내에서는 모든 프래그먼트가 동일한 경로를 따릅니다(균일).
 
