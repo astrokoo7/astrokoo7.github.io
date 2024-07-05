@@ -55,7 +55,7 @@ void main()
    gl_Position = vec4(0.5, 0.5, 0.5, 1.0);
 }
 ```
-위의 버텍스는 \\( W_{clip} \leq (X_{clip}, Y_{clip}, Z_{clip}) \leq W_{clip} \\)를 만족하여 화면에 출력된다.
+위의 버텍스는 \\( -W_{clip} \leq (X_{clip}, Y_{clip}, Z_{clip}) \leq W_{clip} \\)를 만족하여 화면에 출력된다.
 > <font size="2"> 
 > 버텍스 쉐이더가 출력하는 gl_Position은 Clip Coordinate 이다.
 > </font> 
