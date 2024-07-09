@@ -20,6 +20,14 @@ categories: graphics
 
 * View Coordinate → Normalize Device Coordinate
 
+<figure>
+<div style="text-align:center;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/clipspace.png" width="80%">
+  <figcaption></figcaption>
+</div>
+</figure>
+
+
 ## clip space
 
 clip space는 Normalize Device Coordinate로 변환되기전 좌표계로 프로그래머에 의해 계산된 버텍스 쉐이터 gl_Position의 좌표계이기도 하다. <br>
