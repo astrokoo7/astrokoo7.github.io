@@ -22,7 +22,7 @@ categories: graphics
 
 <figure>
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/clipspace.png" width="80%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/clipspace.png" width="100%">
   <figcaption></figcaption>
 </div>
 </figure>
