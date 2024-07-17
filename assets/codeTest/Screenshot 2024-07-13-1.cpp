@@ -15,6 +15,12 @@ public:
             for (int i : idxs) {
                 if (!used[i]) continue;
 
+                // 1,2,1,3,4,1
+                // 0,2,5
+                // 1,2
+                // 2,1
+                // 1,3
+
                 // 왼쪽 원소와 조합
                 if (i > 0 && a[i] != a[i - 1] && used[i - 1]) {
                     used[i] = false;
