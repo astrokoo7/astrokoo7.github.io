@@ -61,5 +61,30 @@ int solution(vector<string> arr) {
     return (int)dp_max[0][n-1];
 }
 
+/*
+INF = 987654321
+n = 숫자 갯수임.
+MIN_DP = [[INF for _ in range(n)] for _ in range(n)]
+MAX_DP = [[-INF for _ in range(n)] for _ in range(n)]
+
+for step in range(len(DP)): #i와 j의 간격.
+
+    for i in range(len(DP)-step): #i부터 j까지의 연산을 수행함.
+
+        j = i + step
+
+        if step == 0:
+            DP[i][i] = 해당되는 숫자
+        else:
+            for k in range(i, j): #i 부터 j까지 돌면서, 괄호를 하나는 늘리고, 하나는 줄여서 각각의 범위 연산을 수행함.
+                if k번째의 연산자 == '+': #k번째에 해당되는 연산이 + 일 경우:
+                    MAX_DP[i][j] = max(MAX_DP[i][j], MAX_DP[i][k] + MAX_DP[k+1][j]) # + 일 경우 최댓값은 최댓값 + 최댓값임.
+                    MIN_DP[i][j] = min(MIN_DP[i][j], MIN_DP[i][k] + MIN_DP[k+1][j]) # + 일 경우 최솟값은 최솟값 + 최솟값임.
+               else: #k번째에 해당되는 연산이 - 일 경우.
+                    MAX_DP[i][j] = max(MAX_DP[i][j], MAX_DP[i][k] - MIN_DP[k+1][j]) # - 일 경우 최댓값은 최댓값 - 최솟값임.
+                    MIN_DP[i][j] = min(MIN_DP[i][j], MIN_DP[i][k] - MAX_DP[k+1][j])# - 일 경우 최솟값은 최솟값 - 최댓값임.
+
+return MAX_DP[0][n-1] 
+*/
 
 https://school.programmers.co.kr/questions/35224
