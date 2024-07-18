@@ -39,8 +39,10 @@ int solution(vector<string> arr) {
         for (int i = 0; i < n - len + 1; i++) {
             int j = i + len - 1;
             for (int k = i; k < j; k++) {
-                long long left_max = dp_max[i][k], left_min = dp_min[i][k];
-                long long right_max = dp_max[k+1][j], right_min = dp_min[k+1][j];
+                long long left_max = dp_max[i][k];
+                long long left_min = dp_min[i][k];
+                long long right_max = dp_max[k+1][j];
+                long long right_min = dp_min[k+1][j];
                 char op = ops[k];
                 
                 vector<long long> results = {
