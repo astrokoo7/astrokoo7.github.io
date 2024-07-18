@@ -60,3 +60,6 @@ int solution(vector<string> arr) {
     
     return (int)dp_max[0][n-1];
 }
+
+
+https://school.programmers.co.kr/questions/35224
