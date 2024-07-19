@@ -907,3 +907,14 @@ Twitter
 Facebook
 Reddit
 Google+
+
+
+
+case study
+
+1. 함수 simd 벡터 인자 처리시 기다려야하는 상황 (different execution path)
+  - 원래 인자가 스칼라 인자가 하나인 경우
+
+2. 함수 simd 벡터 인자들간 서로 영향을 주는 상황 (more complicated case)
+  - 스칼라 인자가 여러개인 경우
+
