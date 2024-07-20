@@ -66,4 +66,4 @@ Ax + By + Dw = 0
 두 개의 식을 만족하는 해를 구하면 w * (C - D) = 0 로 C와 D가 다른 직선이라도 w가 0에 무한히 가까워질 때 한 점에서 만날 수 있음을 알 수 있다.
 
 
-
+- [ref](https://www.songho.ca/math/homogeneous/homogeneous.html)
