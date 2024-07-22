@@ -30,3 +30,6 @@ int main()
 {
     std::cout << "Hello World!\n";
 }
+
+
+https://velog.io/@e7838752/programmers-numberGame
