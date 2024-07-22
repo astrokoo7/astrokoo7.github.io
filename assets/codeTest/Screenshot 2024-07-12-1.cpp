@@ -9,6 +9,19 @@ int solution(vector<int> A, vector<int> B) {
     int answer = -1;
 
     sort(begin(A), end(A));
+    sort(begin(B), end(B));
+
+    int cur = -1;
+
+    for (int i = 0; i < A.size(); i++) {
+        auto a = A[i];
+        auto b = B[i];
+
+        cur = a - b;
+
+
+
+    }
 
     return answer;
 }
