@@ -15,6 +15,8 @@ categories: c++
 이러한 상황에선 KMP, Boyer-Moore 같은 알고리즘을 주로 사용하는데,<br>
 여기선 Rabin-Karp 으로 알려진 간단한 Rolling Hash에 대해 살펴보려고 한다.
 
+그전에 brutal force 방식의 코드를 잠시 보고 넘어가자.
+
 ```c++
 #include <iostream>
 #include <string>
@@ -56,7 +58,8 @@ int main() {
 ## Rolling Hash
 
 롤링 해쉬 알고리즘은 입력 문자열과 패턴 문자열에 대한 해쉬 값 비교(for if hash compare)를 통해 <br>
-최대 O(n+m) 시간 복잡도를 가지게 만들어준다.
+최대 O(n+m) 시간 복잡도를 가지는데 입력 크기만큼 hash를 생성하는 부분과 hash를 이동하면서 비교<br>
+하는 부분으로 구성되어 있다.
 
 - [Generate Hash](#generate-hash)
 - [Sliding Hash Window](#sliding-hash-window)
