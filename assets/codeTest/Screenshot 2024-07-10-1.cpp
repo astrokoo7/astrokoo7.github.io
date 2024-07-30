@@ -21,3 +21,4 @@ int solution(vector<vector<int>> scores) {
     }
     return answer;
 }
+
