@@ -1,5 +1,4 @@
 //https://school.programmers.co.kr/learn/courses/30/lessons/152995
-
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -7,18 +6,15 @@
 
 using namespace std;
 
-bool cmp(vector<int> a, vector<int> b)
-{
-    return a[0] > b[0];
-}
-
 int solution(vector<vector<int>> scores) {
     int answer = 1;
     int n = scores.size();
     int prevN = -1;
     auto x = scores[0][0] + scores[0][1];
 
-    sort(scores.begin()+1, scores.end(), cmp);
+    sort(scores.begin()+1, scores.end(), [](const vector<int>& a, const vector<int>& b) {
+        return a[0] > b[0] || (a[0] == b[0] && a[1] < b[1]);
+        });
 
     for (int i = 1; i < n; i++) {
         auto y = scores[i][0] + scores[i][1];
@@ -35,7 +31,6 @@ int solution(vector<vector<int>> scores) {
     }
     return answer;
 }
-
 
 int main()
 {
