@@ -29,9 +29,6 @@ categories: c++
 텍스쳐 공간이란 
 
 
-
-
-
 .. ing
 
 
