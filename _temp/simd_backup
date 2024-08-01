@@ -914,6 +914,11 @@ case study
 
 Vectorize
 
+0. 
+
+float 32bit * 4
+__m128 * 4
+
 1. 함수 simd 벡터 인자 처리시 기다려야하는 상황 (different execution path)
   - 스칼라 인자가 하나인 경우
 
