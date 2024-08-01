@@ -4,7 +4,7 @@ title: About Me
 # permalink: /about/
 ---
 
-execution path
+design the execution path
 
 
 
