@@ -1,21 +1,17 @@
+
+//https://programmers.co.kr/learn/courses/30/lessons/1833
+// 전역 변수를 정의할 경우 함수 내에 초기화 코드를 꼭 작성해주세요.
 #include <vector>
 #include <algorithm>
 #include <iostream>
 using namespace std;
 
-
 bool cmp(vector <int> a, vector <int> b)
 {
     return a[0]<b[0];
 }
-
-
-//https://programmers.co.kr/learn/courses/30/lessons/1833
-// 전역 변수를 정의할 경우 함수 내에 초기화 코드를 꼭 작성해주세요.
 int solution(int n, vector<vector<int>> data) {
-    int answer = 0;
-    
-    
+    int answer = 0;   
     sort(data.begin(),data.end(),cmp);
     
     int x,y;
@@ -31,12 +27,12 @@ int solution(int n, vector<vector<int>> data) {
             tx=data[j][0];
             ty=data[j][1];
             
-            mx=min(x,tx);
-            my=min(y,ty);
-            px=max(x,tx);
-            py=max(y,ty);
+            nx=min(x,tx);
+            ny=min(y,ty);
+            mx=max(x,tx);
+            my=max(y,ty);
             
-            if(mx==px||my==py) continue;
+            if(nx==mx||ny==my) continue;
             
             int sw=0;
             int jx,jy;
@@ -50,7 +46,7 @@ int solution(int n, vector<vector<int>> data) {
                     break;
                 }
             }
-            
+            e
             if(sw==0) answer++;
         }
     }
