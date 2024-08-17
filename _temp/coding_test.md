@@ -73,3 +73,38 @@ int main() {
 
     return 0;
 }
+
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+// 함수: 조합을 출력하는 재귀 함수
+void combinations(const std::vector<int>& arr, std::vector<int>& combination, int start, int k) {
+    if (k == 0) {
+        // 조합의 크기가 0일 때, 현재 조합을 출력
+        for (int num : combination) {
+            std::cout << num << " ";
+        }
+        std::cout << std::endl;
+        return;
+    }
+
+    for (int i = start; i <= arr.size() - k; ++i) {
+        combination.push_back(arr[i]);
+        combinations(arr, combination, i + 1, k - 1);
+        combination.pop_back();
+    }
+}
+
+int main() {
+    std::vector<int> arr = { 1, 2, 3 };
+    std::vector<int> combination;
+
+    // 1부터 3까지 모든 조합을 생성
+    for (int k = 1; k <= arr.size(); ++k) {
+        combinations(arr, combination, 0, k);
+    }
+
+    return 0;
+}
