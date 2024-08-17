@@ -1,17 +1,75 @@
-플로이드-워셜 알고리즘
+#include <iostream>
+#include <vector>
+
+void printCombination(const std::vector<int>& combination) {
+    for (int num : combination) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+}
+
+void generateCombinations(const std::vector<int>& elements, int start, int k, std::vector<int>& current_combination) {
+    if (k == 0) {
+        printCombination(current_combination);
+        return;
+    }
+
+    for (int i = start; i <= elements.size() - k; ++i) {
+        current_combination.push_back(elements[i]);
+        generateCombinations(elements, i + 1, k - 1, current_combination);
+        current_combination.pop_back();
+    }
+}
+
+int main() {
+    std::vector<int> elements = {1, 2, 3};
+    int k = 2;
+    std::vector<int> current_combination;
+
+    generateCombinations(elements, 0, k, current_combination);
+    return 0;
+}
 
 
-1. 단순구현문제 골드까지 풀기(단계별)
-한 문제를 시간제한없이 물고 늘어지지 말기
- - 시간제한을 정하여 해당시간 내에 답이 안나오면 과감히 답지를 보기(30분~1시간)
- - 이때, 가볍게 보고 넘기는것이 아니라 코드 한줄한줄을 완벽에 가깝게 이해하며 누군가에게 코드의 의도를 설명할 수 있을정도로 이해해야된다.
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
-2. 복습문제 queue 관리
- - 답지를 보고 해결한 문제들을 모아놓고 특정 날이나 시간을 정해 그것들만 다시보자
+// 조합 출력 함수
+void printCombination(const std::vector<int>& combination) {
+    for (int num : combination) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+}
 
-3. 유형별로 풀기
- - 단계별로 풀기에 더해 알고리즘 유형별로 도장깨기 (단순구현 -> 완전탐색 -> 핵심 알고리즘 -> 복잡하고 어려운 알고리즘)
+// 재귀적으로 순열을 생성하여 조합으로 변환
+void generatePermutations(std::vector<int>& elements, int start, int k, std::vector<int>& current_combination) {
+    if (current_combination.size() == k) {
+        printCombination(current_combination);
+        return;
+    }
 
+    for (int i = start; i < elements.size(); ++i) {
+        current_combination.push_back(elements[i]);
+        std::swap(elements[start], elements[i]);
+        generatePermutations(elements, start + 1, k, current_combination);
+        std::swap(elements[start], elements[i]);
+        current_combination.pop_back();
+    }
+}
 
+// 조합 생성 함수
+void generateCombinations(std::vector<int>& elements, int k) {
+    std::vector<int> current_combination;
+    generatePermutations(elements, 0, k, current_combination);
+}
 
-https://velog.io/@iamjinseo/%EB%B0%B1%EC%A4%80-9095-1-2-3-%EB%8D%94%ED%95%98%EA%B8%B0
+int main() {
+    std::vector<int> elements = {1, 2, 3};
+    int k = 2;
+
+    generateCombinations(elements, k);
+
+    return 0;
+}
