@@ -1,2 +1,5 @@
-1. smoothstep
+1. smoothstep (Returns a smooth Hermite interpolation between 0 and 1, if x is in the range [min, max].
+
+)
+- ret smoothstep(min, max, x)
 2. ddx/ddy
