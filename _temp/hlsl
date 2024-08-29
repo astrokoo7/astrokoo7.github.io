@@ -1,3 +1,4 @@
 1. smoothstep (smooth Hermite interpolation between 0 and 1)
 - ret smoothstep(min, max, x)
 2. ddx/ddy
+3. frac(_Time.yyyy); 0~1 mod
