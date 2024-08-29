@@ -53,7 +53,7 @@ GPU는 입력으로 받은 clip space 상 좌표 `gl_Position`에 대해 두가�
 > <font size="2"> 
 > Note  <br>
 > 1. Clip Space는 원근 투영일 경우 Homogeneous Coordinate로 표현된다. <br>
-> 2. 직교투영도 Clip Coordinate 변환 과정을 거치며 (-Wz, Wz) 범위를 벗어나면 버려진다.   <br>
+> 2. 직교투영도 Clip Coordinate 변환 과정을 거치며 xy가 (-Wz, Wz) 범위를 벗어나면 버려진다.   <br>
 > 3. GPU는 Clip Coordinate 범위 밖의 Vertex를 먼저 버려(clip) Rasterizer 과정에서 Perspective Divide 비용을 줄였다.  <br>
 > </font> 
 
