@@ -2,3 +2,4 @@
 - ret smoothstep(min, max, x)
 2. ddx/ddy
 3. frac(_Time.yyyy); 0~1 mod
+4. step(x,y) : x≤y 이면 1을 리턴하고, 그렇지 않으면 0을 리턴한다.
