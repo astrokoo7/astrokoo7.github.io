@@ -36,3 +36,10 @@ int solution(string numbers) {
 
     return nums.size(); // 중복을 제거한 소수의 개수 반환
 }
+
+
+셀프 질문
+
+어떻게 하면 문제를 작게 쪼갤 수 있을까?
+
+어떻게 하면 문제를 단순화할 수 있을까?
