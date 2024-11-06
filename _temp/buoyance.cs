@@ -126,3 +126,11 @@ public class Floater2 : MonoBehaviour
         transform.eulerAngles = currentRotation;
     }
 }
+
+
+void UpdateShaderVariablesWater(WaterSurface currentWater, int surfaceIndex, ref ShaderVariablesWater cb)
+
+void EvaluateWaterAdditionalData(float3 positionOS, float3 transformedPosition, float3 meshNormalOS, out WaterAdditionalData waterAdditionalData)
+_WaterFoamRegionResolution
+
+waterutilities.hlsl:654
