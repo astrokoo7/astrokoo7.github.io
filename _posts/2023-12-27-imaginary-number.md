@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Imaginary Number"
-categories: mathmetics
+categories: mathematics
 ---
 
 <!-- begin_excerpt -->
@@ -16,7 +16,7 @@ categories: mathmetics
 
  양변에 i를 곱하면 허수 정수에 따라
 
-\\(0 < -1\\) 이되어 i 는 0보다 크지 않음을 알 수 있다.
+\\(0 < -1\\) 이 되어 i 는 0보다 크지 않음을 알 수 있다.
 
 그럼 i 는 0 보다 작은가?
 

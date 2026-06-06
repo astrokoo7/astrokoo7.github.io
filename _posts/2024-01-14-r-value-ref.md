@@ -14,7 +14,7 @@ rvalue 는 rvalue reference 개념이 나오기 전엔 <br>
 
 <!-- end_excerpt -->
 
-이름을 지어 사용할 수 없다는 말의 의미는 무었일까?
+이름을 지어 사용할 수 없다는 말의 의미는 무엇일까?
 
 ```c++
 int add(int a, int b) {

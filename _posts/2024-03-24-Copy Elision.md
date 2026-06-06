@@ -197,18 +197,18 @@ public:
     	m_Size = strlen(string);
     	m_Data = new char[m_Size];
     }
-    String(const String& ohter)
+    String(const String& other)
     {
-    	m_Size = ohter.m_Size;
+    	m_Size = other.m_Size;
     	m_Data = new char[m_Size];
-    	memcpy(m_Data, ohter.m_Data, m_Size);
+    	memcpy(m_Data, other.m_Data, m_Size);
     }
-    String(String&& ohter) noexcept
+    String(String&& other) noexcept
     {
-    	m_Size = ohter.m_Size;
-    	m_Data = ohter.m_Data;
-    	ohter.m_Size = 0;
-    	ohter.m_Data = nullptr;
+    	m_Size = other.m_Size;
+    	m_Data = other.m_Data;
+    	other.m_Size = 0;
+    	other.m_Data = nullptr;
     }
     ~String()
     {
