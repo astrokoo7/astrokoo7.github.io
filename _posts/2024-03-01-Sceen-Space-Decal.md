@@ -32,7 +32,7 @@ categories: graphics
 
 <figure>
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303.png" width="70%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303.png" width="60%">
   <figcaption>Decal 박스의 마름모 점은 scene의 깊이맵 만큼 투영되어 X로 이동 된다.</figcaption>
 </div>
 </figure>
@@ -41,7 +41,7 @@ categories: graphics
 
 <figure>
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-2.png" width="40%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-2.png" width="60%">
   <figcaption>Scene의 깊이로 투영된 Decal 박스의 화면 좌표가 로컬 좌표계로 변환 뒤 <br>Decal 박스 크기를 벗어나면 그리지 않는다. </figcaption>
 </div>
 </figure>
@@ -49,14 +49,14 @@ categories: graphics
 
 <figure>
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-3.png" width="30%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-3.png" width="60%">
   <figcaption>그릴 영역만 남은 Decal 박스의 pixel은 Decal 박스 로컬 좌표계 x,z축 값을<br> 그대로 uv 좌표계로 변환(+0.5)하여 텍스쳐를 입히면 된다. </figcaption>
 </div>
 </figure>
 
 <figure>
 <div style="text-align:center;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-4.png" width="50%">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/decal0303-4.png" width="60%">
   <figcaption> 데칼을 지형 표면에 입혔다. </figcaption>
 </div>
 </figure>
