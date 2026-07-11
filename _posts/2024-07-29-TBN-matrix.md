@@ -2,6 +2,7 @@
 layout: post
 title: "TBN matrix"
 categories: c++
+published: false
 ---
 
 ## Tangent Space
