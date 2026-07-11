@@ -1,2 +1,120 @@
 // Placeholder to allow defining custom styles that override everything else.
 // (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+//
+// Koo Box — 포스트 프리뷰 기준 전역 타이포 (모든 글 공통 적용). 내용은 그대로.
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+// Headings — 밝게, 살짝 타이트하게
+h1, h2, h3, h4, h5, h6 {
+  color: #f0f3f5;
+  font-weight: 660;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.post-title,
+.post-content h1 {
+  font-size: 2rem;
+  font-weight: 680;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.post-content {
+  h2 { font-size: 1.45rem; margin-top: 2.8rem; }
+  h3 { font-size: 1.15rem; margin-top: 2rem; }
+}
+
+.post-meta {
+  color: #9aa0a6;
+  letter-spacing: 0.01em;
+}
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+strong, b { color: #f0f3f5; font-weight: 660; }
+
+// 인라인 코드 + 코드블록 컨테이너 (프리뷰와 동일; 토큰 색은 rouge가 입힘)
+code {
+  font-size: 0.86em;
+  padding: 0.10em 0.38em;
+  border: 1px solid #262c31;
+  border-radius: 5px;
+  background: #14181b;
+  color: #c8d3da;
+}
+
+pre,
+.highlight pre,
+pre.highlight,
+figure.highlight pre {
+  padding: 16px 18px;
+  border: 1px solid #262c31;
+  border-radius: 9px;
+  background: #14181b;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.highlight,
+div.highlight,
+.highlighter-rouge .highlight {
+  background: #14181b;
+  border-radius: 9px;
+}
+
+pre code,
+.highlight code {
+  border: 0;
+  padding: 0;
+  background: none;
+  font-size: 13.5px;
+}
+
+// 인용/작은 주석
+blockquote {
+  color: #9aa0a6;
+  border-left: 2px solid #262c31;
+  padding-left: 16px;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 0.9em;
+}
+
+// 그림/다이어그램
+figure {
+  margin: 1.6rem 0;
+  text-align: center;
+}
+figure svg,
+figure img {
+  max-width: 100%;
+  height: auto;
+}
+figcaption {
+  color: #9aa0a6;
+  font-size: 0.8rem;
+  line-height: 1.55;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+// 사이트 헤더 / 타이틀
+.site-header {
+  border-top: 0;
+  border-bottom: 1px solid #262c31;
+}
+.site-title,
+.site-title:visited {
+  color: #f0f3f5;
+}
+.site-nav .page-link {
+  color: #9aa0a6;
+}
+
+::selection { background: rgba(127, 208, 255, 0.28); }

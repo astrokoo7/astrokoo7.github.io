@@ -1,1 +1,27 @@
 // Placeholder to allow overriding predefined variables smoothly.
+// Koo Box — 포스트 프리뷰 기준으로 전역 타이포/색 토큰 재정의.
+
+// Typography
+$base-font-family:  -apple-system, "Segoe UI", "Malgun Gothic", "Apple SD Gothic Neo", Roboto, Helvetica, Arial, sans-serif;
+$code-font-family:  "Cascadia Code", "JetBrains Mono", "SFMono-Regular", Consolas, "D2Coding", "Menlo", monospace;
+$base-font-size:    17px;
+$base-line-height:  1.78;
+$content-width:     780px;
+
+// Dark palette (프리뷰와 동일)
+$text-color:            #d4d8db;
+$background-color:      #0e1012;
+$code-background-color: #14181b;
+
+$link-base-color:       #7fd0ff;
+$link-visited-color:    #7fd0ff;
+$link-hover-color:      #f0f3f5;
+
+$brand-color:           #9aa0a6;
+$brand-color-light:     #b6bcc2;
+$brand-color-dark:      #6b7178;
+$site-title-color:      #f0f3f5;
+
+$border-color-01:       #262c31;
+$border-color-02:       #2f363c;
+$border-color-03:       #3a4149;
