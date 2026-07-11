@@ -5,12 +5,9 @@ categories: c++
 ---
 
 ## Rvalue
-
 <!-- begin_excerpt -->
 
-lvalue 는 프로그래머가 이름을 지을 수 있는 반면 <br>
-rvalue 는 rvalue reference 개념이 나오기 전엔 <br> 
-프로그래머가 이름을 지어 사용할 수 없었다.<br> 
+lvalue 는 프로그래머가 이름을 지을 수 있는 반면 <br> rvalue 는 rvalue reference 개념이 나오기 전엔 <br> 프로그래머가 이름을 지어 사용할 수 없었다.<br>
 
 <!-- end_excerpt -->
 
@@ -29,43 +26,25 @@ int main() {
 }
 ```
 
-먼저 위 코드에서 이름이 있는 lvalue를 찾아보자. <br> 
-lvalue 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 
-따라서 이름이 있어 이름으로 변수를 읽고 쓸 수 있는 x, y, z, a, b가 lvalue이다.
+먼저 위 코드에서 이름이 있는 lvalue를 찾아보자. <br> lvalue 조건은 이름을 통해 값을 읽고 쓸 수 있어야 한다. <br> 따라서 이름이 있어 이름으로 변수를 읽고 쓸 수 있는 x, y, z, a, b가 lvalue이다.
 
 ```c++
 z = x + y;
 ```
-위와 같이 lvalue는 이름 x와 y를 통해 값을 읽고 이름 z에 값을 쓸 수 있다.
-lvalue는 프로그램을 짜면 흔하게 사용하는 부분이다. 그렇다면 위 코드에서 rvalue는 어떤 것일까?
 
-5, 10, 0 그리고 보이지 않는 하나가 숨어있다.
-
-우선, 5와 10 그리고 0은 [코드 영역에 박혀있는 값(Literal)](https://en.wikipedia.org/wiki/Literal_(computer_programming))으로 이름이 없는 값 자체, 즉 rvalue다. 덧붙여, 값은 있고 이름이 없어 재사용이 불가능한 `임시 변수`이다.
+위와 같이 lvalue는 이름 x와 y를 통해 값을 읽고 이름 z에 값을 쓸 수 있다. lvalue는 프로그램을 짜면 흔하게 사용하는 부분이다. 그렇다면 위 코드에서 rvalue는 어떤 것일까? 5, 10, 0 그리고 보이지 않는 하나가 숨어있다. 우선, 5와 10 그리고 0은 [코드 영역에 박혀있는 값(Literal)](https://en.wikipedia.org/wiki/Literal_(computer_programming))으로 이름이 없는 값 자체, 즉 rvalue다. 덧붙여, 값은 있고 이름이 없어 재사용이 불가능한 `임시 변수`이다.
 
 > <font size="2"> 
 > 이를 prvalue, pure rvalue라고도 부른다. <br>
 > 코드 영역에 박혀있으니 당연히 고유의 주소도 없다.
 > </font>
 
-한편, 숨어있는 rvalue를 찾으려면 저수준의 함수 실행 과정에 대한 이해가 필요하다.
-
-함수를 호출할 때,
-
-Callee의 반환 값을 받기 위한 공간을 Caller의 스택에 마련하고, <br>
-함수 처리 후 Caller의 실행 스택으로 돌아가기 위해 현재 Caller 스택 주소를 저장한 뒤, <br>함수 인자를 Callee 스택에 쌓고 함수를 실행한다.
-
-이때, <br>
-Callee는 반환 값을 Caller에 돌려주기 위해, <br>
-반환 값에 대한 임시 변수를 생성한 뒤, <br>
-Caller가 반환 값을 받기 위해 확보한 공간에 임시 변수를 복사하여, <br>
-Caller에게 함수 결과를 전달한다.
+한편, 숨어있는 rvalue를 찾으려면 저수준의 함수 실행 과정에 대한 이해가 필요하다. 함수를 호출할 때, Callee의 반환 값을 받기 위한 공간을 Caller의 스택에 마련하고, <br> 함수 처리 후 Caller의 실행 스택으로 돌아가기 위해 현재 Caller 스택 주소를 저장한 뒤, <br>함수 인자를 Callee 스택에 쌓고 함수를 실행한다. 이때, <br> Callee는 반환 값을 Caller에 돌려주기 위해, <br> 반환 값에 대한 임시 변수를 생성한 뒤, <br> Caller가 반환 값을 받기 위해 확보한 공간에 임시 변수를 복사하여, <br> Caller에게 함수 결과를 전달한다.
 
 > <font size="3"> 
 > 위 예제는 컴파일러가 RVO(return value optimization)를 하여 임시 변수를 생성하지 않지만,  <br>
 > rvalue를 설명하기 위해 RVO를 안 했다는 가정으로 썼다.
 > </font>
-
 
 ```c++
 int GetValue() {
@@ -78,12 +57,14 @@ int main() {
     return 0;
 }
 ```
-예를 들어, 위와 같이 작성하고 컴파일하면 
+
+예를 들어, 위와 같이 작성하고 컴파일하면
 
 ```c++
 error: lvalue required as left operand of assignment
 add() = 10;
 ```
+
 이런 에러를 컴파일러가 출력하는데, 이는 할당 연산자 왼쪽의 값이 lvalue가 아니란 오류이다. 즉, 위 예제 코드에서 함수의 반환 값은 rvalue임을 알 수 있다.
 
 > <font size="3"> 
@@ -97,8 +78,8 @@ int a = 20;
 error: lvalue required as left operand of assignment
 10 = a;
 ```
-명시적인 rvalue(Literal)에 값을 할당하려고 하면 lvalue가 아니라서 쓸 수 없다고 에러를 출력한다. 함수 반환 값인 rvalue에 값을 쓰려고 할 때와 같은 에러이다.
 
+명시적인 rvalue(Literal)에 값을 할당하려고 하면 lvalue가 아니라서 쓸 수 없다고 에러를 출력한다. 함수 반환 값인 rvalue에 값을 쓰려고 할 때와 같은 에러이다.
 
 ```c++
 int& GetValue() {
@@ -111,15 +92,12 @@ int main() {
     return 0;
 }
 ```
-참고로, 이런 식으로 함수 반환 값을 lvalue reference로 만들어 우회하면 lvalue에도 값을 쓸 수 있긴 하다.
 
-정리하면, 함수의 반환 값 예시처럼 rvalue는 컴파일러가 특정 상황에 필요에 의해 생성하는 임시적인 변수 또는 Literal을 말한다. 
+참고로, 이런 식으로 함수 반환 값을 lvalue reference로 만들어 우회하면 lvalue에도 값을 쓸 수 있긴 하다. 정리하면, 함수의 반환 값 예시처럼 rvalue는 컴파일러가 특정 상황에 필요에 의해 생성하는 임시적인 변수 또는 Literal을 말한다.
 
 > <font size="2"> 
 > 임시 변수는 C++11의 rvalue reference와 더불어 이동 시맨틱인 std::move가 소개되면서 임시 변수의 값 복사 대신 소유권을 넘길 수 있게 되었다.
 > </font>
-
-
 ## Rvalue Reference
 
 [lvalue reference](../../../../language/2023/05/27/c++-ref-pointer.html)와 마찬가지로 rvalue reference도 rvalue에 대한 reference다.
@@ -130,13 +108,11 @@ int& b = a;   // lvalue reference
 int&& c = 10; // rvalue reference는 && 표기법을 사용한다.
 ``` 
 
-한편, rvalue reference는 특이한 특성이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br>
-이를 확인할 수 있는 직관적인 룰이 있는데 다음과 같다.
+한편, rvalue reference는 특이한 특성이 있는데 rvalue를 가리키지만 rvalue reference는 lvalue이다. <br> 이를 확인할 수 있는 직관적인 룰이 있는데 다음과 같다.
 
 > <font size="2"> 
 > lvalue의 특성인 이름을 통해 읽고 쓸 수 있다. 다만 그 대상이 rvalue일 뿐이다.
 > </font>
-
 1. lvalue reference는 lvalue만 reference 할 수 있다.<br>
 2. rvalue reference는 rvalue만 reference 할 수 있다.
 
@@ -184,8 +160,4 @@ void bar()
 }
 ```
 
-
-
 ## Const Lvalue Reference
-
-
