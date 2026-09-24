@@ -258,7 +258,7 @@ float4 NormalClip = Lerp(Verts[0].NormalClip, Verts[1].NormalClip, Verts[2].Norm
 float4 PointClip  = BaseClip + NormalClip * Displacement;   // 노멀 방향으로 밀기
 ```
 
-실무 세팅. 랜드스케이프 머티리얼은 Tessellation On, Magnitude 1, Center 0. 랜드스케이프 액터 스케일이 100이라 **Magnitude 1이 곧 100cm**를 뜻하고, 마스크 변위 1이 100cm가 된다. (그래프 노드가 아니라 머티리얼 Details의 `Enable Tessellation` 체크박스가 꺼져 있으면 변위를 아무리 연결해도 안 솟는다. 엔진이 요구하는 마스터 스위치다.)
+랜드스케이프 머티리얼은 Tessellation On, Magnitude 1, Center 0. 랜드스케이프 액터 스케일이 100이라 **Magnitude 1이 곧 100cm**를 뜻하고, 마스크 변위 1이 100cm가 된다. (그래프 노드가 아니라 머티리얼 Details의 `Enable Tessellation` 체크박스가 꺼져 있으면 변위를 아무리 연결해도 안 솟는다. 엔진이 요구하는 마스터 스위치다.)
 
 변위가 노멀 방향으로 나가기 때문에, 노멀이 제각각인 일반 메시에선 표면이 벌어지거나 튄다. **조밀하고 균일한 하이트맵 그리드인 랜드스케이프와 찰떡궁합**이고, 눈·파인 지형의 물웅덩이·절벽 표현에 탁월하다. 반대로 돌 같은 딱딱한 걸 밟고 올라서는 용도는 절대 아니다.
 
