@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fluid Ninja를 활용한 Wake & Foam Simulation"
+title: "Fluid Ninja's Wake & Foam Simulation"
 categories: graphics
 ---
 
