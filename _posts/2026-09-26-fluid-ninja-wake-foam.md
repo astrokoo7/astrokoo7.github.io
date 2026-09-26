@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fluid Ninja's Wake & Foam Simulation"
+title: "Fluid Ninja로 보는 나비에-스토크스"
 categories: graphics
 ---
 
