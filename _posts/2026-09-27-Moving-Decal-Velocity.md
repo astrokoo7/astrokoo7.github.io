@@ -26,8 +26,8 @@ UE5 디퍼드 렌더러에서 한 프레임 동안 데칼과 속도가 기록되
 
 <svg viewBox="0 0 640 470" width="100%" style="max-width:640px" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="14">
   <defs>
-    <marker id="dv-arrow" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0,0 L10,0 L5,10 z" fill="#888"/>
+    <marker id="dv-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#888"/>
     </marker>
   </defs>
   <g stroke="#888" stroke-width="1.5" fill="none">
